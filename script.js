@@ -9,16 +9,21 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
         hiddenSections.forEach(section => {
             section.classList.remove('hidden');
         });
+        
+        // Play applause for 5 seconds
+        applause.currentTime = 0; // Reset to start
         applause.play();
-
-        for (let i = 0; i < 100; i++) {
+        setTimeout(() => applause.pause(), 5000); // Stop after 5 seconds
+        
+        // More confetti (300 pieces) for 5 seconds
+        for (let i = 0; i < 300; i++) { // Increased from 100 to 300
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
             confetti.style.animationDelay = Math.random() * 2 + 's';
             document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 3000);
+            setTimeout(() => confetti.remove(), 5000); // Changed to 5 seconds
         }
     } else {
         alert('Try again!');
