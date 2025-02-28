@@ -1,18 +1,16 @@
 // Quiz Form Submission
 document.getElementById('quiz-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form from refreshing page
+    event.preventDefault();
     const selectedAnswer = document.querySelector('input[name="answer"]:checked');
     const hiddenSections = document.querySelectorAll('.timeline-event.hidden');
     const applause = document.getElementById('applause');
 
     if (selectedAnswer && selectedAnswer.value === 'B') {
-        // Correct answer: Reveal sections, play applause, show confetti
         hiddenSections.forEach(section => {
             section.classList.remove('hidden');
         });
         applause.play();
 
-        // Confetti effect
         for (let i = 0; i < 100; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
@@ -20,14 +18,14 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
             confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
             confetti.style.animationDelay = Math.random() * 2 + 's';
             document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 3000); // Remove after 3s
+            setTimeout(() => confetti.remove(), 3000);
         }
     } else {
-        alert('Try again!'); // Wrong answer feedback
+        alert('Try again!');
     }
 });
 
-// Existing interactivity for "Learn More" buttons
+// Expandable "Learn More" buttons
 document.querySelectorAll('.expand-btn').forEach(button => {
     button.addEventListener('click', () => {
         const extraInfo = button.nextElementSibling;
