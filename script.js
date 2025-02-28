@@ -13,33 +13,33 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
         });
 
         // Play applause for 5 seconds
-        applause.currentTime = 0; // Reset to start
+        applause.currentTime = 0;
         applause.play();
         setTimeout(() => {
             applause.pause();
-            applause.currentTime = 0; // Reset after stopping
+            applause.currentTime = 0;
         }, 5000);
 
         // Show "Correct!" text
         correctText.textContent = 'Correct!';
         correctText.style.display = 'block';
         setTimeout(() => {
-            correctText.classList.add('shrink'); // Start shrinking after 3s
+            correctText.classList.add('shrink');
             setTimeout(() => {
-                correctText.style.display = 'none'; // Hide after 4s total
-                correctText.classList.remove('shrink'); // Reset for next time
-            }, 1000); // Shrinking takes 1s
+                correctText.style.display = 'none';
+                correctText.classList.remove('shrink');
+            }, 1000);
         }, 3000);
 
-        // More confetti (500 pieces) for 5 seconds
-        for (let i = 0; i < 500; i++) {
+        // More confetti (1000 pieces) for 5 seconds
+        for (let i = 0; i < 1000; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
             confetti.style.animationDelay = Math.random() * 2 + 's';
             document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 5000); // Remove after 5s
+            setTimeout(() => confetti.remove(), 5000);
         }
     } else {
         alert('Try again!');
