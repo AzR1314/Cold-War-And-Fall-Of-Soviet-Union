@@ -2,7 +2,7 @@
 A website exploring the collapse of the Soviet Union and the end of the Cold War. Built with HTML, CSS, and JavaScript, hosted on GitHub Pages.
 
 ## Live Site
-[View the timeline](https://yourusername.github.io/cold-war-timeline/)
+[View the timeline](https://AzR1314.github.io/Soviet-Union/)
 
 ## Features
 - Interactive timeline with multimedia (audio, video, images).
