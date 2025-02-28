@@ -157,7 +157,7 @@ footer a {
     width: 10px;
     height: 10px;
     top: -10px;
-    animation: fall 3s linear forwards;
+    animation: fall 5s linear forwards; /* Changed to 5 seconds */
 }
 
 @keyframes fall {
