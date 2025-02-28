@@ -10,8 +10,8 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
-    position: relative; /* For confetti positioning */
-    overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+    position: relative;
+    overflow-x: hidden;
 }
 
 header {
@@ -156,17 +156,17 @@ footer a {
 /* Confetti */
 .confetti {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    top: -10px;
+    width: 12px;
+    height: 12px;
+    top: -12px;
     background-color: hsl(0, 100%, 50%);
     animation: fall 5s linear forwards;
-    pointer-events: none; /* Prevents interference with page */
+    pointer-events: none;
 }
 
 @keyframes fall {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0.5; } /* Fades slightly but stays visible */
+    100% { transform: translateY(calc(100vh + 100px)) rotate(720deg); opacity: 0.8; }
 }
 
 /* Correct Text Animation */
@@ -176,12 +176,12 @@ footer a {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 4em;
-    color: #27ae60; /* Green for correctness */
+    color: #27ae60;
     font-weight: bold;
     text-align: center;
     display: none;
-    animation: dance 1s infinite alternate; /* Dancing effect */
-    z-index: 1000; /* On top of everything */
+    animation: dance 1s infinite alternate;
+    z-index: 1000;
 }
 
 @keyframes dance {
@@ -190,7 +190,7 @@ footer a {
 }
 
 .correct-text.shrink {
-    animation: shrink 1s forwards 3s; /* Starts shrinking after 3s, takes 1s to finish */
+    animation: shrink 1s forwards 3s;
 }
 
 @keyframes shrink {
