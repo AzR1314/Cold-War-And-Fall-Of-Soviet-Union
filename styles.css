@@ -1,3 +1,122 @@
+/* Reset and General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+/* Timeline Styling */
+.timeline {
+    max-width: 900px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.timeline-event {
+    background: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, opacity 0.5s ease;
+}
+
+.timeline-event:hover {
+    transform: scale(1.02);
+}
+
+.timeline-event h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.expand-btn {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.expand-btn:hover {
+    background-color: #2980b9;
+}
+
+.extra-info {
+    display: none;
+    margin-top: 10px;
+    color: #7f8c8d;
+}
+
+/* Sources and Footer */
+.sources {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+.sources h2 {
+    margin-bottom: 10px;
+}
+
+.sources ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+}
+
+footer a {
+    color: #3498db;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .timeline-event {
+        margin: 10px;
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+}
+
 /* Quiz Styling */
 .quiz {
     margin-top: 15px;
@@ -29,8 +148,7 @@
 /* Hidden Sections */
 .hidden {
     opacity: 0;
-    pointer-events: none; /* Prevents interaction while hidden */
-    transition: opacity 0.5s ease; /* Smooth reveal */
+    pointer-events: none;
 }
 
 /* Confetti */
@@ -38,16 +156,11 @@
     position: fixed;
     width: 10px;
     height: 10px;
-    background-color: #f00;
     top: -10px;
-    animation: fall 3s linear infinite;
+    animation: fall 3s linear forwards;
 }
 
 @keyframes fall {
     0% { transform: translateY(0) rotate(0deg); }
     100% { transform: translateY(100vh) rotate(360deg); }
-}
-    header h1 {
-        font-size: 1.8em;
-    }
 }
