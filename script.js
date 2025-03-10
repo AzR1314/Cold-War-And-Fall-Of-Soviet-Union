@@ -1,4 +1,4 @@
-// Quiz Form Submission
+// Quiz Form Submission for Event 1
 document.getElementById('quiz-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const selectedAnswer = document.querySelector('input[name="answer"]:checked');
@@ -58,6 +58,64 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     }
 });
 
+// Quiz Form Submission for Event 5
+document.getElementById('quiz-form-5').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    const applause = document.getElementById('applause');
+    const boo = document.getElementById('boo');
+    const correctText = document.getElementById('correct-text');
+    const explanationDiv = document.getElementById('answer-explanation-5');
+
+    explanationDiv.style.display = 'none';
+    explanationDiv.innerHTML = '';
+
+    if (selectedAnswer) {
+        if (selectedAnswer.value === 'B') {
+            applause.currentTime = 0; applause.play();
+            setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
+            correctText.textContent = 'Correct!'; correctText.style.display = 'block';
+            setTimeout(() => {
+                correctText.classList.add('shrink');
+                setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
+            }, 3000);
+            for (let i = 0; i < 1000; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+            explanationDiv.innerHTML = `
+                <p><strong>Correct!</strong> The loss of control over republics was a key factor in the Soviet Union’s collapse.</p>
+                <p><strong>Evidence:</strong> The video (4:30–6:01) highlights how nationalist movements in the republics led to the USSR’s disintegration.</p>
+                <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
+            `;
+            explanationDiv.style.display = 'block';
+        } else {
+            boo.currentTime = 0; boo.play();
+            setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
+            if (selectedAnswer.value === 'A') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> Increased military spending weakened the USSR but was not the decisive factor in the video.</p>
+                    <p><strong>Evidence:</strong> The video (4:30–6:01) focuses on republics breaking away.</p>
+                    <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
+                `;
+            } else if (selectedAnswer.value === 'C') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> A stronger U.S. military presence played a role but was not emphasized in the video’s explanation.</p>
+                    <p><strong>Evidence:</strong> The video (4:30–6:01) stresses internal collapse over external military pressure.</p>
+                    <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
+                `;
+            }
+            explanationDiv.style.display = 'block';
+            alert('Try again!');
+        }
+    }
+});
+
 // Expandable "Learn More" buttons with cheer sound for Velvet Revolutions
 document.querySelectorAll('.expand-btn').forEach(button => {
     button.addEventListener('click', () => {
@@ -70,7 +128,7 @@ document.querySelectorAll('.expand-btn').forEach(button => {
             extraInfo.style.display = 'block';
             button.textContent = 'Hide';
             if (button.closest('.timeline-event').getAttribute('data-year') === '1989' && 
-                button.parentElement.querySelector('p').textContent.includes('nationalism')) {
+                button.parentElement.querySelector('p').textContent.includes('nationalist')) {
                 cheer.currentTime = 0; cheer.play();
                 setTimeout(() => { cheer.pause(); cheer.currentTime = 0; }, 3000);
             }
