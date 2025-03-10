@@ -142,6 +142,3 @@ document.querySelectorAll('.timeline-event').forEach(event => {
         event.scrollIntoView({ behavior: 'smooth' });
     });
 });
-        event.scrollIntoView({ behavior: 'smooth' });
-    });
-});
