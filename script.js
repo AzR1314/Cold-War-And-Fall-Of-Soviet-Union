@@ -1,4 +1,4 @@
-// Quiz Form Submission for Event 1 (Soviet Economy)
+// Quiz Form Submission
 document.getElementById('quiz-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const selectedAnswer = document.querySelector('input[name="answer"]:checked');
@@ -85,87 +85,6 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     }
 });
 
-// Quiz Form Submission for Gorbachev’s Reforms
-document.getElementById('glasnost-quiz-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectedAnswer = document.querySelector('input[name="glasnost-answer"]:checked');
-    const applause = document.getElementById('applause');
-    const boo = document.getElementById('boo');
-    const correctText = document.getElementById('correct-text');
-    const explanationDiv = document.getElementById('glasnost-answer-explanation');
-
-    // Clear previous explanation
-    explanationDiv.style.display = 'none';
-    explanationDiv.innerHTML = '';
-
-    if (selectedAnswer) {
-        if (selectedAnswer.value === 'B') {
-            // Play applause for 5 seconds
-            applause.currentTime = 0;
-            applause.play();
-            setTimeout(() => {
-                applause.pause();
-                applause.currentTime = 0;
-            }, 5000);
-
-            // Show "Correct!" text
-            correctText.textContent = 'Correct!';
-            correctText.style.display = 'block';
-            setTimeout(() => {
-                correctText.classList.add('shrink');
-                setTimeout(() => {
-                    correctText.style.display = 'none';
-                    correctText.classList.remove('shrink');
-                }, 1000);
-            }, 3000);
-
-            // More confetti (1000 pieces) for 5 seconds
-            for (let i = 0; i < 1000; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 5000);
-            }
-
-            // Show correct answer explanation
-            explanationDiv.innerHTML = `
-                <p><strong>Correct!</strong> Gorbachev’s <em>glasnost</em> policy aimed to increase government transparency and openness, allowing public criticism and media freedom, as highlighted in the video at 2:00–2:40. It exposed issues like Chernobyl and corruption, sparking dissent.</p>
-                <p><strong>Evidence:</strong> Over 300 banned books were published by 1989, and the 1986 Chernobyl disaster was openly discussed, a first for the USSR.</p>
-                <p><strong>Sources:</strong> <a href="https://www.britannica.com/topic/glasnost" target="_blank">Britannica: Glasnost</a>, <a href="https://www.history.com/topics/russia/mikhail-gorbachev" target="_blank">History.com: Gorbachev’s Reforms</a></p>
-            `;
-            explanationDiv.style.display = 'block';
-        } else {
-            // Play boo sound for wrong answer
-            boo.currentTime = 0;
-            boo.play();
-            setTimeout(() => {
-                boo.pause();
-                boo.currentTime = 0;
-            }, 3000);
-
-            // Show wrong answer explanation
-            if (selectedAnswer.value === 'A') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Restructuring the Soviet economy was the goal of <em>perestroika</em>, not <em>glasnost</em>. Glasnost focused on political openness, not economic reform.</p>
-                    <p><strong>Evidence:</strong> Perestroika’s 1987 Law on State Enterprise aimed at economic changes, while glasnost enabled free speech.</p>
-                    <p><strong>Sources:</strong> <a href="https://www.britannica.com/topic/perestroika" target="_blank">Britannica: Perestroika</a></p>
-                `;
-            } else if (selectedAnswer.value === 'C') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Strengthening the military was not a goal of <em>glasnost</em>. Gorbachev reduced military spending to fund reforms, cutting defense budgets by 1989.</p>
-                    <p><strong>Evidence:</strong> The INF Treaty (1987) with the U.S. eliminated intermediate-range missiles, reflecting a de-escalation focus.</p>
-                    <p><strong>Sources:</strong> <a href="https://history.state.gov/milestones/1981-1989/inf" target="_blank">U.S. State Dept: INF Treaty</a></p>
-                `;
-            }
-            explanationDiv.style.display = 'block';
-            alert('Try again!');
-        }
-    }
-});
-
 // Expandable "Learn More" buttons with cheer sound for Velvet Revolutions
 document.querySelectorAll('.expand-btn').forEach(button => {
     button.addEventListener('click', () => {
@@ -195,4 +114,9 @@ document.querySelectorAll('.timeline-event').forEach(event => {
     event.addEventListener('click', () => {
         event.scrollIntoView({ behavior: 'smooth' });
     });
+});
+
+// Scroll to sources button
+document.getElementById('sources-btn').addEventListener('click', () => {
+    document.querySelector('.sources').scrollIntoView({ behavior: 'smooth' });
 });
