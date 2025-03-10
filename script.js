@@ -33,7 +33,7 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
             explanationDiv.innerHTML = `
                 <p><strong>Correct!</strong> The Soviet Union's economic growth was driven by high productivity industries like oil, gas, and heavy manufacturing, though stagnation hit by the 1970s.</p>
                 <p><strong>Evidence:</strong> Oil exports peaked at over 50% of earnings by 1975, per video at 22:25–23:25.</p>
-                <p><strong>Sources:</strong> <a href="https://www.britannica.com/place/Soviet-Union/The-USSR-from-1953-to-1991" target="_blank">Britannica</a>, <a href="https://www.wilsoncenter.org/publication/stagnation-the-brezhnev-era" target="_blank">Wilson Center</a></p>
+                <p><strong>Sources:</strong> <a href="https://www.pbs.org/wgbh/frontline/article/the-soviet-occupation-of-afghanistan/" target="_blank">PBS: Soviet Occupation</a>, <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA: Soviet Military Spending</a></p>
             `;
             explanationDiv.style.display = 'block';
         } else {
@@ -43,13 +43,13 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
                 explanationDiv.innerHTML = `
                     <p><strong>Incorrect.</strong> Low productive industries like consumer goods were underfunded, not a growth source.</p>
                     <p><strong>Evidence:</strong> Only 25% of GDP went to consumer goods vs. 40% for heavy industry in the 1970s.</p>
-                    <p><strong>Sources:</strong> <a href="https://www.britannica.com/place/Soviet-Union/The-USSR-from-1953-to-1991" target="_blank">Britannica</a></p>
+                    <p><strong>Sources:</strong> <a href="https://www.pbs.org/wgbh/frontline/article/the-soviet-occupation-of-afghanistan/" target="_blank">PBS: Soviet Occupation</a></p>
                 `;
             } else if (selectedAnswer.value === 'C') {
                 explanationDiv.innerHTML = `
                     <p><strong>Incorrect.</strong> Military spending consumed up to 20% of GDP, draining rather than driving growth.</p>
                     <p><strong>Evidence:</strong> Increased in the 1980s, per CIA estimates.</p>
-                    <p><strong>Sources:</strong> <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA</a></p>
+                    <p><strong>Sources:</strong> <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA: Soviet Military Spending</a></p>
                 `;
             }
             explanationDiv.style.display = 'block';
@@ -83,9 +83,4 @@ document.querySelectorAll('.timeline-event').forEach(event => {
     event.addEventListener('click', () => {
         event.scrollIntoView({ behavior: 'smooth' });
     });
-});
-
-// Scroll to sources button
-document.getElementById('sources-btn').addEventListener('click', () => {
-    document.querySelector('.sources').scrollIntoView({ behavior: 'smooth' });
 });
