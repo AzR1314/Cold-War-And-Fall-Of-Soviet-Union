@@ -33,7 +33,6 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
             explanationDiv.innerHTML = `
                 <p><strong>Correct!</strong> The Soviet Union's economic growth was driven by high productivity industries like oil, gas, and heavy manufacturing, though stagnation hit by the 1970s.</p>
                 <p><strong>Evidence:</strong> Oil exports peaked at over 50% of earnings by 1975, per video at 22:25–23:25.</p>
-                <p><strong>Sources:</strong> <a href="https://www.pbs.org/wgbh/frontline/article/the-soviet-occupation-of-afghanistan/" target="_blank">PBS: Soviet Occupation</a>, <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA: Soviet Military Spending</a></p>
             `;
             explanationDiv.style.display = 'block';
         } else {
