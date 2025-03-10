@@ -1,223 +1,198 @@
-/* Reset and General Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+// Quiz Form Submission for Event 1 (Soviet Economy)
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    const hiddenSections = document.querySelectorAll('.timeline-event.hidden');
+    const applause = document.getElementById('applause');
+    const boo = document.getElementById('boo');
+    const correctText = document.getElementById('correct-text');
+    const explanationDiv = document.getElementById('answer-explanation');
 
-body {
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    position: relative;
-    overflow-x: hidden;
-}
+    // Clear previous explanation
+    explanationDiv.style.display = 'none';
+    explanationDiv.innerHTML = '';
 
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #2c3e50;
-    color: white;
-}
+    if (selectedAnswer) {
+        if (selectedAnswer.value === 'B') {
+            // Reveal hidden sections
+            hiddenSections.forEach(section => {
+                section.classList.remove('hidden');
+            });
 
-header h1 {
-    font-size: 2.5em;
-}
+            // Play applause for 5 seconds
+            applause.currentTime = 0;
+            applause.play();
+            setTimeout(() => {
+                applause.pause();
+                applause.currentTime = 0;
+            }, 5000);
 
-header p {
-    font-size: 1.2em;
-}
+            // Show "Correct!" text
+            correctText.textContent = 'Correct!';
+            correctText.style.display = 'block';
+            setTimeout(() => {
+                correctText.classList.add('shrink');
+                setTimeout(() => {
+                    correctText.style.display = 'none';
+                    correctText.classList.remove('shrink');
+                }, 1000);
+            }, 3000);
 
-/* Timeline Styling */
-.timeline {
-    max-width: 900px;
-    margin: 20px auto;
-    position: relative;
-}
+            // More confetti (1000 pieces) for 5 seconds
+            for (let i = 0; i < 1000; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
 
-.timeline-event {
-    background: white;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, opacity 0.5s ease;
-}
+            // Show correct answer explanation
+            explanationDiv.innerHTML = `
+                <p><strong>Correct!</strong> The Soviet Union's economic growth in the 20th century, especially during the Cold War, was driven by high productivity industries like oil, gas, and heavy manufacturing. These sectors fueled rapid industrialization post-WWII, but by the 1970s, inefficiencies and over-reliance on oil exports led to stagnation, as seen in the video.</p>
+                <p><strong>Evidence:</strong> Oil exports peaked in the 1970s, accounting for over 50% of Soviet hard currency earnings, yet productivity lagged due to outdated technology and central planning.</p>
+                <p><strong>Sources:</strong> <a href="https://www.britannica.com/place/Soviet-Union/The-USSR-from-1953-to-1991" target="_blank">Britannica: Soviet Union Economy</a>, <a href="https://www.jstor.org/stable/2491225" target="_blank">JSTOR: Soviet Economic Decline</a></p>
+            `;
+            explanationDiv.style.display = 'block';
+        } else {
+            // Play boo sound for wrong answer
+            boo.currentTime = 0;
+            boo.play();
+            setTimeout(() => {
+                boo.pause();
+                boo.currentTime = 0;
+            }, 3000);
 
-.timeline-event:hover {
-    transform: scale(1.02);
-}
-
-.timeline-event h2 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.expand-btn {
-    padding: 5px 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.expand-btn:hover {
-    background-color: #2980b9;
-}
-
-.extra-info {
-    display: none;
-    margin-top: 10px;
-    color: #7f8c8d;
-}
-
-/* Event Sources Styling */
-.event-sources {
-    list-style-type: disc;
-    margin: 10px 0 0 20px;
-}
-
-.event-sources li {
-    margin-bottom: 5px;
-}
-
-.event-sources a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.event-sources a:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #2c3e50;
-    color: white;
-}
-
-footer a {
-    color: #3498db;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .timeline-event {
-        margin: 10px;
-        padding: 15px;
+            // Show wrong answer explanation
+            if (selectedAnswer.value === 'A') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> Low productive industries, like consumer goods, were not the main source of Soviet economic growth. The USSR prioritized heavy industry over consumer production, leading to shortages and low quality in these sectors.</p>
+                    <p><strong>Evidence:</strong> Consumer goods output was consistently underfunded, with only 25% of GDP allocated compared to 40% for heavy industry in the 1970s.</p>
+                    <p><strong>Sources:</strong> <a href="https://www.britannica.com/place/Soviet-Union/The-USSR-from-1953-to-1991" target="_blank">Britannica: Soviet Union Economy</a></p>
+                `;
+            } else if (selectedAnswer.value === 'C') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> While the military was a massive part of the Soviet economy, it wasn’t the main source of growth. It consumed resources (up to 20% of GDP), diverting funds from productive sectors, contributing to economic strain during the Afghan War.</p>
+                    <p><strong>Evidence:</strong> Military spending rose sharply in the 1980s, exacerbating deficits rather than driving growth.</p>
+                    <p><strong>Sources:</strong> <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA: Soviet Military Spending</a></p>
+                `;
+            }
+            explanationDiv.style.display = 'block';
+            alert('Try again!');
+        }
     }
-    header h1 {
-        font-size: 1.8em;
+});
+
+// Quiz Form Submission for Gorbachev’s Reforms
+document.getElementById('glasnost-quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const selectedAnswer = document.querySelector('input[name="glasnost-answer"]:checked');
+    const applause = document.getElementById('applause');
+    const boo = document.getElementById('boo');
+    const correctText = document.getElementById('correct-text');
+    const explanationDiv = document.getElementById('glasnost-answer-explanation');
+
+    // Clear previous explanation
+    explanationDiv.style.display = 'none';
+    explanationDiv.innerHTML = '';
+
+    if (selectedAnswer) {
+        if (selectedAnswer.value === 'B') {
+            // Play applause for 5 seconds
+            applause.currentTime = 0;
+            applause.play();
+            setTimeout(() => {
+                applause.pause();
+                applause.currentTime = 0;
+            }, 5000);
+
+            // Show "Correct!" text
+            correctText.textContent = 'Correct!';
+            correctText.style.display = 'block';
+            setTimeout(() => {
+                correctText.classList.add('shrink');
+                setTimeout(() => {
+                    correctText.style.display = 'none';
+                    correctText.classList.remove('shrink');
+                }, 1000);
+            }, 3000);
+
+            // More confetti (1000 pieces) for 5 seconds
+            for (let i = 0; i < 1000; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+
+            // Show correct answer explanation
+            explanationDiv.innerHTML = `
+                <p><strong>Correct!</strong> Gorbachev’s <em>glasnost</em> policy aimed to increase government transparency and openness, allowing public criticism and media freedom, as highlighted in the video at 2:00–2:40. It exposed issues like Chernobyl and corruption, sparking dissent.</p>
+                <p><strong>Evidence:</strong> Over 300 banned books were published by 1989, and the 1986 Chernobyl disaster was openly discussed, a first for the USSR.</p>
+                <p><strong>Sources:</strong> <a href="https://www.britannica.com/topic/glasnost" target="_blank">Britannica: Glasnost</a>, <a href="https://www.history.com/topics/russia/mikhail-gorbachev" target="_blank">History.com: Gorbachev’s Reforms</a></p>
+            `;
+            explanationDiv.style.display = 'block';
+        } else {
+            // Play boo sound for wrong answer
+            boo.currentTime = 0;
+            boo.play();
+            setTimeout(() => {
+                boo.pause();
+                boo.currentTime = 0;
+            }, 3000);
+
+            // Show wrong answer explanation
+            if (selectedAnswer.value === 'A') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> Restructuring the Soviet economy was the goal of <em>perestroika</em>, not <em>glasnost</em>. Glasnost focused on political openness, not economic reform.</p>
+                    <p><strong>Evidence:</strong> Perestroika’s 1987 Law on State Enterprise aimed at economic changes, while glasnost enabled free speech.</p>
+                    <p><strong>Sources:</strong> <a href="https://www.britannica.com/topic/perestroika" target="_blank">Britannica: Perestroika</a></p>
+                `;
+            } else if (selectedAnswer.value === 'C') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> Strengthening the military was not a goal of <em>glasnost</em>. Gorbachev reduced military spending to fund reforms, cutting defense budgets by 1989.</p>
+                    <p><strong>Evidence:</strong> The INF Treaty (1987) with the U.S. eliminated intermediate-range missiles, reflecting a de-escalation focus.</p>
+                    <p><strong>Sources:</strong> <a href="https://history.state.gov/milestones/1981-1989/inf" target="_blank">U.S. State Dept: INF Treaty</a></p>
+                `;
+            }
+            explanationDiv.style.display = 'block';
+            alert('Try again!');
+        }
     }
-}
+});
 
-/* Quiz Styling */
-.quiz {
-    margin-top: 15px;
-}
+// Expandable "Learn More" buttons with cheer sound for Velvet Revolutions
+document.querySelectorAll('.expand-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const extraInfo = button.nextElementSibling;
+        const cheer = document.getElementById('cheer');
+        if (extraInfo.style.display === 'block') {
+            extraInfo.style.display = 'none';
+            button.textContent = 'Learn More';
+        } else {
+            extraInfo.style.display = 'block';
+            button.textContent = 'Hide';
+            if (button.closest('.timeline-event').getAttribute('data-year') === '1989' && 
+                button.parentElement.querySelector('p').textContent.includes('Velvet Revolutions')) {
+                cheer.currentTime = 0;
+                cheer.play();
+                setTimeout(() => {
+                    cheer.pause();
+                    cheer.currentTime = 0;
+                }, 3000);
+            }
+        }
+    });
+});
 
-.quiz p {
-    font-weight: bold;
-}
-
-.quiz label {
-    margin: 5px 0;
-    display: block;
-}
-
-.quiz button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.quiz button:hover {
-    background-color: #2980b9;
-}
-
-/* Hidden Sections */
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Confetti */
-.confetti {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    top: -12px;
-    background-color: hsl(0, 100%, 50%);
-    animation: fall 5s linear forwards;
-    pointer-events: none;
-}
-
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(calc(100vh + 100px)) rotate(720deg); opacity: 0.8; }
-}
-
-/* Correct Text Animation */
-.correct-text {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4em;
-    color: #27ae60;
-    font-weight: bold;
-    text-align: center;
-    display: none;
-    animation: dance 1s infinite alternate;
-    z-index: 1000;
-}
-
-@keyframes dance {
-    0% { transform: translate(-50%, -50%) rotate(-10deg) scale(1); }
-    100% { transform: translate(-50%, -50%) rotate(10deg) scale(1.1); }
-}
-
-.correct-text.shrink {
-    animation: shrink 1s forwards 3s;
-}
-
-@keyframes shrink {
-    0% { font-size: 4em; opacity: 1; }
-    100% { font-size: 0; opacity: 0; }
-}
-
-/* Answer Explanation Styling */
-.answer-explanation {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #ecf0f1;
-    border-radius: 5px;
-    display: none;
-}
-
-.answer-explanation p {
-    margin-bottom: 10px;
-}
-
-.answer-explanation a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.answer-explanation a:hover {
-    text-decoration: underline;
-}
+// Smooth scroll to timeline events
+document.querySelectorAll('.timeline-event').forEach(event => {
+    event.addEventListener('click', () => {
+        event.scrollIntoView({ behavior: 'smooth' });
+    });
+});
