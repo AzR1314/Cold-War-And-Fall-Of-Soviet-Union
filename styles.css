@@ -99,13 +99,27 @@ header p {
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 20px; /* Increased padding for button */
     background-color: #2c3e50;
     color: white;
 }
 
 footer a {
     color: #3498db;
+}
+
+footer button#sources-btn {
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer button#sources-btn:hover {
+    background-color: #2980b9;
 }
 
 /* Responsive Design */
@@ -193,6 +207,32 @@ footer a {
     animation: shrink 1s forwards 3s;
 }
 
+@keyframes shrink {
+    0% { font-size: 4em; opacity: 1; }
+    100% { font-size: 0; opacity: 0; }
+}
+
+/* Answer Explanation Styling */
+.answer-explanation {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    display: none;
+}
+
+.answer-explanation p {
+    margin-bottom: 10px;
+}
+
+.answer-explanation a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.answer-explanation a:hover {
+    text-decoration: underline;
+}
 @keyframes shrink {
     0% { font-size: 4em; opacity: 1; }
     100% { font-size: 0; opacity: 0; }
