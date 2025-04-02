@@ -1,8 +1,8 @@
-// Quiz Form Submission for Event 1
+// Quiz Form Submission for Event 1 (Cold War)
 document.getElementById('quiz-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-    const hiddenSections = document.querySelectorAll('.timeline-event.hidden');
+    const selectedAnswer = document.querySelector('#ColdWar input[name="answer"]:checked');
+    const hiddenSections = document.querySelectorAll('#ColdWar .timeline-event.hidden');
     const applause = document.getElementById('applause');
     const boo = document.getElementById('boo');
     const correctText = document.getElementById('correct-text');
@@ -57,10 +57,10 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     }
 });
 
-// Quiz Form Submission for Event 5
+// Quiz Form Submission for Event 5 (Cold War)
 document.getElementById('quiz-form-5').addEventListener('submit', function(event) {
     event.preventDefault();
-    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    const selectedAnswer = document.querySelector('#ColdWar input[name="answer"]:checked');
     const applause = document.getElementById('applause');
     const boo = document.getElementById('boo');
     const correctText = document.getElementById('correct-text');
@@ -107,6 +107,66 @@ document.getElementById('quiz-form-5').addEventListener('submit', function(event
                     <p><strong>Incorrect.</strong> A stronger U.S. military presence played a role but was not emphasized in the video’s explanation.</p>
                     <p><strong>Evidence:</strong> The video (4:30–6:01) stresses internal collapse over external military pressure.</p>
                     <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
+                `;
+            }
+            explanationDiv.style.display = 'block';
+            alert('Try again!');
+        }
+    }
+});
+
+// Quiz Form Submission for Event 1 (Communism From Within)
+document.getElementById('quiz-form-huac').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const selectedAnswer = document.querySelector('#CommunismFromWithin input[name="answer"]:checked');
+    const hiddenSections = document.querySelectorAll('#CommunismFromWithin .timeline-event.hidden');
+    const applause = document.getElementById('applause');
+    const boo = document.getElementById('boo');
+    const correctText = document.getElementById('correct-text');
+    const explanationDiv = document.getElementById('answer-explanation-huac');
+
+    explanationDiv.style.display = 'none';
+    explanationDiv.innerHTML = '';
+
+    if (selectedAnswer) {
+        if (selectedAnswer.value === 'B') {
+            hiddenSections.forEach(section => section.classList.remove('hidden'));
+            applause.currentTime = 0; applause.play();
+            setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
+            correctText.textContent = 'Correct!'; correctText.style.display = 'block';
+            setTimeout(() => {
+                correctText.classList.add('shrink');
+                setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
+            }, 3000);
+            for (let i = 0; i < 1000; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+            explanationDiv.innerHTML = `
+                <p><strong>Correct!</strong> The HUAC targeted the Hollywood film industry in 1947 to investigate communist influence.</p>
+                <p><strong>Evidence:</strong> The hearings focused on screenwriters and directors, leading to the Hollywood Ten blacklist.</p>
+                <p><strong>Source:</strong> <a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></p>
+            `;
+            explanationDiv.style.display = 'block';
+        } else {
+            boo.currentTime = 0; boo.play();
+            setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
+            if (selectedAnswer.value === 'A') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> Military officials were not the primary focus of the 1947 HUAC investigations.</p>
+                    <p><strong>Evidence:</strong> The focus was on Hollywood, not the military.</p>
+                    <p><strong>Source:</strong> <a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></p>
+                `;
+            } else if (selectedAnswer.value === 'C') {
+                explanationDiv.innerHTML = `
+                    <p><strong>Incorrect.</strong> University professors were investigated later, but not primarily in 1947.</p>
+                    <p><strong>Evidence:</strong> The 1947 hearings centered on Hollywood.</p>
+                    <p><strong>Source:</strong> <a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></p>
                 `;
             }
             explanationDiv.style.display = 'block';
