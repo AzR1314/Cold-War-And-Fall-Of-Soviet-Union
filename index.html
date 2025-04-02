@@ -3,105 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cold War Timeline: 1970–1991</title>
+    <title>Cold War & Communism Timeline</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Cold War Timeline: 1970–1991</h1>
-        <p>Explore the Decline of the Soviet Union and the End of the Cold War</p>
+        <h1>Cold War & Communism Timeline</h1>
+        <p>Explore the Decline of the Soviet Union and Internal Communist Fears</p>
     </header>
 
-    <section class="timeline">
-        <div class="timeline-event" data-year="1970">
-            <h2>1970–1980: Soviet Economy and Afghanistan</h2>
-            <div class="content">
-                <p>The Soviet economy stagnated in the 1970s due to inefficiencies in central planning and an over-reliance on oil exports, which masked deeper structural problems. The Soviet-Afghan War (1979–1989) marked a turning point, costing billions and over 15,000 Soviet lives, draining resources, and lowering morale. This period highlighted the USSR’s inability to sustain its superpower status, setting the stage for its eventual collapse.</p>
-                <iframe width="300" height="169" src="https://www.youtube.com/embed/KOZlobXa9iM?start=1345&end=1405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <ul class="event-sources">
-                    <li><a href="https://www.youtube.com/watch?v=KOZlobXa9iM" target="_blank">YouTube: Soviet-Afghan War Documentary</a></li>
-                </ul>
-                <div class="quiz">
-                    <p>What was the main source of economic growth of the Soviet Union?</p>
-                    <form id="quiz-form">
-                        <label><input type="radio" name="answer" value="A"> A: Low Productive Industries</label><br>
-                        <label><input type="radio" name="answer" value="B"> B: High Productive Industries</label><br>
-                        <label><input type="radio" name="answer" value="C"> C: Military</label><br>
-                        <button type="submit">Submit</button>
-                    </form>
-                    <div id="answer-explanation" class="answer-explanation"></div>
-                </div>
-            </div>
-        </div>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'ColdWar')" id="defaultOpen">Cold War</button>
+        <button class="tablinks" onclick="openTab(event, 'CommunismFromWithin')">Communism From Within</button>
+    </div>
 
-        <div class="timeline-event hidden" data-year="1969">
-            <h2>1969–1980: U.S. Policy of Détente</h2>
-            <div class="content">
-                <p>Détente reduced the risk of nuclear war but did not halt Soviet internal struggles, as economic dependence on the West grew.</p>
-                <button class="expand-btn">Learn More</button>
-                <div class="extra-info">
-                    <p>The United States initiated a policy of détente with the Soviet Union beginning in 1969 to reduce Cold War tensions. This effort aimed to prevent nuclear conflict and foster diplomatic engagement. A significant achievement was the Strategic Arms Limitation Talks (SALT I) treaty, signed in 1972, which restricted the development of nuclear weapons. That same year, President Nixon’s visit to Moscow marked a historic milestone, being the first by a U.S. president during the Cold War. Economic cooperation also emerged, with the United States exporting grain to address Soviet agricultural shortages. This period of détente offered a temporary respite from hostilities. However, the Soviet invasion of Afghanistan in 1979 prompted a shift in U.S. policy under President Reagan, who adopted a more assertive stance in the 1980s, ending détente. This era revealed the Soviet Union’s increasing reliance on Western support amid its economic difficulties.</p>
+    <div id="ColdWar" class="tabcontent">
+        <section class="timeline">
+            <div class="timeline-event" data-year="1970">
+                <h2>1970–1980: Soviet Economy and Afghanistan</h2>
+                <div class="content">
+                    <p>The Soviet economy stagnated in the 1970s due to inefficiencies in central planning and an over-reliance on oil exports, which masked deeper structural problems. The Soviet-Afghan War (1979–1989) marked a turning point, costing billions and over 15,000 Soviet lives, draining resources, and lowering morale. This period highlighted the USSR’s inability to sustain its superpower status, setting the stage for its eventual collapse.</p>
+                    <iframe width="300" height="169" src="https://www.youtube.com/embed/KOZlobXa9iM?start=1345&end=1405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <ul class="event-sources">
+                        <li><a href="https://www.youtube.com/watch?v=KOZlobXa9iM" target="_blank">YouTube: Soviet-Afghan War Documentary</a></li>
+                    </ul>
+                    <div class="quiz">
+                        <p>What was the main source of economic growth of the Soviet Union?</p>
+                        <form id="quiz-form">
+                            <label><input type="radio" name="answer" value="A"> A: Low Productive Industries</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: High Productive Industries</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: Military</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation" class="answer-explanation"></div>
+                    </div>
                 </div>
-                <ul class="event-sources">
-                    <li><a href="https://history.state.gov/milestones/1969-1976/salt" target="_blank">U.S. State Dept: SALT I</a></li>
-                </ul>
             </div>
-        </div>
 
-        <div class="timeline-event hidden" data-year="1985">
-            <h2>1985–1991: Gorbachev’s Reforms</h2>
-            <div class="content">
-                <p>Mikhail Gorbachev implemented reforms to revitalize the Soviet Union. However, these efforts inadvertently accelerated its dissolution.</p>
-                <button class="expand-btn">Learn More</button>
-                <div class="extra-info">
-                    <p>Upon assuming leadership in 1985, Mikhail Gorbachev recognized the Soviet Union’s economic stagnation and systemic inefficiencies. He introduced <em>perestroika</em>, a policy aimed at restructuring the economy by incorporating limited market mechanisms and reducing state control. Additionally, he enacted <em>glasnost</em>, a policy of openness that permitted greater freedom of expression and criticism of the government. Initially, these reforms were intended to strengthen the Soviet system. By 1989, however, the economy had declined approximately 4% annually due to the disruption caused by these changes. The increased freedom of speech fueled public discontent and demands for autonomy in regions such as Ukraine and the Baltic states. Gorbachev aimed to preserve the unity of the Soviet Union, yet his policies ultimately contributed to its disintegration by 1991.</p>
+            <div class="timeline-event hidden" data-year="1969">
+                <h2>1969–1980: U.S. Policy of Détente</h2>
+                <div class="content">
+                    <p>Détente reduced the risk of nuclear war but did not halt Soviet internal struggles, as economic dependence on the West grew.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The United States initiated a policy of détente with the Soviet Union beginning in 1969 to reduce Cold War tensions. This effort aimed to prevent nuclear conflict and foster diplomatic engagement. A significant achievement was the Strategic Arms Limitation Talks (SALT I) treaty, signed in 1972, which restricted the development of nuclear weapons. That same year, President Nixon’s visit to Moscow marked a historic milestone, being the first by a U.S. president during the Cold War. Economic cooperation also emerged, with the United States exporting grain to address Soviet agricultural shortages. This period of détente offered a temporary respite from hostilities. However, the Soviet invasion of Afghanistan in 1979 prompted a shift in U.S. policy under President Reagan, who adopted a more assertive stance in the 1980s, ending détente. This era revealed the Soviet Union’s increasing reliance on Western support amid its economic difficulties.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://history.state.gov/milestones/1969-1976/salt" target="_blank">U.S. State Dept: SALT I</a></li>
+                    </ul>
                 </div>
-                <ul class="event-sources">
-                    <li><a href="https://www.britannica.com/place/Russia/The-Gorbachev-era-perestroika-and-glasnost" target="_blank">Britannica: Gorbachev Era</a></li>
-                </ul>
             </div>
-        </div>
 
-        <div class="timeline-event hidden" data-year="1989">
-            <h2>1989–1991: Velvet Revolutions & Nationalism</h2>
-            <div class="content">
-                <p>In 1989, Eastern European nations achieved independence from Soviet authority through peaceful means, inspiring widespread nationalist movements within the USSR.</p>
-                <button class="expand-btn">Learn More</button>
-                <div class="extra-info">
-                    <p>The year 1989 marked a significant turning point in Eastern Europe, characterized by a series of nonviolent transitions known as the Velvet Revolutions. In Poland, negotiations between the communist government and the Solidarity trade union resulted in free elections, effectively ending Soviet-aligned governance. Hungary facilitated this shift by opening its borders to Western Europe, enabling thousands to emigrate from Soviet influence. Czechoslovakia experienced a rapid transition through organized protests, leading to the replacement of its communist leadership with minimal conflict. These developments were possible due to Gorbachev’s decision to refrain from military intervention, a departure from previous Soviet policy. Within the Soviet Union, these events encouraged regions such as Lithuania to pursue independence, with formal declarations beginning in 1990. By 1991, more than 15 republics had seceded, driven by the example of Eastern Europe’s success and growing nationalist sentiment, ultimately contributing to the Soviet Union’s collapse.</p>
+            <div class="timeline-event hidden" data-year="1985">
+                <h2>1985–1991: Gorbachev’s Reforms</h2>
+                <div class="content">
+                    <p>Mikhail Gorbachev implemented reforms to revitalize the Soviet Union. However, these efforts inadvertently accelerated its dissolution.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>Upon assuming leadership in 1985, Mikhail Gorbachev recognized the Soviet Union’s economic stagnation and systemic inefficiencies. He introduced <em>perestroika</em>, a policy aimed at restructuring the economy by incorporating limited market mechanisms and reducing state control. Additionally, he enacted <em>glasnost</em>, a policy of openness that permitted greater freedom of expression and criticism of the government. Initially, these reforms were intended to strengthen the Soviet system. By 1989, however, the economy had declined approximately 4% annually due to the disruption caused by these changes. The increased freedom of speech fueled public discontent and demands for autonomy in regions such as Ukraine and the Baltic states. Gorbachev aimed to preserve the unity of the Soviet Union, yet his policies ultimately contributed to its disintegration by 1991.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.britannica.com/place/Russia/The-Gorbachev-era-perestroika-and-glasnost" target="_blank">Britannica: Gorbachev Era</a></li>
+                    </ul>
                 </div>
-                <ul class="event-sources">
-                    <li><a href="https://miamioh.edu/cas/centers-institutes/havighurst-center/additional-resources/havighurst-special-programming/1989-revolutions/index.html" target="_blank">MiamiOH: 1989 Revolutions</a></li>
-                </ul>
             </div>
-        </div>
 
-        <div class="timeline-event hidden" data-year="1989">
-            <h2>1989–1991: Berlin Wall & USSR Collapse</h2>
-            <div class="content">
-                <p>The Berlin Wall’s collapse on November 9, 1989, signaled the conclusion of the Cold War. This event, propelled by East German protests and Gorbachev’s nonintervention, preceded the Soviet Union’s dissolution on December 26, 1991, following an unsuccessful coup, establishing the United States as the sole remaining superpower.</p>
-                <iframe width="300" height="169" src="https://www.youtube.com/embed/A9fQPzZ1-hg?start=270&end=361" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="expand-btn">Learn More</button>
-                <div class="extra-info">
-                    <p>The collapse of the Soviet Union in 1991 was the culmination of several interconnected events from the preceding decades. Economic stagnation and the costly Soviet-Afghan War during the 1970s and 1980s, as detailed in the first event, weakened the USSR’s financial stability and global standing. The policy of détente with the United States, initiated in 1969, exposed Soviet economic vulnerabilities through increased reliance on Western trade, as outlined in the second event. Gorbachev’s reforms of <em>perestroika</em> and <em>glasnost</em>, introduced in 1985, destabilized the Soviet system by encouraging dissent and regional autonomy, as described in the third event. The Velvet Revolutions of 1989 in Eastern Europe, followed by nationalist movements within the USSR, eroded Soviet authority as over 15 republics pursued independence, as noted in the fourth event. The final catalyst came with Gorbachev’s decision to allow elections with a multi-party system and create a presidency for the Soviet Union. This began a slow process of democratization that eventually destabilized Communist control and contributed to the collapse of the Soviet Union. Following the May 1990 elections, Gorbachev faced conflicting internal political pressures: Boris Yeltsin and the pluralist movement advocated democratization and rapid economic reforms, while the hard-line Communist elite sought to thwart Gorbachev’s reform agenda. These tensions culminated in the failed coup of August 1991, which precipitated the USSR’s dissolution by December of that year.</p>
+            <div class="timeline-event hidden" data-year="1989">
+                <h2>1989–1991: Velvet Revolutions & Nationalism</h2>
+                <div class="content">
+                    <p>In 1989, Eastern European nations achieved independence from Soviet authority through peaceful means, inspiring widespread nationalist movements within the USSR.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The year 1989 marked a significant turning point in Eastern Europe, characterized by a series of nonviolent transitions known as the Velvet Revolutions. In Poland, negotiations between the communist government and the Solidarity trade union resulted in free elections, effectively ending Soviet-aligned governance. Hungary facilitated this shift by opening its borders to Western Europe, enabling thousands to emigrate from Soviet influence. Czechoslovakia experienced a rapid transition through organized protests, leading to the replacement of its communist leadership with minimal conflict. These developments were possible due to Gorbachev’s decision to refrain from military intervention, a departure from previous Soviet policy. Within the Soviet Union, these events encouraged regions such as Lithuania to pursue independence, with formal declarations beginning in 1990. By 1991, more than 15 republics had seceded, driven by the example of Eastern Europe’s success and growing nationalist sentiment, ultimately contributing to the Soviet Union’s collapse.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://miamioh.edu/cas/centers-institutes/havighurst-center/additional-resources/havighurst-special-programming/1989-revolutions/index.html" target="_blank">MiamiOH: 1989 Revolutions</a></li>
+                    </ul>
                 </div>
-                <div class="quiz">
-                    <p>What was a key factor in the Soviet Union’s collapse according to the video (4:30–6:01)?</p>
-                    <form id="quiz-form-5">
-                        <label><input type="radio" name="answer" value="A"> A: Increased military spending</label><br>
-                        <label><input type="radio" name="answer" value="B"> B: Loss of control over republics</label><br>
-                        <label><input type="radio" name="answer" value="C"> C: Stronger U.S. military presence</label><br>
-                        <button type="submit">Submit</button>
-                    </form>
-                    <div id="answer-explanation-5" class="answer-explanation"></div>
-                </div>
-                <ul class="event-sources">
-                    <li><a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=A9fQPzZ1-hg" target="_blank">YouTube: TED-Ed Berlin Wall & USSR Collapse</a></li>
-                </ul>
             </div>
-        </div>
-    </section>
+
+            <div class="timeline-event hidden" data-year="1989">
+                <h2>1989–1991: Berlin Wall & USSR Collapse</h2>
+                <div class="content">
+                    <p>The Berlin Wall’s collapse on November 9, 1989, signaled the conclusion of the Cold War. This event, propelled by East German protests and Gorbachev’s nonintervention, preceded the Soviet Union’s dissolution on December 26, 1991, following an unsuccessful coup, establishing the United States as the sole remaining superpower.</p>
+                    <iframe width="300" height="169" src="https://www.youtube.com/embed/A9fQPzZ1-hg?start=270&end=361" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The collapse of the Soviet Union in 1991 was the culmination of several interconnected events from the preceding decades. Economic stagnation and the costly Soviet-Afghan War during the 1970s and 1980s, as detailed in the first event, weakened the USSR’s financial stability and global standing. The policy of détente with the United States, initiated in 1969, exposed Soviet economic vulnerabilities through increased reliance on Western trade, as outlined in the second event. Gorbachev’s reforms of <em>perestroika</em> and <em>glasnost</em>, introduced in 1985, destabilized the Soviet system by encouraging dissent and regional autonomy, as described in the third event. The Velvet Revolutions of 1989 in Eastern Europe, followed by nationalist movements within the USSR, eroded Soviet authority as over 15 republics pursued independence, as noted in the fourth event. The final catalyst came with Gorbachev’s decision to allow elections with a multi-party system and create a presidency for the Soviet Union. This began a slow process of democratization that eventually destabilized Communist control and contributed to the collapse of the Soviet Union. Following the May 1990 elections, Gorbachev faced conflicting internal political pressures: Boris Yeltsin and the pluralist movement advocated democratization and rapid economic reforms, while the hard-line Communist elite sought to thwart Gorbachev’s reform agenda. These tensions culminated in the failed coup of August 1991, which precipitated the USSR’s dissolution by December of that year.</p>
+                    </div>
+                    <div class="quiz">
+                        <p>What was a key factor in the Soviet Union’s collapse according to the video (4:30–6:01)?</p>
+                        <form id="quiz-form-5">
+                            <label><input type="radio" name="answer" value="A"> A: Increased military spending</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: Loss of control over republics</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: Stronger U.S. military presence</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation-5" class="answer-explanation"></div>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=A9fQPzZ1-hg" target="_blank">YouTube: TED-Ed Berlin Wall & USSR Collapse</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="CommunismFromWithin" class="tabcontent">
+        <section class="timeline">
+            <div class="timeline-event" data-year="1947">
+                <h2>1947: HUAC Investigations Begin</h2>
+                <div class="content">
+                    <p>In 1947, the House Un-American Activities Committee (HUAC) launched investigations into alleged communist influence in the United States, focusing initially on Hollywood, marking the start of a broader anti-communist campaign.</p>
+                    <ul class="event-sources">
+                        <li><a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></li>
+                    </ul>
+                    <div class="quiz">
+                        <p>What was the primary target of HUAC’s 1947 investigations?</p>
+                        <form id="quiz-form-huac">
+                            <label><input type="radio" name="answer" value="A"> A: Military officials</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: Hollywood film industry</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: University professors</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation-huac" class="answer-explanation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1950">
+                <h2>1950: McCarthy’s Wheeling Speech</h2>
+                <div class="content">
+                    <p>On February 9, 1950, Senator Joseph McCarthy delivered a speech in Wheeling, West Virginia, claiming to possess a list of communists within the State Department, intensifying public fear of internal communist threats.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>Senator McCarthy’s speech in Wheeling asserted that 205 individuals, later revised to 57, within the State Department were known communists, though he provided no concrete evidence. This address capitalized on existing anxieties following World War II and the onset of the Cold War, amplifying public and governmental concern about internal subversion. The speech marked the beginning of McCarthy’s prominence as a leading figure in the anti-communist movement, shaping the trajectory of subsequent investigations and policies aimed at rooting out perceived threats within American institutions.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.senate.gov/artandhistory/history/minute/Senator_Joseph_McCarthy_Charges_Communists_in_State_Dept.htm" target="_blank">U.S. Senate: McCarthy’s Wheeling Speech</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1945">
+                <h2>1945–1995: Venona Project</h2>
+                <div class="content">
+                    <p>The Venona Project, a secret U.S. codebreaking effort from 1945 to 1995, decrypted Soviet messages, uncovering evidence of espionage, including atomic secrets, which heightened fears of communist infiltration.</p>
+                    <iframe width="300" height="169" src="https://www.youtube.com/embed/0tO8P8DEw_0?start=60&end=180" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <ul class="event-sources">
+                        <li><a href="https://www.nsa.gov/Portals/70/documents/news-features/declassified-documents/venona/dated/1945/18may_kgb_officer.pdf" target="_blank">NSA: Venona Declassified Document</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1950">
+                <h2>1950–1954: McCarthyism Peak</h2>
+                <div class="content">
+                    <p>From 1950 to 1954, McCarthyism reached its height, with Senate hearings and blacklists targeting suspected communists, driven by Venona evidence and widespread public fear.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>During this period, Senator McCarthy chaired the Permanent Subcommittee on Investigations, conducting extensive hearings to identify and remove alleged communists from government and other sectors. The Venona Project’s revelations of Soviet espionage, including cases like Julius and Ethel Rosenberg, provided justification for these aggressive measures. Blacklists in Hollywood and other industries ruined careers based on often unsubstantiated accusations. Public support initially bolstered McCarthy’s efforts, but the lack of concrete evidence and excessive tactics eventually led to criticism and his decline.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.pbs.org/wgbh/americanexperience/films/mccarthy/" target="_blank">PBS: McCarthyism Documentary</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1954">
+                <h2>1954–Present: McCarthy’s Legacy</h2>
+                <div class="content">
+                    <p>McCarthy’s censure in 1954 ended his influence, prompting reflection on whether his tactics were justified in a free society, shaped by the internal communist threat revealed over decades.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The HUAC’s early investigations into Hollywood set a precedent for government action against perceived internal threats, escalating with McCarthy’s 1950 speech and the fear it ignited. The Venona Project’s evidence of espionage substantiated some concerns, intensifying McCarthyism’s peak through aggressive hearings and blacklists. However, McCarthy’s censure by the Senate on December 2, 1954, following the Army-McCarthy hearings, marked his downfall due to overreach and lack of proof. Reflecting on these events, McCarthy and HUAC’s tactics raised significant ethical questions. While the Venona findings confirmed real threats, the widespread accusations and violations of civil liberties suggest that such methods were excessive in a democratic society. The balance between security and freedom remains a lasting debate from this era.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.senate.gov/artandhistory/history/minute/The_Censure_Case_of_Joseph_McCarthy.htm" target="_blank">U.S. Senate: McCarthy Censure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
         <p>Hosted on <a href="https://github.com/AzR1314/cold-war-timeline">GitHub</a> | Created by Guillermo Cerda</p>
@@ -113,5 +225,21 @@
     <div id="correct-text" class="correct-text"></div>
 
     <script src="script.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        document.getElementById("defaultOpen").click();
+    </script>
 </body>
 </html>
