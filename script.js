@@ -150,7 +150,7 @@ document.getElementById('quiz-form-huac').addEventListener('submit', function(ev
             explanationDiv.innerHTML = `
                 <p><strong>Correct!</strong> HUAC targeted Hollywood in 1947 to probe communist influence.</p>
                 <p><strong>Evidence:</strong> Subpoenaed 43 witnesses, blacklisting the Hollywood Ten for refusing to testify.</p>
-                <p><strong>Source:</strong> <a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
+                <p><strong>Source:</strong> <a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
             `;
             explanationDiv.style.display = 'block';
         } else {
@@ -160,13 +160,13 @@ document.getElementById('quiz-form-huac').addEventListener('submit', function(ev
                 explanationDiv.innerHTML = `
                     <p><strong>Incorrect.</strong> Military officials were not HUAC’s 1947 focus.</p>
                     <p><strong>Evidence:</strong> Hollywood was targeted, with 43 witnesses subpoenaed.</p>
-                    <p><strong>Source:</strong> <a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
+                    <p><strong>Source:</strong> <a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
                 `;
             } else if (selectedAnswer.value === 'C') {
                 explanationDiv.innerHTML = `
                     <p><strong>Incorrect.</strong> Professors were investigated later, not in 1947.</p>
                     <p><strong>Evidence:</strong> Hollywood was the focus, with 43 witnesses subpoenaed.</p>
-                    <p><strong>Source:</strong> <a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
+                    <p><strong>Source:</strong> <a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
                 `;
             }
             explanationDiv.style.display = 'block';
