@@ -148,9 +148,9 @@ document.getElementById('quiz-form-huac').addEventListener('submit', function(ev
                 setTimeout(() => confetti.remove(), 5000);
             }
             explanationDiv.innerHTML = `
-                <p><strong>Correct!</strong> The HUAC targeted the Hollywood film industry in 1947 to investigate communist influence.</p>
-                <p><strong>Evidence:</strong> The hearings focused on screenwriters and directors, leading to the Hollywood Ten blacklist.</p>
-                <p><strong>Source:</strong> <a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></p>
+                <p><strong>Correct!</strong> HUAC targeted Hollywood in 1947 to probe communist influence.</p>
+                <p><strong>Evidence:</strong> Subpoenaed 43 witnesses, blacklisting the Hollywood Ten for refusing to testify.</p>
+                <p><strong>Source:</strong> <a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
             `;
             explanationDiv.style.display = 'block';
         } else {
@@ -158,15 +158,15 @@ document.getElementById('quiz-form-huac').addEventListener('submit', function(ev
             setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
             if (selectedAnswer.value === 'A') {
                 explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Military officials were not the primary focus of the 1947 HUAC investigations.</p>
-                    <p><strong>Evidence:</strong> The focus was on Hollywood, not the military.</p>
-                    <p><strong>Source:</strong> <a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></p>
+                    <p><strong>Incorrect.</strong> Military officials were not HUAC’s 1947 focus.</p>
+                    <p><strong>Evidence:</strong> Hollywood was targeted, with 43 witnesses subpoenaed.</p>
+                    <p><strong>Source:</strong> <a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
                 `;
             } else if (selectedAnswer.value === 'C') {
                 explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> University professors were investigated later, but not primarily in 1947.</p>
-                    <p><strong>Evidence:</strong> The 1947 hearings centered on Hollywood.</p>
-                    <p><strong>Source:</strong> <a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></p>
+                    <p><strong>Incorrect.</strong> Professors were investigated later, not in 1947.</p>
+                    <p><strong>Evidence:</strong> Hollywood was the focus, with 43 witnesses subpoenaed.</p>
+                    <p><strong>Source:</strong> <a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
                 `;
             }
             explanationDiv.style.display = 'block';
@@ -201,3 +201,11 @@ document.querySelectorAll('.timeline-event').forEach(event => {
         event.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+// Timeline Navigation
+function scrollToEvent(eventId) {
+    const element = document.getElementById(eventId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+}
