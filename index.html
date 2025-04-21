@@ -140,12 +140,23 @@
 
     <div id="CommunismFromWithin" class="tabcontent">
         <section class="timeline">
-            <div class="timeline-event" data-year="1947">
+            <nav class="timeline-nav">
+                <ul>
+                    <li><a href="#event-1947" onclick="scrollToEvent('event-1947')">1947: HUAC Investigations</a></li>
+                    <li><a href="#event-1950-wheeling" onclick="scrollToEvent('event-1950-wheeling')">1950: McCarthy’s Speech</a></li>
+                    <li><a href="#event-1945-venona" onclick="scrollToEvent('event-1945-venona')">1945–1995: Venona Project</a></li>
+                    <li><a href="#event-1950-mccarthyism" onclick="scrollToEvent('event-1950-mccarthyism')">1950–1954: McCarthyism Peak</a></li>
+                    <li><a href="#event-1954-legacy" onclick="scrollToEvent('event-1954-legacy')">1954–Present: McCarthy’s Legacy</a></li>
+                </ul>
+            </nav>
+
+            <div class="timeline-event" data-year="1947" id="event-1947">
                 <h2>1947: HUAC Investigations Begin</h2>
                 <div class="content">
-                    <p>In 1947, the House Un-American Activities Committee (HUAC) launched investigations into alleged communist influence in the United States, focusing initially on Hollywood, marking the start of a broader anti-communist campaign.</p>
+                    <p>In 1947, the House Un-American Activities Committee (HUAC) initiated investigations into alleged communist influence in Hollywood, fearing subversive propaganda in films. Over nine days in October, HUAC subpoenaed 43 witnesses, including screenwriters and directors. Ten, known as the “Hollywood Ten,” refused to testify, citing First Amendment rights, and were cited for contempt, jailed for up to a year, and blacklisted. By 1950, over 300 artists faced career ruin, setting a precedent for fear-driven anti-communist tactics that pressured individuals to name associates or face social and economic ostracism.</p>
+                    <img src="assets/huac-hearing-1947.jpg" alt="HUAC Hollywood Hearing 1947" width="300">
                     <ul class="event-sources">
-                        <li><a href="https://www.archives.gov/exhibits/treasures_of_congress/page_19.html" target="_blank">National Archives: HUAC Hollywood Hearings</a></li>
+                        <li><a href="https://www.history.com/topics/cold-war/huac" target="_blank">HISTORY: HUAC Investigations</a></li>
                     </ul>
                     <div class="quiz">
                         <p>What was the primary target of HUAC’s 1947 investigations?</p>
@@ -160,52 +171,46 @@
                 </div>
             </div>
 
-            <div class="timeline-event hidden" data-year="1950">
+            <div class="timeline-event hidden" data-year="1950" id="event-1950-wheeling">
                 <h2>1950: McCarthy’s Wheeling Speech</h2>
                 <div class="content">
-                    <p>On February 9, 1950, Senator Joseph McCarthy delivered a speech in Wheeling, West Virginia, claiming to possess a list of communists within the State Department, intensifying public fear of internal communist threats.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>Senator McCarthy’s speech in Wheeling asserted that 205 individuals, later revised to 57, within the State Department were known communists, though he provided no concrete evidence. This address capitalized on existing anxieties following World War II and the onset of the Cold War, amplifying public and governmental concern about internal subversion. The speech marked the beginning of McCarthy’s prominence as a leading figure in the anti-communist movement, shaping the trajectory of subsequent investigations and policies aimed at rooting out perceived threats within American institutions.</p>
-                    </div>
+                    <p>On February 9, 1950, Senator Joseph McCarthy claimed in Wheeling, West Virginia, to hold a list of 205 communists in the State Department, later revised to 57, asserting, “The State Department is infested with communists” (McCarthy, 1950). Lacking evidence, his speech exploited Cold War anxieties and early Venona findings of Soviet espionage, igniting public panic. This launched McCarthy’s crusade, leading to investigations that often targeted innocent individuals without due process, amplifying the internal communist fear.</p>
+                    <iframe width="300" height="169" src="https://www.youtube.com/embed/Iv3Yojz9Y1Q?start=30&end=150" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <ul class="event-sources">
                         <li><a href="https://www.senate.gov/artandhistory/history/minute/Senator_Joseph_McCarthy_Charges_Communists_in_State_Dept.htm" target="_blank">U.S. Senate: McCarthy’s Wheeling Speech</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="timeline-event hidden" data-year="1945">
+            <div class="timeline-event hidden" data-year="1945" id="event-1945-venona">
                 <h2>1945–1995: Venona Project</h2>
                 <div class="content">
-                    <p>The Venona Project, a secret U.S. codebreaking effort from 1945 to 1995, decrypted Soviet messages, uncovering evidence of espionage, including atomic secrets, which heightened fears of communist infiltration.</p>
+                    <p>The Venona Project (1945–1995), a secret U.S. codebreaking effort, decrypted Soviet messages, revealing espionage, including atomic secrets passed by agents like Julius Rosenberg. By 1948, decryptions identified over 100 Soviet agents in the U.S., confirming infiltration (Haynes & Klehr, 1999). Its secrecy meant HUAC and McCarthy relied on unverified accusations, escalating fear. Declassified in 1995, Venona validated some concerns but exposed the overreach of anti-communist campaigns that lacked public evidence.</p>
                     <iframe width="300" height="169" src="https://www.youtube.com/embed/0tO8P8DEw_0?start=60&end=180" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <ul class="event-sources">
-                        <li><a href="https://www.nsa.gov/Portals/70/documents/news-features/declassified-documents/venona/dated/1945/18may_kgb_officer.pdf" target="_blank">NSA: Venona Declassified Document</a></li>
+                        <li><a href="https://www.nsa.gov/Portals/70/documents/news-features/declassified-documents/venona/monographs/venona-story.pdf" target="_blank">NSA: The Venona Story</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="timeline-event hidden" data-year="1950">
+            <div class="timeline-event hidden" data-year="1950" id="event-1950-mccarthyism">
                 <h2>1950–1954: McCarthyism Peak</h2>
                 <div class="content">
-                    <p>From 1950 to 1954, McCarthyism reached its height, with Senate hearings and blacklists targeting suspected communists, driven by Venona evidence and widespread public fear.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>During this period, Senator McCarthy chaired the Permanent Subcommittee on Investigations, conducting extensive hearings to identify and remove alleged communists from government and other sectors. The Venona Project’s revelations of Soviet espionage, including cases like Julius and Ethel Rosenberg, provided justification for these aggressive measures. Blacklists in Hollywood and other industries ruined careers based on often unsubstantiated accusations. Public support initially bolstered McCarthy’s efforts, but the lack of concrete evidence and excessive tactics eventually led to criticism and his decline.</p>
-                    </div>
+                    <p>From 1950 to 1954, McCarthyism peaked, with McCarthy’s Senate hearings and HUAC blacklists targeting thousands. Venona’s evidence, including Rosenberg’s 1951 conviction for passing atomic secrets, justified aggressive tactics, but McCarthy’s claim of “a conspiracy so immense” (McCarthy, 1950) led to over 2,000 government dismissals and 300+ blacklisted artists without evidence. Public support waned as civil liberties were ignored, prompting backlash by 1954.</p>
+                    <img src="assets/rosenberg-trial.jpg" alt="Rosenberg Trial 1951" width="300">
                     <ul class="event-sources">
                         <li><a href="https://www.pbs.org/wgbh/americanexperience/films/mccarthy/" target="_blank">PBS: McCarthyism Documentary</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="timeline-event hidden" data-year="1954">
+            <div class="timeline-event hidden" data-year="1954" id="event-1954-legacy">
                 <h2>1954–Present: McCarthy’s Legacy</h2>
                 <div class="content">
-                    <p>McCarthy’s censure in 1954 ended his influence, prompting reflection on whether his tactics were justified in a free society, shaped by the internal communist threat revealed over decades.</p>
+                    <p>McCarthy’s 1954 censure, after Army-McCarthy hearings exposed his reckless tactics, ended his influence. HUAC’s 1947 probes and Venona’s identification of 100+ agents confirmed threats, but blacklisting over 300 artists and dismissing 2,000+ employees without proof violated free speech. “The danger of communism is real, but so is the danger of fanaticism” (Haynes & Klehr, 1999). These tactics were unjust in a free society, leaving a debate on balancing security and liberty.</p>
                     <button class="expand-btn">Learn More</button>
                     <div class="extra-info">
-                        <p>The HUAC’s early investigations into Hollywood set a precedent for government action against perceived internal threats, escalating with McCarthy’s 1950 speech and the fear it ignited. The Venona Project’s evidence of espionage substantiated some concerns, intensifying McCarthyism’s peak through aggressive hearings and blacklists. However, McCarthy’s censure by the Senate on December 2, 1954, following the Army-McCarthy hearings, marked his downfall due to overreach and lack of proof. Reflecting on these events, McCarthy and HUAC’s tactics raised significant ethical questions. While the Venona findings confirmed real threats, the widespread accusations and violations of civil liberties suggest that such methods were excessive in a democratic society. The balance between security and freedom remains a lasting debate from this era.</p>
+                        <p>HUAC’s 1947 hearings blacklisted the Hollywood Ten, setting a fear-driven precedent. McCarthy’s 1950 speech, claiming widespread infiltration, amplified panic, fueled by Venona’s secret evidence of 100+ agents. McCarthyism’s peak saw 2,000+ government dismissals and 300+ blacklisted artists, often without proof. The 1954 censure and HUAC’s 1975 dissolution rejected such tactics, but Venona’s 1995 declassification confirmed some threats, highlighting the ethical cost of fanaticism in a democracy.</p>
                     </div>
                     <ul class="event-sources">
                         <li><a href="https://www.senate.gov/artandhistory/history/minute/The_Censure_Case_of_Joseph_McCarthy.htm" target="_blank">U.S. Senate: McCarthy Censure</a></li>
