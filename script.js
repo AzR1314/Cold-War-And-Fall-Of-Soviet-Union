@@ -209,3 +209,161 @@ function scrollToEvent(eventId) {
         element.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+// Mini-Game Logic: Presidential Decisions – Navigating McCarthyism
+let gameState = {
+    publicTrust: 50,
+    nationalSecurity: 50,
+    civilLiberties: 50,
+    currentScenario: 0
+};
+
+const scenarios = [
+    {
+        text: "It’s 1952, and Senator Joseph McCarthy claims there are 205 communists in the State Department, echoing his 1950 Wheeling speech. His accusations lack evidence, but the public is fearful. How do you respond?",
+        choices: [
+            {
+                text: "Publicly support McCarthy’s investigations to show you’re tough on communism.",
+                effects: { publicTrust: 10, nationalSecurity: 15, civilLiberties: -20 },
+                feedback: "McCarthy’s influence grows, and fear spreads. Over 2,000 government employees are dismissed without evidence, damaging civil liberties. Public trust rises slightly as people feel you’re taking action, but at what cost?"
+            },
+            {
+                text: "Demand evidence from McCarthy before taking action, emphasizing due process.",
+                effects: { publicTrust: -10, nationalSecurity: -5, civilLiberties: 15 },
+                feedback: "Your call for evidence angers McCarthy’s supporters, lowering public trust. However, civil liberties are protected as you resist baseless accusations. National security takes a slight hit as some fear you’re not doing enough."
+            },
+            {
+                text: "Quietly investigate the claims through the FBI, keeping the public calm.",
+                effects: { publicTrust: 5, nationalSecurity: 10, civilLiberties: 5 },
+                feedback: "The FBI investigates discreetly, finding some espionage (as later confirmed by Venona), boosting national security. Public trust and civil liberties improve slightly as you avoid mass hysteria."
+            }
+        ]
+    },
+    {
+        text: "The House Un-American Activities Committee (HUAC) is blacklisting Hollywood artists, like the Hollywood Ten in 1947, for suspected communism. Over 300 are affected, and the public demands action. What do you do?",
+        choices: [
+            {
+                text: "Support HUAC’s blacklists to crack down on potential threats.",
+                effects: { publicTrust: 10, nationalSecurity: 10, civilLiberties: -25 },
+                feedback: "HUAC’s blacklists expand, and public trust rises as people feel protected. National security improves slightly, but civil liberties plummet as artists like Dalton Trumbo are silenced, violating free speech."
+            },
+            {
+                text: "Condemn HUAC’s actions and protect free speech, risking public backlash.",
+                effects: { publicTrust: -15, nationalSecurity: -10, civilLiberties: 20 },
+                feedback: "You defend free speech, boosting civil liberties. However, the public, fearing communism, loses trust in your leadership. National security dips as some believe you’re ignoring real threats."
+            },
+            {
+                text: "Propose a review board to fairly assess HUAC’s claims, balancing security and rights.",
+                effects: { publicTrust: 0, nationalSecurity: 5, civilLiberties: 10 },
+                feedback: "A review board ensures fairer investigations, slightly improving national security and civil liberties. Public trust remains neutral as some support your moderation, while others want harsher action."
+            }
+        ]
+    },
+    {
+        text: "The Rosenberg trial has concluded, and Julius and Ethel Rosenberg are sentenced to death in 1953 for espionage, based on Venona evidence and David Greenglass’s testimony. Protests erupt, claiming unfair trials. How do you handle the situation?",
+        choices: [
+            {
+                text: "Uphold the death sentences to deter future espionage.",
+                effects: { publicTrust: 15, nationalSecurity: 20, civilLiberties: -15 },
+                feedback: "The executions proceed, boosting public trust and national security as a strong message is sent. However, civil liberties suffer as protests highlight the trial’s reliance on secret Venona evidence, raising due process concerns."
+            },
+            {
+                text: "Commute the sentences to life imprisonment, citing trial concerns.",
+                effects: { publicTrust: -20, nationalSecurity: -15, civilLiberties: 20 },
+                feedback: "Commuting the sentences protects civil liberties by addressing trial fairness, but public trust and national security plummet. Many accuse you of being soft on communism during a time of fear."
+            },
+            {
+                text: "Order a public review of the trial while keeping the sentences on hold.",
+                effects: { publicTrust: -5, nationalSecurity: 0, civilLiberties: 15 },
+                feedback: "A public review calms some protests, improving civil liberties. Public trust dips slightly as some see you as indecisive, but national security remains stable as you address espionage concerns thoughtfully."
+            }
+        ]
+    }
+];
+
+const endings = [
+    {
+        condition: (state) => state.publicTrust >= 50 && state.civilLiberties >= 50,
+        text: "<h3>Strong Leadership</h3><p>You’ve navigated the McCarthyism era with balance, maintaining public trust while protecting civil liberties. By 1954, McCarthy’s tactics are discredited, and you’re praised for upholding democratic values during a time of fear. History remembers you as a leader who resisted hysteria.</p>"
+    },
+    {
+        condition: (state) => state.publicTrust < 40 || state.civilLiberties < 40,
+        text: "<h3>Public Backlash</h3><p>Your handling of McCarthyism has led to widespread unrest. Public trust or civil liberties have collapsed, fueling protests and division. By 1954, McCarthy’s influence wanes, but your presidency is tarnished, remembered as a cautionary tale of leadership during crisis.</p>"
+    },
+    {
+        condition: (state) => state.nationalSecurity >= 70 && state.civilLiberties < 50,
+        text: "<h3>Authoritarian Shift</h3><p>You’ve prioritized national security, cracking down on communism with McCarthy and HUAC. While espionage threats are minimized, civil liberties are severely damaged. By 1954, the U.S. has shifted toward authoritarian policies, a legacy that overshadows your presidency.</p>"
+    },
+    {
+        condition: () => true, // Default fallback
+        text: "<h3>Mixed Legacy</h3><p>Your presidency during the McCarthyism era leaves a mixed legacy. You’ve managed some crises well, but struggles with public trust, security, or civil liberties have marked your term. By 1954, McCarthy is censured, but your leadership is debated by historians.</p>"
+    }
+];
+
+function startGame() {
+    gameState = {
+        publicTrust: 50,
+        nationalSecurity: 50,
+        civilLiberties: 50,
+        currentScenario: 0
+    };
+    document.getElementById('start-game-btn').style.display = 'none';
+    document.getElementById('game-container').style.display = 'block';
+    document.getElementById('game-outcome').style.display = 'none';
+    updateMetrics();
+    showScenario();
+}
+
+function showScenario() {
+    const scenario = scenarios[gameState.currentScenario];
+    document.getElementById('game-scenario').innerHTML = `<p>${scenario.text}</p>`;
+    const choicesDiv = document.getElementById('game-choices');
+    choicesDiv.innerHTML = '';
+    scenario.choices.forEach((choice, index) => {
+        const button = document.createElement('button');
+        button.className = 'choice-btn';
+        button.innerText = choice.text;
+        button.onclick = () => makeChoice(index);
+        choicesDiv.appendChild(button);
+    });
+}
+
+function makeChoice(choiceIndex) {
+    const scenario = scenarios[gameState.currentScenario];
+    const choice = scenario.choices[choiceIndex];
+    
+    gameState.publicTrust += choice.effects.publicTrust;
+    gameState.nationalSecurity += choice.effects.nationalSecurity;
+    gameState.civilLiberties += choice.effects.civilLiberties;
+
+    // Cap metrics between 0 and 100
+    gameState.publicTrust = Math.max(0, Math.min(100, gameState.publicTrust));
+    gameState.nationalSecurity = Math.max(0, Math.min(100, gameState.nationalSecurity));
+    gameState.civilLiberties = Math.max(0, Math.min(100, gameState.civilLiberties));
+
+    updateMetrics();
+
+    document.getElementById('game-scenario').innerHTML += `<p><strong>Result:</strong> ${choice.feedback}</p>`;
+    document.getElementById('game-choices').innerHTML = '';
+
+    gameState.currentScenario++;
+    if (gameState.currentScenario < scenarios.length) {
+        setTimeout(showScenario, 2000);
+    } else {
+        showOutcome();
+    }
+}
+
+function updateMetrics() {
+    document.getElementById('public-trust').innerText = gameState.publicTrust;
+    document.getElementById('national-security').innerText = gameState.nationalSecurity;
+    document.getElementById('civil-liberties').innerText = gameState.civilLiberties;
+}
+
+function showOutcome() {
+    const outcome = endings.find(ending => ending.condition(gameState)) || endings[endings.length - 1];
+    document.getElementById('game-outcome').innerHTML = outcome.text + '<button onclick="startGame()">Play Again</button>';
+    document.getElementById('game-outcome').style.display = 'block';
+    document.getElementById('game-scenario').style.display = 'none';
+    document.getElementById('game-choices').style.display = 'none';
+}
