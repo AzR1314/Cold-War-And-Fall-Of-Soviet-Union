@@ -145,7 +145,7 @@
                     <li><a href="#event-1947" onclick="scrollToEvent('event-1947')">1947: HUAC Investigations</a></li>
                     <li><a href="#event-1950-wheeling" onclick="scrollToEvent('event-1950-wheeling')">1950: McCarthy’s Speech</a></li>
                     <li><a href="#event-1945-venona" onclick="scrollToEvent('event-1945-venona')">1945–1995: Venona Project</a></li>
-                    <li><a href="event-1950-mccarthyism" onclick="scrollToEvent('event-1950-mccarthyism')">1950–1954: McCarthyism Peak</a></li>
+                    <li><a href="#event-1950-mccarthyism" onclick="scrollToEvent('event-1950-mccarthyism')">1950–1954: McCarthyism Peak</a></li>
                     <li><a href="#event-1954-legacy" onclick="scrollToEvent('event-1954-legacy')">1954–Present: McCarthy’s Legacy</a></li>
                 </ul>
             </nav>
@@ -222,6 +222,25 @@
                     <ul class="event-sources">
                         <li><a href="https://www.britannica.com/biography/Joseph-McCarthy" target="_blank">Britannica: Joseph McCarthy</a></li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Mini-Game Section -->
+            <div class="timeline-event" data-year="1952" id="mini-game">
+                <h2>1952: Presidential Decisions – Navigating McCarthyism</h2>
+                <div class="content">
+                    <p>Step into the role of the U.S. President in 1952, during the height of McCarthyism. Make critical decisions to balance national security, public trust, and civil liberties. Your choices will shape the nation’s future and teach you about the challenges of McCarthyism in a fun, interactive way!</p>
+                    <button id="start-game-btn" onclick="startGame()">Start Game</button>
+                    <div id="game-container" style="display: none;">
+                        <div id="game-scenario"></div>
+                        <div id="game-choices"></div>
+                        <div id="game-metrics">
+                            <p>Public Trust: <span id="public-trust">50</span></p>
+                            <p>National Security: <span id="national-security">50</span></p>
+                            <p>Civil Liberties: <span id="civil-liberties">50</span></p>
+                        </div>
+                        <div id="game-outcome" style="display: none;"></div>
+                    </div>
                 </div>
             </div>
         </section>
