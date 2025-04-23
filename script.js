@@ -307,18 +307,32 @@ function startGame() {
         civilLiberties: 50,
         currentScenario: 0
     };
+    const gameContainer = document.getElementById('game-container');
+    const gameScenario = document.getElementById('game-scenario');
+    const gameChoices = document.getElementById('game-choices');
+    const gameOutcome = document.getElementById('game-outcome');
+
+    // Show game container and reset visibility of elements
     document.getElementById('start-game-btn').style.display = 'none';
-    document.getElementById('game-container').style.display = 'block';
-    document.getElementById('game-outcome').style.display = 'none';
+    gameContainer.style.display = 'block';
+    gameScenario.style.display = 'block';
+    gameChoices.style.display = 'flex';
+    gameOutcome.style.display = 'none';
+    gameScenario.innerHTML = '';
+    gameChoices.innerHTML = '';
+    
     updateMetrics();
     showScenario();
 }
 
 function showScenario() {
     const scenario = scenarios[gameState.currentScenario];
-    document.getElementById('game-scenario').innerHTML = `<p>${scenario.text}</p>`;
+    const gameScenario = document.getElementById('game-scenario');
+    gameScenario.innerHTML = `<p>${scenario.text}</p>`;
+    
     const choicesDiv = document.getElementById('game-choices');
     choicesDiv.innerHTML = '';
+    choicesDiv.style.display = 'flex'; // Ensure choices are visible
     scenario.choices.forEach((choice, index) => {
         const button = document.createElement('button');
         button.className = 'choice-btn';
@@ -343,14 +357,15 @@ function makeChoice(choiceIndex) {
 
     updateMetrics();
 
-    document.getElementById('game-scenario').innerHTML += `<p><strong>Result:</strong> ${choice.feedback}</p>`;
-    document.getElementById('game-choices').innerHTML = '';
+    const gameScenario = document.getElementById('game-scenario');
+    gameScenario.innerHTML += `<p><strong>Result:</strong> ${choice.feedback}</p>`;
+    document.getElementById('game-choices').style.display = 'none';
 
     gameState.currentScenario++;
     if (gameState.currentScenario < scenarios.length) {
-        setTimeout(showScenario, 2000);
+        setTimeout(showScenario, 6000); // Increased to 6 seconds for readability
     } else {
-        showOutcome();
+        setTimeout(showOutcome, 6000); // Show outcome after 6 seconds
     }
 }
 
@@ -362,8 +377,9 @@ function updateMetrics() {
 
 function showOutcome() {
     const outcome = endings.find(ending => ending.condition(gameState)) || endings[endings.length - 1];
-    document.getElementById('game-outcome').innerHTML = outcome.text + '<button onclick="startGame()">Play Again</button>';
-    document.getElementById('game-outcome').style.display = 'block';
+    const gameOutcome = document.getElementById('game-outcome');
+    gameOutcome.innerHTML = outcome.text + '<button onclick="startGame()">Play Again</button>';
+    gameOutcome.style.display = 'block';
     document.getElementById('game-scenario').style.display = 'none';
     document.getElementById('game-choices').style.display = 'none';
 }
