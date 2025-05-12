@@ -469,23 +469,6 @@
         }
         document.getElementById("defaultOpen").click();
 
-        // "Learn More" button toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const expandButtons = document.querySelectorAll('.expand-btn');
-            expandButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const extraInfo = this.nextElementSibling;
-                    if (extraInfo.style.display === 'block') {
-                        extraInfo.style.display = 'none';
-                        this.textContent = 'Learn More';
-                    } else {
-                        extraInfo.style.display = 'block';
-                        this.textContent = 'Show Less';
-                    }
-                });
-            });
-        });
-
         // Quiz handler for Rise of the New Right tab
         document.getElementById('quiz-form-goldwater').addEventListener('submit', function(event) {
             event.preventDefault();
