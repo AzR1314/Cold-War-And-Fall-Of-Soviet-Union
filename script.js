@@ -1,418 +1,691 @@
-// Quiz Form Submission for Event 1 (Cold War)
-document.getElementById('quiz-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectedAnswer = document.querySelector('#ColdWar input[name="answer"]:checked');
-    const hiddenSections = document.querySelectorAll('#ColdWar .timeline-event.hidden');
-    const applause = document.getElementById('applause');
-    const boo = document.getElementById('boo');
-    const correctText = document.getElementById('correct-text');
-    const explanationDiv = document.getElementById('answer-explanation');
-
-    explanationDiv.style.display = 'none';
-    explanationDiv.innerHTML = '';
-
-    if (selectedAnswer) {
-        if (selectedAnswer.value === 'B') {
-            hiddenSections.forEach(section => section.classList.remove('hidden'));
-            applause.currentTime = 0; applause.play();
-            setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
-            correctText.textContent = 'Correct!'; correctText.style.display = 'block';
-            setTimeout(() => {
-                correctText.classList.add('shrink');
-                setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
-            }, 3000);
-            for (let i = 0; i < 1000; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 5000);
-            }
-            explanationDiv.innerHTML = `
-                <p><strong>Correct!</strong> The Soviet Union's economic growth was driven by high productivity industries like oil, gas, and heavy manufacturing, though stagnation hit by the 1970s.</p>
-                <p><strong>Evidence:</strong> Oil exports peaked at over 50% of earnings by 1975, per video at 22:25–23:25.</p>
-            `;
-            explanationDiv.style.display = 'block';
-        } else {
-            boo.currentTime = 0; boo.play();
-            setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
-            if (selectedAnswer.value === 'A') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Low productive industries like consumer goods were underfunded, not a growth source.</p>
-                    <p><strong>Evidence:</strong> Only 25% of GDP went to consumer goods vs. 40% for heavy industry in the 1970s.</p>
-                    <p><strong>Sources:</strong> <a href="https://www.pbs.org/wgbh/frontline/article/the-soviet-occupation-of-afghanistan/" target="_blank">PBS: Soviet Occupation</a></p>
-                `;
-            } else if (selectedAnswer.value === 'C') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Military spending consumed up to 20% of GDP, draining rather than driving growth.</p>
-                    <p><strong>Evidence:</strong> Increased in the 1980s, per CIA estimates.</p>
-                    <p><strong>Sources:</strong> <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA: Soviet Military Spending</a></p>
-                `;
-            }
-            explanationDiv.style.display = 'block';
-            alert('Try again!');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold War & Communism Timeline</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
         }
-    }
-});
-
-// Quiz Form Submission for Event 5 (Cold War)
-document.getElementById('quiz-form-5').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectedAnswer = document.querySelector('#ColdWar input[name="answer"]:checked');
-    const applause = document.getElementById('applause');
-    const boo = document.getElementById('boo');
-    const correctText = document.getElementById('correct-text');
-    const explanationDiv = document.getElementById('answer-explanation-5');
-
-    explanationDiv.style.display = 'none';
-    explanationDiv.innerHTML = '';
-
-    if (selectedAnswer) {
-        if (selectedAnswer.value === 'B') {
-            applause.currentTime = 0; applause.play();
-            setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
-            correctText.textContent = 'Correct!'; correctText.style.display = 'block';
-            setTimeout(() => {
-                correctText.classList.add('shrink');
-                setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
-            }, 3000);
-            for (let i = 0; i < 1000; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 5000);
-            }
-            explanationDiv.innerHTML = `
-                <p><strong>Correct!</strong> The loss of control over republics was a key factor in the Soviet Union’s collapse.</p>
-                <p><strong>Evidence:</strong> The video (4:30–6:01) highlights how nationalist movements in the republics led to the USSR’s disintegration.</p>
-                <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
-            `;
-            explanationDiv.style.display = 'block';
-        } else {
-            boo.currentTime = 0; boo.play();
-            setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
-            if (selectedAnswer.value === 'A') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Increased military spending weakened the USSR but was not the decisive factor in the video.</p>
-                    <p><strong>Evidence:</strong> The video (4:30–6:01) focuses on republics breaking away.</p>
-                    <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
-                `;
-            } else if (selectedAnswer.value === 'C') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> A stronger U.S. military presence played a role but was not emphasized in the video’s explanation.</p>
-                    <p><strong>Evidence:</strong> The video (4:30–6:01) stresses internal collapse over external military pressure.</p>
-                    <p><strong>Source:</strong> <a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></p>
-                `;
-            }
-            explanationDiv.style.display = 'block';
-            alert('Try again!');
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
         }
-    }
-});
-
-// Quiz Form Submission for Event 1 (Communism From Within)
-document.getElementById('quiz-form-huac').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectedAnswer = document.querySelector('#CommunismFromWithin input[name="answer"]:checked');
-    const hiddenSections = document.querySelectorAll('#CommunismFromWithin .timeline-event.hidden');
-    const applause = document.getElementById('applause');
-    const boo = document.getElementById('boo');
-    const correctText = document.getElementById('correct-text');
-    const explanationDiv = document.getElementById('answer-explanation-huac');
-
-    explanationDiv.style.display = 'none';
-    explanationDiv.innerHTML = '';
-
-    if (selectedAnswer) {
-        if (selectedAnswer.value === 'B') {
-            hiddenSections.forEach(section => section.classList.remove('hidden'));
-            applause.currentTime = 0; applause.play();
-            setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
-            correctText.textContent = 'Correct!'; correctText.style.display = 'block';
-            setTimeout(() => {
-                correctText.classList.add('shrink');
-                setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
-            }, 3000);
-            for (let i = 0; i < 1000; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 5000);
-            }
-            explanationDiv.innerHTML = `
-                <p><strong>Correct!</strong> HUAC targeted Hollywood in 1947 to probe communist influence.</p>
-                <p><strong>Evidence:</strong> Subpoenaed 43 witnesses, blacklisting the Hollywood Ten for refusing to testify.</p>
-                <p><strong>Source:</strong> <a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
-            `;
-            explanationDiv.style.display = 'block';
-        } else {
-            boo.currentTime = 0; boo.play();
-            setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
-            if (selectedAnswer.value === 'A') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Military officials were not HUAC’s 1947 focus.</p>
-                    <p><strong>Evidence:</strong> Hollywood was targeted, with 43 witnesses subpoenaed.</p>
-                    <p><strong>Source:</strong> <a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
-                `;
-            } else if (selectedAnswer.value === 'C') {
-                explanationDiv.innerHTML = `
-                    <p><strong>Incorrect.</strong> Professors were investigated later, not in 1947.</p>
-                    <p><strong>Evidence:</strong> Hollywood was the focus, with 43 witnesses subpoenaed.</p>
-                    <p><strong>Source:</strong> <a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></p>
-                `;
-            }
-            explanationDiv.style.display = 'block';
-            alert('Try again!');
+        .tab button:hover {
+            background-color: #ddd;
         }
-    }
-});
-
-// Expandable "Learn More" buttons with cheer sound for Velvet Revolutions
-document.querySelectorAll('.expand-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const extraInfo = button.nextElementSibling;
-        const cheer = document.getElementById('cheer');
-        if (extraInfo.style.display === 'block') {
-            extraInfo.style.display = 'none';
-            button.textContent = 'Learn More';
-        } else {
-            extraInfo.style.display = 'block';
-            button.textContent = 'Hide';
-            if (button.closest('.timeline-event').getAttribute('data-year') === '1989' && 
-                button.parentElement.querySelector('p').textContent.includes('nationalist')) {
-                cheer.currentTime = 0; cheer.play();
-                setTimeout(() => { cheer.pause(); cheer.currentTime = 0; }, 3000);
-            }
+        .tab button.active {
+            background-color: #ccc;
         }
-    });
-});
-
-// Smooth scroll to timeline events
-document.querySelectorAll('.timeline-event').forEach(event => {
-    event.addEventListener('click', () => {
-        event.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// Timeline Navigation
-function scrollToEvent(eventId) {
-    const element = document.getElementById(eventId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-// Mini-Game Logic: Presidential Decisions – Navigating McCarthyism
-let gameState = {
-    publicTrust: 50,
-    nationalSecurity: 50,
-    civilLiberties: 50,
-    currentScenario: 0
-};
-
-const scenarios = [
-    {
-        text: "It’s 1952, and Senator Joseph McCarthy claims there are 205 communists in the State Department, echoing his 1950 Wheeling speech. His accusations lack evidence, but the public is fearful. How do you respond?",
-        choices: [
-            {
-                text: "Publicly support McCarthy’s investigations to show you’re tough on communism.",
-                effects: { publicTrust: 10, nationalSecurity: 15, civilLiberties: -20 },
-                feedback: "McCarthy’s influence grows, and fear spreads. Over 2,000 government employees are dismissed without evidence, damaging civil liberties. Public trust rises slightly as people feel you’re taking action, but at what cost?"
-            },
-            {
-                text: "Demand evidence from McCarthy before taking action, emphasizing due process.",
-                effects: { publicTrust: -10, nationalSecurity: -5, civilLiberties: 15 },
-                feedback: "Your call for evidence angers McCarthy’s supporters, lowering public trust. However, civil liberties are protected as you resist baseless accusations. National security takes a slight hit as some fear you’re not doing enough."
-            },
-            {
-                text: "Quietly investigate the claims through the FBI, keeping the public calm.",
-                effects: { publicTrust: 5, nationalSecurity: 10, civilLiberties: 5 },
-                feedback: "The FBI investigates discreetly, finding some espionage (as later confirmed by Venona), boosting national security. Public trust and civil liberties improve slightly as you avoid mass hysteria."
-            }
-        ]
-    },
-    {
-        text: "The House Un-American Activities Committee (HUAC) is blacklisting Hollywood artists, like the Hollywood Ten in 1947, for suspected communism. Over 300 are affected, and the public demands action. What do you do?",
-        choices: [
-            {
-                text: "Support HUAC’s blacklists to crack down on potential threats.",
-                effects: { publicTrust: 10, nationalSecurity: 10, civilLiberties: -25 },
-                feedback: "HUAC’s blacklists expand, and public trust rises as people feel protected. National security improves slightly, but civil liberties plummet as artists like Dalton Trumbo are silenced, violating free speech."
-            },
-            {
-                text: "Condemn HUAC’s actions and protect free speech, risking public backlash.",
-                effects: { publicTrust: -15, nationalSecurity: -10, civilLiberties: 20 },
-                feedback: "You defend free speech, boosting civil liberties. However, the public, fearing communism, loses trust in your leadership. National security dips as some believe you’re ignoring real threats."
-            },
-            {
-                text: "Propose a review board to fairly assess HUAC’s claims, balancing security and rights.",
-                effects: { publicTrust: 0, nationalSecurity: 5, civilLiberties: 10 },
-                feedback: "A review board ensures fairer investigations, slightly improving national security and civil liberties. Public trust remains neutral as some support your moderation, while others want harsher action."
-            }
-        ]
-    },
-    {
-        text: "The Rosenberg trial has concluded, and Julius and Ethel Rosenberg are sentenced to death in 1953 for espionage, based on Venona evidence and David Greenglass’s testimony. Protests erupt, claiming unfair trials. How do you handle the situation?",
-        choices: [
-            {
-                text: "Uphold the death sentences to deter future espionage.",
-                effects: { publicTrust: 15, nationalSecurity: 20, civilLiberties: -15 },
-                feedback: "The executions proceed, boosting public trust and national security as a strong message is sent. However, civil liberties suffer as protests highlight the trial’s reliance on secret Venona evidence, raising due process concerns."
-            },
-            {
-                text: "Commute the sentences to life imprisonment, citing trial concerns.",
-                effects: { publicTrust: -20, nationalSecurity: -15, civilLiberties: 20 },
-                feedback: "Commuting the sentences protects civil liberties by addressing trial fairness, but public trust and national security plummet. Many accuse you of being soft on communism during a time of fear."
-            },
-            {
-                text: "Order a public review of the trial while keeping the sentences on hold.",
-                effects: { publicTrust: -5, nationalSecurity: 0, civilLiberties: 15 },
-                feedback: "A public review calms some protests, improving civil liberties. Public trust dips slightly as some see you as indecisive, but national security remains stable as you address espionage concerns thoughtfully."
-            }
-        ]
-    }
-];
-
-const endings = [
-    {
-        condition: (state) => state.publicTrust >= 50 && state.civilLiberties >= 50,
-        text: "<h3>Strong Leadership</h3><p>You’ve navigated the McCarthyism era with balance, maintaining public trust while protecting civil liberties. By 1954, McCarthy’s tactics are discredited, and you’re praised for upholding democratic values during a time of fear. History remembers you as a leader who resisted hysteria.</p>"
-    },
-    {
-        condition: (state) => state.publicTrust < 40 || state.civilLiberties < 40,
-        text: "<h3>Public Backlash</h3><p>Your handling of McCarthyism has led to widespread unrest. Public trust or civil liberties have collapsed, fueling protests and division. By 1954, McCarthy’s influence wanes, but your presidency is tarnished, remembered as a cautionary tale of leadership during crisis.</p>"
-    },
-    {
-        condition: (state) => state.nationalSecurity >= 70 && state.civilLiberties < 50,
-        text: "<h3>Authoritarian Shift</h3><p>You’ve prioritized national security, cracking down on communism with McCarthy and HUAC. While espionage threats are minimized, civil liberties are severely damaged. By 1954, the U.S. has shifted toward authoritarian policies, a legacy that overshadows your presidency.</p>"
-    },
-    {
-        condition: () => true, // Default fallback
-        text: "<h3>Mixed Legacy</h3><p>Your presidency during the McCarthyism era leaves a mixed legacy. You’ve managed some crises well, but struggles with public trust, security, or civil liberties have marked your term. By 1954, McCarthy is censured, but your leadership is debated by historians.</p>"
-    }
-];
-
-function startGame() {
-    gameState = {
-        publicTrust: 50,
-        nationalSecurity: 50,
-        civilLiberties: 50,
-        currentScenario: 0
-    };
-    const gameContainer = document.getElementById('game-container');
-    const gameScenario = document.getElementById('game-scenario');
-    const gameChoices = document.getElementById('game-choices');
-    const gameOutcome = document.getElementById('game-outcome');
-
-    // Show game container and reset visibility of elements
-    document.getElementById('start-game-btn').style.display = 'none';
-    gameContainer.style.display = 'block';
-    gameScenario.style.display = 'block';
-    gameChoices.style.display = 'flex';
-    gameOutcome.style.display = 'none';
-    gameScenario.innerHTML = '';
-    gameChoices.innerHTML = '';
-    
-    updateMetrics();
-    showScenario();
-}
-
-function showScenario() {
-    const scenario = scenarios[gameState.currentScenario];
-    const gameScenario = document.getElementById('game-scenario');
-    gameScenario.innerHTML = `<p>${scenario.text}</p>`;
-    
-    const choicesDiv = document.getElementById('game-choices');
-    choicesDiv.innerHTML = '';
-    choicesDiv.style.display = 'flex'; // Ensure choices are visible
-    scenario.choices.forEach((choice, index) => {
-        const button = document.createElement('button');
-        button.className = 'choice-btn';
-        button.innerText = choice.text;
-        button.onclick = () => makeChoice(index);
-        choicesDiv.appendChild(button);
-    });
-}
-
-function makeChoice(choiceIndex) {
-    const scenario = scenarios[gameState.currentScenario];
-    const choice = scenario.choices[choiceIndex];
-    
-    gameState.publicTrust += choice.effects.publicTrust;
-    gameState.nationalSecurity += choice.effects.nationalSecurity;
-    gameState.civilLiberties += choice.effects.civilLiberties;
-
-    // Cap metrics between 0 and 100
-    gameState.publicTrust = Math.max(0, Math.min(100, gameState.publicTrust));
-    gameState.nationalSecurity = Math.max(0, Math.min(100, gameState.nationalSecurity));
-    gameState.civilLiberties = Math.max(0, Math.min(100, gameState.civilLiberties));
-
-    updateMetrics();
-
-    const gameScenario = document.getElementById('game-scenario');
-    gameScenario.innerHTML += `<p><strong>Result:</strong> ${choice.feedback}</p>`;
-    document.getElementById('game-choices').style.display = 'none';
-
-    gameState.currentScenario++;
-    if (gameState.currentScenario < scenarios.length) {
-        setTimeout(showScenario, 6000); // Increased to 6 seconds for readability
-    } else {
-        setTimeout(showOutcome, 6000); // Show outcome after 6 seconds
-    }
-}
-
-function updateMetrics() {
-    document.getElementById('public-trust').innerText = gameState.publicTrust;
-    document.getElementById('national-security').innerText = gameState.nationalSecurity;
-    document.getElementById('civil-liberties').innerText = gameState.civilLiberties;
-}
-
-function showOutcome() {
-    const outcome = endings.find(ending => ending.condition(gameState)) || endings[endings.length - 1];
-    const gameOutcome = document.getElementById('game-outcome');
-    gameOutcome.innerHTML = outcome.text + '<button onclick="startGame()">Play Again</button>';
-    gameOutcome.style.display = 'block';
-    document.getElementById('game-scenario').style.display = 'none';
-    document.getElementById('game-choices').style.display = 'none';
-}
-document.getElementById('quiz-form-goldwater').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectedAnswer = document.querySelector('#RiseOfTheNewRight input[name="answer"]:checked');
-    const hiddenSections = document.querySelectorAll('#RiseOfTheNewRight .timeline-event.hidden');
-    const applause = document.getElementById('applause');
-    const boo = document.getElementById('boo');
-    const correctText = document.getElementById('correct-text');
-    const explanationDiv = document.getElementById('answer-explanation-goldwater');
-
-    explanationDiv.style.display = 'none';
-    explanationDiv.innerHTML = '';
-
-    if (selectedAnswer) {
-        if (selectedAnswer.value === 'B') {
-            hiddenSections.forEach(section => section.classList.remove('hidden'));
-            applause.currentTime = 0; applause.play();
-            setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
-            correctText.textContent = 'Correct!'; correctText.style.display = 'block';
-            setTimeout(() => {
-                correctText.classList.add('shrink');
-                setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
-            }, 3000);
-            explanationDiv.innerHTML = '<p><strong>Correct!</strong> Limited government was a key theme of Goldwater’s campaign.</p>';
-            explanationDiv.style.display = 'block';
-        } else {
-            boo.currentTime = 0; boo.play();
-            setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
-            explanationDiv.innerHTML = '<p><strong>Incorrect.</strong> Try again!</p>';
-            explanationDiv.style.display = 'block';
-            alert('Try again!');
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
         }
-    }
-});
+        .extra-info p {
+            font-size: 1.5em;
+        }
+        #game-container-new-right, #game-container {
+            border: 2px solid #333;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #game-container-new-right button, #game-choices button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        #game-container-new-right button:hover, #game-choices button:hover {
+            background-color: #45a049;
+        }
+        #game-metrics-new-right, #game-metrics {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+        #game-outcome-new-right, #game-outcome {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e8e8e8;
+            border-radius: 5px;
+        }
+        #game-outcome-new-right button, #game-outcome button {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        #game-outcome-new-right button:hover, #game-outcome button:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cold War & Communism Timeline</h1>
+        <p>Explore the Decline of the Soviet Union and Internal Communist Fears</p>
+    </header>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'ColdWar')" id="defaultOpen">Cold War</button>
+        <button class="tablinks" onclick="openTab(event, 'CommunismFromWithin')">Communism From Within</button>
+        <button class="tablinks" onclick="openTab(event, 'RiseOfTheNewRight')">Rise of the New Right</button>
+    </div>
+
+    <div id="ColdWar" class="tabcontent">
+        <section class="timeline">
+            <div class="timeline-event" data-year="1970">
+                <h2>1970 to 1980: Soviet Economy and Afghanistan</h2>
+                <div class="content">
+                    <p>The Soviet economy stagnated in the 1970s due to inefficiencies in central planning and an over-reliance on oil exports, which masked deeper structural problems. The Soviet-Afghan War (1979 to 1989) marked a turning point, costing billions and over 15,000 Soviet lives, draining resources, and lowering morale. This period highlighted the USSR’s inability to sustain its superpower status, setting the stage for its eventual collapse.</p>
+                    <iframe width="300" height="169" src="https://www.youtube.com/embed/KOZlobXa9iM?start=1345&end=1405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <ul class="event-sources">
+                        <li><a href="https://www.youtube.com/watch?v=KOZlobXa9iM" target="_blank">YouTube: Soviet-Afghan War Documentary</a></li>
+                    </ul>
+                    <div class="quiz">
+                        <p>What was the main source of economic growth of the Soviet Union?</p>
+                        <form id="quiz-form">
+                            <label><input type="radio" name="answer" value="A"> A: Low Productive Industries</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: High Productive Industries</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: Military</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation" class="answer-explanation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1969">
+                <h2>1969 to 1980: U.S. Policy of Détente</h2>
+                <div class="content">
+                    <p>Détente reduced the risk of nuclear war but did not halt Soviet internal struggles, as economic dependence on the West grew.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The United States initiated a policy of détente with the Soviet Union beginning in 1969 to reduce Cold War tensions. This effort aimed to prevent nuclear conflict and foster diplomatic engagement. A significant achievement was the Strategic Arms Limitation Talks (SALT I) treaty, signed in 1972, which restricted the development of nuclear weapons. That same year, President Nixon’s visit to Moscow marked a historic milestone, being the first by a U.S. president during the Cold War. Economic cooperation also emerged, with the United States exporting grain to address Soviet agricultural shortages. This period of détente offered a temporary respite from hostilities. However, the Soviet invasion of Afghanistan in 1979 prompted a shift in U.S. policy under President Reagan, who adopted a more assertive stance in the 1980s, ending détente. This era revealed the Soviet Union’s increasing reliance on Western support amid its economic difficulties.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://history.state.gov/milestones/1969-1976/salt" target="_blank">U.S. State Dept: SALT I</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1985">
+                <h2>1985 to 1991: Gorbachev’s Reforms</h2>
+                <div class="content">
+                    <p>Mikhail Gorbachev implemented reforms to revitalize the Soviet Union. However, these efforts inadvertently accelerated its dissolution.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>Upon assuming leadership in 1985, Mikhail Gorbachev recognized the Soviet Union’s economic stagnation and systemic inefficiencies. He introduced <em>perestroika</em>, a policy aimed at restructuring the economy by incorporating limited market mechanisms and reducing state control. Additionally, he enacted <em>glasnost</em>, a policy of openness that permitted greater freedom of expression and criticism of the government. Initially, these reforms were intended to strengthen the Soviet system. By 1989, however, the economy had declined approximately 4% annually due to the disruption caused by these changes. The increased freedom of speech fueled public discontent and demands for autonomy in regions such as Ukraine and the Baltic states. Gorbachev aimed to preserve the unity of the Soviet Union, yet his policies ultimately contributed to its disintegration by 1991.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.britannica.com/place/Russia/The-Gorbachev-era-perestroika-and-glasnost" target="_blank">Britannica: Gorbachev Era</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1989">
+                <h2>1989 to 1991: Velvet Revolutions & Nationalism</h2>
+                <div class="content">
+                    <p>In 1969, Eastern European nations achieved independence from Soviet authority through peaceful means, inspiring widespread nationalist movements within the USSR.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The year 1989 marked a significant turning point in Eastern Europe, characterized by a series of nonviolent transitions known as the Velvet Revolutions. In Poland, negotiations between the communist government and the Solidarity trade union resulted in free elections, effectively ending Soviet-aligned governance. Hungary facilitated this shift by opening its borders to Western Europe, enabling thousands to emigrate from Soviet influence. Czechoslovakia experienced a rapid transition through organized protests, leading to the replacement of its communist leadership with minimal conflict. These developments were possible due to Gorbachev’s decision to refrain from military intervention, a departure from previous Soviet policy. Within the Soviet Union, these events encouraged regions such as Lithuania to pursue independence, with formal declarations beginning in 1990. By 1991, more than 15 republics had seceded, driven by the example of Eastern Europe’s success and growing nationalist sentiment, ultimately contributing to the Soviet Union’s collapse.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://miamioh.edu/cas/centers-institutes/havighurst-center/additional-resources/havighurst-special-programming/1989-revolutions/index.html" target="_blank">MiamiOH: 1989 Revolutions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1989">
+                <h2>1989 to 1991: Berlin Wall & USSR Collapse</h2>
+                <div class="content">
+                    <p>The Berlin Wall’s collapse on November 9, 1989, signaled the conclusion of the Cold War. This event, propelled by East German protests and Gorbachev’s nonintervention, preceded the Soviet Union’s dissolution on December 26, 1991, following an unsuccessful coup, establishing the United States as the sole remaining superpower.</p>
+                    <iframe width="300" height="169" src="https://www.youtube.com/embed/A9fQPzZ1-hg?start=270&end=361" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The collapse of the Soviet Union in 1991 was the culmination of several interconnected events from the preceding decades. Economic stagnation and the costly Soviet-Afghan War during the 1970s and 1980s, as detailed in the first event, weakened the USSR’s financial stability and global standing. The policy of détente with the United States, initiated in 1969, exposed Soviet economic vulnerabilities through increased reliance on Western trade, as outlined in the second event. Gorbachev’s reforms of <em>perestroika</em> and <em>glasnost</em>, introduced in 1985, destabilized the Soviet system by encouraging dissent and regional autonomy, as described in the third event. The Velvet Revolutions of 1989 in Eastern Europe, followed by nationalist movements within the USSR, eroded Soviet authority as over 15 republics pursued independence, as noted in the fourth event. The final catalyst came with Gorbachev’s decision to allow elections with a multi-party system and create a presidency for the Soviet Union. This began a slow process of democratization that eventually destabilized Communist control and contributed to the collapse of the Soviet Union. Following the May 1990 elections, Gorbachev faced conflicting internal political pressures. Boris Yeltsin and the pluralist movement advocated democratization and rapid economic reforms, while the hard-line Communist elite sought to thwart Gorbachev’s reform agenda. These tensions culminated in the failed coup of August 1991, which precipitated the USSR’s dissolution by December of that year.</p>
+                    </div>
+                    <div class="quiz">
+                        <p>What was a key factor in the Soviet Union’s collapse according to the video (4:30 to 6:01)?</p>
+                        <form id="quiz-form-5">
+                            <label><input type="radio" name="answer" value="A"> A: Increased military spending</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: Loss of control over republics</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: Stronger U.S. military presence</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation-5" class="answer-explanation"></div>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=A9fQPzZ1-hg" target="_blank">YouTube: TED-Ed Berlin Wall & USSR Collapse</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="CommunismFromWithin" class="tabcontent">
+        <section class="timeline">
+            <nav class="timeline-nav">
+                <ul>
+                    <li><a href="#event-1947" onclick="scrollToEvent('event-1947')">1947: HUAC Investigations</a></li>
+                    <li><a href="#event-1950-wheeling" onclick="scrollToEvent('event-1950-wheeling')">1950: McCarthy’s Speech</a></li>
+                    <li><a href="#event-1945-venona" onclick="scrollToEvent('event-1945-venona')">1945 to 1995: Venona Project</a></li>
+                    <li><a href="#event-1950-mccarthyism" onclick="scrollToEvent('event-1950-mccarthyism')">1950 to 1954: McCarthyism Peak</a></li>
+                    <li><a href="#event-1954-legacy" onclick="scrollToEvent('event-1954-legacy')">1954 to Present: McCarthy’s Legacy</a></li>
+                </ul>
+            </nav>
+
+            <div class="timeline-event" data-year="1947" id="event-1947">
+                <h2>1947: HUAC Investigations Begin</h2>
+                <div class="content">
+                    <p>In 1947, the House Un-American Activities Committee (HUAC) began investigating alleged communist influence within Hollywood, driven by fears that subversive propaganda was being embedded in films during a time of heightened Cold War tension. Over nine days in October, HUAC subpoenaed 43 witnesses, including prominent screenwriters, directors, and producers, to testify about their political affiliations. Ten of these individuals, who became known as the “Hollywood Ten,” refused to cooperate, asserting their First Amendment rights to free speech and assembly. Their defiance led to contempt charges, prison sentences of up to a year, and their blacklisting from the industry. “Their defiance made them famous, but their inflexibility ruined their careers,” as studios, under pressure from public and political forces, refused to hire them or anyone suspected of communist ties (HISTORY, 2024). By 1950, the blacklist had grown to include over 300 artists, many of whom were barred from working in Hollywood for years, if not permanently. The hearings also set a troubling precedent for anti-communist tactics, where individuals were often coerced into naming associates to avoid social and economic consequences, a practice that eroded trust and fostered widespread fear across the entertainment industry and beyond.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The HUAC investigations of 1947 marked a significant moment in the early Cold War, reflecting the growing anxiety about communist infiltration in American society and culture. The committee, originally formed in 1938 to investigate subversive activities, had gained attention during World War II for examining Nazi sympathies but shifted its focus to communism as U.S.-Soviet relations deteriorated. In 1947, HUAC turned its attention to Hollywood, suspecting that communist sympathizers were using films to spread propaganda. The hearings began with testimonies from “friendly” witnesses, such as Walt Disney and Ronald Reagan, who was then president of the Screen Actors Guild. Reagan testified that communist influence was present, stating, “A small clique within the Screen Actors Guild has been suspected of more or less following the tactics that we associate with the Communist Party” (HISTORY, 2024). The tone of the hearings shifted dramatically when the Hollywood Ten, including notable figures like Dalton Trumbo and Ring Lardner Jr., were called to testify. They refused to answer questions about their political beliefs, arguing that HUAC’s inquiries violated their constitutional rights. This led to their being charged with contempt of Congress, a charge upheld by the Supreme Court in 1950, resulting in prison sentences ranging from six months to a year. The blacklist that followed had a devastating impact on their careers and the broader industry. “Some blacklistees wrote under pseudonyms, others left the country, and many never worked in Hollywood again,” illustrating the severe personal and professional toll of HUAC’s actions (HISTORY, 2024). The committee’s tactics, which often involved public shaming and pressuring witnesses to “name names” of alleged communists, created an atmosphere of fear and mistrust. HUAC’s approach not only targeted Hollywood but also set a model for later anti-communist efforts, raising serious questions about the balance between national security and individual freedoms in a democratic society.</p>
+                        <ul class="event-sources">
+                            <li><a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></li>
+                        </ul>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></li>
+                    </ul>
+                    <div class="quiz">
+                        <p>What was the primary target of HUAC’s 1947 investigations?</p>
+                        <form id="quiz-form-huac">
+                            <label><input type="radio" name="answer" value="A"> A: Military officials</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: Hollywood film industry</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: University professors</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation-huac" class="answer-explanation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1950" id="event-1950-wheeling">
+                <h2>1950: McCarthy’s Wheeling Speech</h2>
+                <div class="content">
+                    <p>On February 9, 1950, Senator Joseph McCarthy addressed a crowd in Wheeling, West Virginia, delivering a speech that would ignite widespread fear of communist infiltration in the United States government. He claimed to possess a list of 205 individuals in the State Department who were known communists, asserting, “I have here in my hand a list of 205… names that were made known to the Secretary of State as being members of the Communist Party and who nevertheless are still working and shaping policy in the State Department” (McCarthy, 1950). McCarthy later revised this number to 57, but he provided no substantiating evidence for his claims, relying instead on the growing public anxiety about Soviet espionage, which had been heightened by early findings from the Venona Project. He further stated, “The reason why we find ourselves in a position of impotency is not because our only powerful potential enemy has sent men to invade our shores… but because we have been infiltrated by the Communist menace within” (McCarthy, 1950). This speech, delivered to the Ohio County Women’s Republican Club, gained national attention after being reported by the Associated Press, amplifying public fear and mistrust. McCarthy’s accusations, though largely unsubstantiated, launched a years-long anti-communist campaign that targeted government employees, educators, and others, often without due process, deepening the sense of paranoia about communism within American society during the Cold War.</p>
+                    <ul class="event-sources">
+                        <li><a href="https://pages.uoregon.edu/eherman/teaching/texts/McCarthy_Wheeling_Speech.pdf" target="_blank">University of Oregon: McCarthy’s Wheeling Speech</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1945" id="event-1945-venona">
+                <h2>1945 to 1995: Venona Project</h2>
+                <div class="content">
+                    <p>The Venona Project, a highly classified U.S. codebreaking operation that ran from 1945 to 1995, played a significant role in uncovering Soviet espionage activities within the United States during and after World War II. By intercepting and decrypting Soviet diplomatic communications, the project revealed extensive espionage networks, including the transfer of atomic secrets to the Soviet Union by agents such as Julius Rosenberg. By 1948, Venona decryptions had identified over 200 Soviet agents operating in the U.S., with codenames like “Liberal” for Julius Rosenberg and “Antenna” for another operative, confirming fears of infiltration within American institutions (NSA, 1995). The project’s findings showed that Soviet espionage extended to critical areas, as “the KGB sent a message to Moscow in 1945 reporting on the first nuclear test,” indicating the depth of intelligence being gathered (NSA, 1995). However, due to the project’s secrecy, its evidence could not be used publicly, leaving HUAC and McCarthy to rely on unverified accusations, which often fueled public hysteria rather than informed action. When Venona was declassified in 1995, it provided concrete evidence of Soviet spying, validating some concerns from the era, but it also underscored the excessive nature of anti-communist campaigns that had targeted many innocent individuals without solid proof during the height of the Red Scare.</p>
+                    <ul class="event-sources">
+                        <li><a href="https://www.nsa.gov/portals/75/documents/about/cryptologic-heritage/historical-figures-publications/publications/coldwar/venona_story.pdf" target="_blank">NSA: The Venona Story</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1950" id="event-1950-mccarthyism">
+                <h2>1950 to 1954: McCarthyism Peak</h2>
+                <div class="content">
+                    <p>Between 1950 and 1954, McCarthyism reached its most intense phase, characterized by Senator Joseph McCarthy’s Senate hearings and HUAC’s ongoing blacklisting efforts, which collectively targeted thousands of Americans suspected of communist sympathies. A notable event during this period was the trial of Julius and Ethel Rosenberg, who were convicted in 1951 for passing atomic secrets to the Soviet Union, a case that became emblematic of the era’s fears. The prosecution relied heavily on testimony from Ethel’s brother, David Greenglass, who confessed to handing over “a sketch of a cross-section of the atom bomb” to Julius Rosenberg, along with detailed notes on the bomb’s implosion mechanism (Famous Trials, 2025). Venona Project decryptions, though not admissible in court due to their classified nature, corroborated Greenglass’s testimony by identifying Julius as a Soviet agent codenamed “Liberal.” The Rosenbergs were sentenced to death, and their execution in 1953 intensified public fear of communist espionage, as prosecutor Irving Saypol declared, “These conspirators stole the most important scientific secrets ever known to mankind” (Famous Trials, 2025). McCarthy capitalized on such cases, claiming there existed “a conspiracy so immense” within the government, leading to the dismissal of over 2,000 government employees and the blacklisting of more than 300 artists, often without credible evidence (Famous Trials, 2025). This period saw widespread violations of civil liberties, as fear-driven tactics prioritized suspicion over due process, but by 1954, public support for McCarthy began to erode as his methods were increasingly seen as reckless and unjust, leading to a growing backlash against his approach.</p>
+                    <ul class="event-sources">
+                        <li><a href="https://famous-trials.com/rosenberg/2228-home" target="_blank">Famous Trials: Rosenberg Trial</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1954" id="event-1954-legacy">
+                <h2>1954 to Present: McCarthy’s Legacy</h2>
+                <div class="content">
+                    <p>McCarthy’s influence came to an abrupt end in 1954 following his censure by the Senate, a consequence of the Army-McCarthy hearings that exposed his unfounded accusations against the U.S. Army, including claims that the military was harboring communists. The hearings, broadcast on television, revealed McCarthy’s aggressive tactics to the public, with Army counsel Joseph Welch famously challenging him, “Have you no sense of decency, sir, at long last?” (Britannica, 2025). HUAC’s earlier 1947 investigations and the Venona Project’s identification of over 200 Soviet agents had confirmed some level of espionage threat, but the widespread blacklisting of over 300 artists and the dismissal of more than 2,000 government employees often occurred without substantial evidence, infringing on free speech and due process rights. “McCarthy’s tactics left a permanent scar on American politics,” as his approach fostered a climate of fear that undermined democratic principles (Britannica, 2025). The legacy of McCarthyism continues to influence debates about how to balance national security with individual liberties, particularly in times of perceived crisis, serving as a cautionary tale about the dangers of fear-driven governance and the erosion of civil rights in the name of ideological purity.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>HUAC’s 1947 hearings initiated the blacklisting of the Hollywood Ten, establishing a pattern of fear-based anti-communist actions that would define the era. McCarthy’s 1950 Wheeling speech, alleging widespread communist infiltration in the government, intensified public paranoia, a fear partly validated by the Venona Project’s secret evidence of over 200 Soviet agents operating in the U.S. At the height of McCarthyism, more than 2,000 government employees were dismissed and over 300 artists were blacklisted, often without proof of wrongdoing, highlighting the excessive nature of these campaigns. McCarthy’s 1954 censure by the Senate, following his baseless attacks on the U.S. Army, marked a turning point, and HUAC’s eventual dissolution in 1975 signaled a rejection of such tactics. However, the 1995 declassification of Venona documents confirmed some espionage activities, underscoring the real threats that existed but also the ethical costs of McCarthy’s and HUAC’s methods, which often disregarded fairness and due process in a democratic society.</p>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.britannica.com/biography/Joseph-McCarthy" target="_blank">Britannica: Joseph McCarthy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event" data-year="1952" id="mini-game">
+                <h2>1952: Presidential Decisions Navigating McCarthyism</h2>
+                <div class="content">
+                    <p>Step into the role of the U.S. President in 1952, during the height of McCarthyism. Make critical decisions to balance national security, public trust, and civil liberties. Your choices will shape the nation’s future and teach you about the challenges of McCarthyism in a fun, interactive way!</p>
+                    <button id="start-game-btn" onclick="startGame()">Start Game</button>
+                    <div id="game-container" style="display: none;">
+                        <div id="game-scenario"></div>
+                        <div id="game-choices"></div>
+                        <div id="game-metrics">
+                            <p>Public Trust: <span id="public-trust">50</span></p>
+                            <p>National Security: <span id="national-security">50</span></p>
+                            <p>Civil Liberties: <span id="civil-liberties">50</span></p>
+                        </div>
+                        <div id="game-outcome" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="RiseOfTheNewRight" class="tabcontent">
+        <section class="timeline">
+            <nav class="timeline-nav">
+                <ul>
+                    <li><a href="#event-1964" onclick="scrollToEvent('event-1964')">1964: Goldwater’s Campaign</a></li>
+                    <li><a href="#event-1970s" onclick="scrollToEvent('event-1970s')">1970s: Evangelical Mobilization</a></li>
+                    <li><a href="#event-1980" onclick="scrollToEvent('event-1980')">1980: Reagan’s Election</a></li>
+                    <li><a href="#event-1980s" onclick="scrollToEvent('event-1980s')">1980s: Economic and Social Policies</a></li>
+                    <li><a href="#event-1990s" onclick="scrollToEvent('event-1990s')">1990s: Lasting Impact</a></li>
+                    <li><a href="#event-1994" onclick="scrollToEvent('event-1994')">1994: Role-Play Game</a></li>
+                </ul>
+            </nav>
+
+            <div class="timeline-event" data-year="1964" id="event-1964">
+                <h2>1964: Goldwater’s Campaign</h2>
+                <div class="content">
+                    <p>In 1964, Barry Goldwater’s presidential campaign marked the early rise of the New Right, driven by fears of communist influence and frustration with expanding government programs. He pushed for limited government, free-market policies, and a tough stance against communism, winning 38.5% of the vote and six states despite losing to Lyndon Johnson. His ideas laid the groundwork for the conservative movement that would grow stronger later.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The 1964 campaign of Barry Goldwater was a huge turning point that really kicked off the New Right, and I learned so much from this Britannica article about the Cold War! At the time, the Cold War was at its peak, with tensions between the U.S. and the Soviet Union dominating global politics. Goldwater was super passionate about fighting communism, and the article mentions how he wanted to roll back communism in Eastern Europe, which was a bold and risky idea because the Soviet Union had a massive military presence there. He also tapped into a growing frustration among Americans who felt the government was getting too big with programs like the New Deal and Johnson’s Great Society, which aimed to expand social welfare but sparked backlash from those who wanted less government control. Goldwater’s book, The Conscience of a Conservative, published in 1960, became a rallying cry for these folks, it sold over 3.5 million copies by 1964 and outlined his vision for smaller government and a stronger military. Even though he lost to Johnson in a landslide, getting only 38.5% of the popular vote and winning just six states, mostly in the Deep South, his campaign energized a new wave of conservatives. Young activists, including future leaders like Ronald Reagan, got inspired by his message. Reagan even gave a famous speech supporting Goldwater, called “A Time for Choosing,” which launched his own political career. It is amazing to think how Goldwater’s ideas, even in defeat, set the stage for the conservative shift in the Republican Party that we still see today!</p>
+                        <ul class="event-sources">
+                            <li><a href="https://www.britannica.com/event/Cold-War/Toward-a-new-world-order" target="_blank">Britannica: Cold War - Toward a New World Order</a></li>
+                        </ul>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.britannica.com/event/Cold-War/Toward-a-new-world-order" target="_blank">Britannica: Cold War - Toward a New World Order</a></li>
+                    </ul>
+                    <div class="quiz">
+                        <p>What was a key theme of Goldwater’s 1964 campaign?</p>
+                        <form id="quiz-form-goldwater">
+                            <label><input type="radio" name="answer" value="A"> A: Expanded government welfare</label><br>
+                            <label><input type="radio" name="answer" value="B"> B: Limited government</label><br>
+                            <label><input type="radio" name="answer" value="C"> C: Increased military draft</label><br>
+                            <button type="submit">Submit</button>
+                        </form>
+                        <div id="answer-explanation-goldwater" class="answer-explanation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1970s" id="event-1970s">
+                <h2>1970s: Evangelical Mobilization</h2>
+                <div class="content">
+                    <p>In the 1970s, evangelical Christians became a key part of the New Right, reacting to cultural changes like the sexual revolution and the 1973 Roe v. Wade decision. Leaders like Jerry Falwell started the Moral Majority in 1979, rallying voters to support conservative values such as opposing abortion and protecting religious education, shaping the movement’s moral focus.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The 1970s were a wild time for evangelical Christians, who became a massive force in the New Right, and this New York Times article really opened my eyes to what was going on! During this decade, America was going through some big cultural shifts that made a lot of religious folks nervous. The sexual revolution of the 1960s had brought more open attitudes toward sex, with things like the birth control pill becoming widely available, and the feminist movement was pushing for women’s rights, including the 1973 Roe v. Wade Supreme Court decision that legalized abortion nationwide. To many evangelicals, these changes felt like a direct attack on their traditional values, like the importance of family, marriage, and the sanctity of life. Leaders like Jerry Falwell, a pastor from Virginia, saw this as a call to action. The article quotes Falwell and others, saying, “Falwell and other evangelical leaders began to argue that Christians had a duty to engage in politics to protect their values,” which was a huge shift because, before this, many evangelicals had stayed out of politics, focusing more on personal faith. In 1979, Falwell founded the Moral Majority, a group that aimed to get conservative Christians to vote for candidates who supported their views on issues like banning abortion, bringing prayer back into public schools, and stopping the teaching of evolution in favor of creationism. The Moral Majority was a game-changer, it registered millions of voters, and by 1980, they claimed to have mobilized up to 4 million previously uninvolved evangelicals. They also raised tons of money to support conservative candidates and used TV and radio to spread their message, making faith a central part of the New Right’s identity. It is incredible to see how this movement turned religious beliefs into a political force that still shapes debates today!</p>
+                        <ul class="event-sources">
+                            <li><a href="https://www.nytimes.com/2018/10/28/us/religion-politics-evangelicals.html" target="_blank">The New York Times: Evangelicals and Politics</a></li>
+                        </ul>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.nytimes.com/2018/10/28/us/religion-politics-evangelicals.html" target="_blank">The New York Times: Evangelicals and Politics</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1980" id="event-1980">
+                <h2>1980: Reagan’s Election</h2>
+                <div class="content">
+                    <p>Ronald Reagan’s 1980 election victory solidified the New Right’s power, beating Jimmy Carter with 50.7% of the vote and 489 electoral votes. His platform included tax cuts, deregulation, a strong anti-communist stance, and support from evangelicals, marking a major shift in the Republican Party toward conservatism.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>Ronald Reagan’s 1980 election was a total game-changer for the New Right, and this Britannica article about him gave me so many cool insights! By 1980, Americans were dealing with a lot of frustration. The economy was a mess, there was this thing called stagflation where prices were skyrocketing but jobs were stagnant, and the unemployment rate hit 7.1%. On top of that, the Iran hostage crisis, where 52 Americans were held captive in Tehran for over a year, made President Jimmy Carter look weak on the world stage. Reagan came in with a message of hope and strength, promising to fix these problems. The article sums up his appeal perfectly, “Reagan’s campaign appealed to conservatives with promises of tax cuts, reduced government spending, and a strong anti-communist foreign policy,” which really resonated with people who wanted change. He also won over evangelical Christians, who loved his stance against abortion and his support for traditional family values, thanks to the groundwork laid by groups like the Moral Majority. Reagan’s charisma was a big deal too, he was a former Hollywood actor and governor of California, so he knew how to connect with people. He even won over a bunch of working-class Democrats, often called “Reagan Democrats,” who were tired of Carter’s leadership and wanted a stronger America to stand up to the Soviet Union during the Cold War. In the election, Reagan crushed it, winning 50.7% of the popular vote and a whopping 489 electoral votes to Carter’s 49. That victory wasn’t just a win for Reagan, it was a sign that the New Right had taken over the Republican Party, turning it into a more conservative force that is still a big deal in politics today. It is so fascinating to see how one election can shift everything!</p>
+                        <ul class="event-sources">
+                            <li><a href="https://www.britannica.com/biography/Ronald-Reagan" target="_blank">Britannica: Ronald Reagan</a></li>
+                        </ul>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.britannica.com/biography/Ronald-Reagan" target="_blank">Britannica: Ronald Reagan</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1980s" id="event-1980s">
+                <h2>1980s: Economic and Social Policies</h2>
+                <div class="content">
+                    <p>In the 1980s, Reagan’s policies like the 1981 Economic Recovery Tax Act, deregulation, and military buildup boosted the economy but increased inequality. The New Right also pushed for social changes, including school prayer and anti-abortion laws, influencing laws and appointing conservative justices like Antonin Scalia to the Supreme Court.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The 1980s were such an intense decade with Reagan leading the New Right, and this HISTORY article gave me a ton to think about! Reagan came into office with big plans to change the economy, and one of his first moves was the Economic Recovery Tax Act of 1981, which slashed taxes dramatically. The article explains, “Reagan’s tax cuts primarily benefited the wealthy, reducing the top marginal rate from 70% to 28%,” and while this did help spark economic growth, GDP grew at an average of 3.5% per year during his presidency, it also made the gap between rich and poor much bigger. By 1989, the top 1% of Americans held 30% of the nation’s wealth, up from 22% in 1980, which stirred up a lot of debate about fairness. Reagan also pushed deregulation, cutting rules on industries like banking and energy, which businesses loved but led to issues like the Savings and Loan crisis, where hundreds of banks failed, costing taxpayers $124 billion. On the social side, the New Right, backed by evangelical voters, fought hard for conservative values. They pushed for laws to allow prayer in public schools and to limit abortion, though they didn’t fully succeed, Roe v. Wade stayed in place. Still, Reagan appointed conservative Supreme Court justices like Antonin Scalia in 1986, which shifted the court to the right for decades. Plus, Reagan’s military buildup was massive, he increased defense spending by 35% to counter the Soviet Union, including funding for the Strategic Defense Initiative, nicknamed “Star Wars,” which aimed to create a missile defense system. That put a lot of pressure on the Soviets during the Cold War, but it also added to the national debt, which nearly tripled to $2.9 trillion by the end of his presidency. The 1980s really shaped modern America with these bold changes, and you can still feel their impact in today’s debates about taxes, social issues, and military spending!</p>
+                        <ul class="event-sources">
+                            <li><a href="https://www.history.com/articles/1980s" target="_blank">HISTORY: The 1980s</a></li>
+                        </ul>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.history.com/articles/1980s" target="_blank">HISTORY: The 1980s</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event hidden" data-year="1990s" id="event-1990s">
+                <h2>1990s: Lasting Impact</h2>
+                <div class="content">
+                    <p>In the 1990s, the New Right’s influence continued with the 1994 Contract with America, leading to a Republican Congress takeover. Leaders like Newt Gingrich pushed tax cuts and deregulation, while the Christian Coalition kept evangelical support strong, solidifying a lasting conservative shift in American politics.</p>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="extra-info">
+                        <p>The 1990s were a huge moment for the New Right to show they were here to stay, and this Britannica article on Newt Gingrich gave me all the details! By the early 1990s, the momentum from Reagan’s presidency was still going strong, but many conservatives felt President Bill Clinton, a Democrat, was undoing their gains with policies like raising taxes on the wealthy and pushing for universal healthcare. That is where Newt Gingrich, a Republican congressman from Georgia, stepped in. In 1994, he led the charge on the Contract with America, a set of promises to voters that Republicans would make big changes if they won control of Congress. The article nails it, “Gingrich helped draft the Contract with America, a 1994 campaign manifesto that promised tax cuts, welfare reform, and a balanced budget, leading to a Republican congressional majority.” The contract included specific goals like cutting welfare programs, lowering taxes for small businesses, and passing a balanced budget amendment. It was a hit with voters, Republicans won 54 seats in the House and took control of both the House and Senate for the first time in 40 years! The Christian Coalition, a group that grew out of the Moral Majority, played a big role too, keeping evangelical voters engaged with their focus on social issues like opposing abortion and supporting school prayer, they claimed to have distributed 40 million voter guides in 1994 alone. Gingrich became Speaker of the House and pushed hard for the contract’s goals, though not everything passed, Clinton vetoed some of their budget cuts, leading to government shutdowns in 1995 and 1996. Still, the New Right’s influence grew, and their ideas about smaller government and conservative values became a permanent part of American politics, shaping debates on everything from taxes to social policies that we still hear about today. It is pretty incredible how much power they built from that one election!</p>
+                        <ul class="event-sources">
+                            <li><a href="https://www.britannica.com/biography/Newt-Gingrich" target="_blank">Britannica: Newt Gingrich</a></li>
+                        </ul>
+                    </div>
+                    <ul class="event-sources">
+                        <li><a href="https://www.britannica.com/biography/Newt-Gingrich" target="_blank">Britannica: Newt Gingrich</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event" data-year="1994" id="event-1994">
+                <h2>1994: New Right Leader Shaping the Contract with America</h2>
+                <div class="content">
+                    <p>Step into the role of a New Right leader in 1994, working alongside Newt Gingrich to shape the Contract with America. Make decisions to balance policy priorities, public support, and party unity. Your choices will determine the success of the Republican takeover of Congress and teach you about the New Right’s challenges in a fun, interactive way!</p>
+                    <button id="start-game-btn-new-right" onclick="startGameNewRight()">Start Game</button>
+                    <div id="game-container-new-right" style="display: none;">
+                        <div id="game-scenario-new-right"></div>
+                        <div id="game-choices-new-right"></div>
+                        <div id="game-metrics-new-right">
+                            <p>Policy Priorities: <span id="policy-priorities">50</span></p>
+                            <p>Public Support: <span id="public-support">50</span></p>
+                            <p>Party Unity: <span id="party-unity">50</span></p>
+                        </div>
+                        <div id="game-outcome-new-right" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Hosted on <a href="https://github.com/AzR1314/cold-war-timeline">GitHub</a> | Created by Guillermo Cerda</p>
+    </footer>
+
+    <audio id="applause" src="assets/applause.mp3"></audio>
+    <audio id="boo" src="assets/boo.mp3"></audio>
+    <audio id="cheer" src="assets/cheer.mp3"></audio>
+    <div id="correct-text" class="correct-text"></div>
+
+    <script src="script.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        document.getElementById("defaultOpen").click();
+
+        // Quiz handler for Rise of the New Right tab
+        document.getElementById('quiz-form-goldwater').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedAnswer = document.querySelector('#RiseOfTheNewRight input[name="answer"]:checked');
+            const hiddenSections = document.querySelectorAll('#RiseOfTheNewRight .timeline-event.hidden');
+            const applause = document.getElementById('applause');
+            const boo = document.getElementById('boo');
+            const correctText = document.getElementById('correct-text');
+            const explanationDiv = document.getElementById('answer-explanation-goldwater');
+
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerHTML = '';
+
+            if (selectedAnswer) {
+                if (selectedAnswer.value === 'B') {
+                    hiddenSections.forEach(section => section.classList.remove('hidden'));
+                    applause.currentTime = 0; applause.play();
+                    setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
+                    correctText.textContent = 'Correct!'; correctText.style.display = 'block';
+                    setTimeout(() => {
+                        correctText.classList.add('shrink');
+                        setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
+                    }, 3000);
+                    explanationDiv.innerHTML = '<p><strong>Correct!</strong> Limited government was a key theme of Goldwater’s campaign.</p>';
+                    explanationDiv.style.display = 'block';
+                } else {
+                    boo.currentTime = 0; boo.play();
+                    setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
+                    explanationDiv.innerHTML = '<p><strong>Incorrect.</strong> Try again!</p>';
+                    explanationDiv.style.display = 'block';
+                    alert('Try again!');
+                }
+            }
+        });
+
+        // Role-Play Game for Communism From Within (Tab 2)
+        function startGame() {
+            const startButton = document.getElementById('start-game-btn');
+            const gameContainer = document.getElementById('game-container');
+            const scenarioDiv = document.getElementById('game-scenario');
+            const choicesDiv = document.getElementById('game-choices');
+            const outcomeDiv = document.getElementById('game-outcome');
+            const publicTrustSpan = document.getElementById('public-trust');
+            const nationalSecuritySpan = document.getElementById('national-security');
+            const civilLibertiesSpan = document.getElementById('civil-liberties');
+
+            let publicTrust = 50;
+            let nationalSecurity = 50;
+            let civilLiberties = 50;
+            let currentScenario = 0;
+
+            startButton.style.display = 'none';
+            gameContainer.style.display = 'block';
+
+            const scenarios = [
+                {
+                    scenario: "It’s 1952, and Senator McCarthy is accusing government officials of being communists without solid proof. The public is scared, but civil rights groups are worried about unfair treatment. Do you support McCarthy’s investigations or push for more evidence?",
+                    choices: [
+                        { text: "Support McCarthy to calm public fears.", publicTrustChange: 20, nationalSecurityChange: 10, civilLibertiesChange: -30 },
+                        { text: "Demand evidence to protect civil liberties.", publicTrustChange: -10, nationalSecurityChange: -5, civilLibertiesChange: 20 }
+                    ]
+                },
+                {
+                    scenario: "A Hollywood director is blacklisted for suspected communist ties, and the public is divided. Some want to crack down on suspected communists in the film industry, while others see it as a violation of free speech. What do you do?",
+                    choices: [
+                        { text: "Crack down to show you’re tough on communism.", publicTrustChange: 15, nationalSecurityChange: 10, civilLibertiesChange: -25 },
+                        { text: "Protect free speech and oppose the blacklist.", publicTrustChange: -15, nationalSecurityChange: -10, civilLibertiesChange: 20 }
+                    ]
+                },
+                {
+                    scenario: "The Venona Project reveals real Soviet spies in the U.S., but McCarthy’s aggressive tactics are causing panic. Do you declassify parts of Venona to justify the investigations, or keep it secret to avoid more fear?",
+                    choices: [
+                        { text: "Declassify Venona to justify the investigations.", publicTrustChange: 10, nationalSecurityChange: 15, civilLibertiesChange: -10 },
+                        { text: "Keep it secret to prevent more panic.", publicTrustChange: -10, nationalSecurityChange: -15, civilLibertiesChange: 10 }
+                    ]
+                }
+            ];
+
+            function displayScenario() {
+                if (currentScenario >= scenarios.length) {
+                    showOutcome();
+                    return;
+                }
+
+                const scenario = scenarios[currentScenario];
+                scenarioDiv.innerHTML = `<p>${scenario.scenario}</p>`;
+                choicesDiv.innerHTML = scenario.choices.map((choice, index) => 
+                    `<button onclick="makeChoice(${index})">${choice.text}</button>`
+                ).join('<br>');
+
+                publicTrustSpan.textContent = publicTrust;
+                nationalSecuritySpan.textContent = nationalSecurity;
+                civilLibertiesSpan.textContent = civilLiberties;
+            }
+
+            window.makeChoice = function(choiceIndex) {
+                const scenario = scenarios[currentScenario];
+                const choice = scenario.choices[choiceIndex];
+
+                publicTrust += choice.publicTrustChange;
+                nationalSecurity += choice.nationalSecurityChange;
+                civilLiberties += choice.civilLibertiesChange;
+
+                publicTrust = Math.max(0, Math.min(100, publicTrust));
+                nationalSecurity = Math.max(0, Math.min(100, nationalSecurity));
+                civilLiberties = Math.max(0, Math.min(100, civilLiberties));
+
+                currentScenario++;
+                displayScenario();
+            };
+
+            function showOutcome() {
+                scenarioDiv.style.display = 'none';
+                choicesDiv.style.display = 'none';
+                outcomeDiv.style.display = 'block';
+
+                let outcome = '';
+                if (publicTrust >= 60 && nationalSecurity >= 60 && civilLiberties >= 60) {
+                    outcome = 'Great job! You balanced public trust, national security, and civil liberties. Your leadership calms the nation while addressing real threats, ensuring McCarthyism doesn’t spiral out of control.';
+                    document.getElementById('cheer').play();
+                } else if (publicTrust >= 50 || nationalSecurity >= 50 || civilLiberties >= 50) {
+                    outcome = 'Not bad! You managed to navigate McCarthyism, but there are some tensions. The nation is stable, but some groups feel neglected or unfairly targeted.';
+                    document.getElementById('applause').play();
+                } else {
+                    outcome = 'Oh no! Your decisions led to chaos. Public trust, national security, and civil liberties are all low, and McCarthyism has caused widespread fear and division.';
+                    document.getElementById('boo').play();
+                }
+
+                outcomeDiv.innerHTML = `<p>${outcome}</p><button onclick="startGame()">Play Again</button>`;
+            }
+
+            displayScenario();
+        }
+
+        // Role-Play Game for New Right (Tab 3)
+        function startGameNewRight() {
+            const startButton = document.getElementById('start-game-btn-new-right');
+            const gameContainer = document.getElementById('game-container-new-right');
+            const scenarioDiv = document.getElementById('game-scenario-new-right');
+            const choicesDiv = document.getElementById('game-choices-new-right');
+            const outcomeDiv = document.getElementById('game-outcome-new-right');
+            const policySpan = document.getElementById('policy-priorities');
+            const supportSpan = document.getElementById('public-support');
+            const unitySpan = document.getElementById('party-unity');
+
+            let policy = 50;
+            let support = 50;
+            let unity = 50;
+            let currentScenario = 0;
+
+            startButton.style.display = 'none';
+            gameContainer.style.display = 'block';
+
+            const scenarios = [
+                {
+                    scenario: "It’s 1994, and you’re helping Newt Gingrich craft the Contract with America. Evangelical voters want a strong stance against abortion, but moderates in the party are worried it might push away swing voters. What do you prioritize?",
+                    choices: [
+                        { text: "Focus on anti-abortion policies to please evangelicals.", policyChange: 20, supportChange: -10, unityChange: -15 },
+                        { text: "Balance both sides by focusing on economic issues like tax cuts instead.", policyChange: -10, supportChange: 15, unityChange: 10 }
+                    ]
+                },
+                {
+                    scenario: "The Contract with America is gaining traction, but some Republicans are hesitant about deep welfare cuts. The public loves the idea of reducing government spending, but party unity is at risk. What do you do?",
+                    choices: [
+                        { text: "Push for deep welfare cuts to stick to the New Right’s principles.", policyChange: 15, supportChange: 10, unityChange: -20 },
+                        { text: "Compromise by proposing smaller cuts to keep the party together.", policyChange: -10, supportChange: -5, unityChange: 15 }
+                    ]
+                },
+                {
+                    scenario: "Election Day is approaching, and the media is criticizing the Contract as too extreme. You can either double down on the New Right’s message or soften the tone to appeal to more voters. What’s your strategy?",
+                    choices: [
+                        { text: "Double down on the New Right’s message to energize the base.", policyChange: 10, supportChange: -15, unityChange: 5 },
+                        { text: "Soften the tone to broaden appeal and win more seats.", policyChange: -15, supportChange: 20, unityChange: -5 }
+                    ]
+                }
+            ];
+
+            function displayScenario() {
+                if (currentScenario >= scenarios.length) {
+                    showOutcome();
+                    return;
+                }
+
+                const scenario = scenarios[currentScenario];
+                scenarioDiv.innerHTML = `<p>${scenario.scenario}</p>`;
+                choicesDiv.innerHTML = scenario.choices.map((choice, index) => 
+                    `<button onclick="makeChoiceNewRight(${index})">${choice.text}</button>`
+                ).join('<br>');
+
+                policySpan.textContent = policy;
+                supportSpan.textContent = support;
+                unitySpan.textContent = unity;
+            }
+
+            window.makeChoiceNewRight = function(choiceIndex) {
+                const scenario = scenarios[currentScenario];
+                const choice = scenario.choices[choiceIndex];
+
+                policy += choice.policyChange;
+                support += choice.supportChange;
+                unity += choice.unityChange;
+
+                policy = Math.max(0, Math.min(100, policy));
+                support = Math.max(0, Math.min(100, support));
+                unity = Math.max(0, Math.min(100, unity));
+
+                currentScenario++;
+                displayScenario();
+            };
+
+            function showOutcome() {
+                scenarioDiv.style.display = 'none';
+                choicesDiv.style.display = 'none';
+                outcomeDiv.style.display = 'block';
+
+                let outcome = '';
+                if (policy >= 60 && support >= 60 && unity >= 60) {
+                    outcome = 'Great job! You balanced policy priorities, public support, and party unity. The Contract with America leads to a massive Republican victory, securing a congressional majority and cementing the New Right’s influence for years to come.';
+                    document.getElementById('cheer').play();
+                } else if (policy >= 50 || support >= 50 || unity >= 50) {
+                    outcome = 'Not bad! You managed to push the Contract with America forward, but some challenges remain. The Republicans gain seats, but party divisions and public skepticism make the victory less decisive.';
+                    document.getElementById('applause').play();
+                } else {
+                    outcome = 'Oh no! Your decisions led to a fractured party and a lukewarm public response. The Contract with America fails to resonate, and the Republicans struggle to gain a majority in Congress.';
+                    document.getElementById('boo').play();
+                }
+
+                outcomeDiv.innerHTML = `<p>${outcome}</p><button onclick="startGameNewRight()">Play Again</button>`;
+            }
+
+            // Reset game state when "Play Again" is clicked
+            window.resetGameNewRight = function() {
+                policy = 50;
+                support = 50;
+                unity = 50;
+                currentScenario = 0;
+                scenarioDiv.style.display = 'block';
+                choicesDiv.style.display = 'block';
+                outcomeDiv.style.display = 'none';
+                displayScenario();
+            };
+
+            displayScenario();
+        }
+    </script>
+</body>
+</html>
