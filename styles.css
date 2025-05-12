@@ -1,39 +1,38 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     background-color: #f4f4f4;
 }
 
 header {
-    background-color: #333;
-    color: white;
     text-align: center;
-    padding: 1em;
+    margin-bottom: 20px;
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5em;
+    color: #333;
 }
 
 header p {
-    margin: 0.5em 0 0;
-    font-style: italic;
+    font-size: 1.2em;
+    color: #666;
 }
 
 .timeline {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .timeline-event {
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 20px;
     margin-bottom: 20px;
-    padding: 15px;
-    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-event h2 {
@@ -41,9 +40,13 @@ header p {
     color: #333;
 }
 
-.timeline-event .content {
-    display: flex;
-    flex-direction: column;
+.timeline-event p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.timeline-event.hidden {
+    display: none;
 }
 
 .event-sources {
@@ -56,7 +59,7 @@ header p {
 }
 
 .event-sources a {
-    color: #333;
+    color: #0066cc;
     text-decoration: none;
 }
 
@@ -65,31 +68,25 @@ header p {
 }
 
 .quiz {
-    margin-top: 15px;
-    padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .quiz p {
-    margin: 0 0 10px;
     font-weight: bold;
 }
 
 .quiz form {
-    display: flex;
-    flex-direction: column;
+    margin-top: 10px;
 }
 
 .quiz label {
-    margin: 5px 0;
+    margin-right: 10px;
 }
 
 .quiz button {
-    align-self: flex-start;
+    margin-top: 10px;
     padding: 5px 10px;
-    background: #333;
+    background-color: #0066cc;
     color: white;
     border: none;
     border-radius: 3px;
@@ -97,208 +94,86 @@ header p {
 }
 
 .quiz button:hover {
-    background: #555;
+    background-color: #005bb5;
 }
 
 .answer-explanation {
-    display: none;
     margin-top: 10px;
     padding: 10px;
-    background: #e0f7fa;
-    border: 1px solid #b2ebf2;
     border-radius: 5px;
 }
 
+.answer-explanation p {
+    margin: 0;
+}
+
 .correct-text {
-    displayatia: none;
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 48px;
-    color: green;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    font-size: 2em;
+    color: #28a745;
+    font-weight: bold;
+    animation: grow 0.5s ease-in-out;
 }
 
 .correct-text.shrink {
-    animation: shrink 1s forwards;
+    animation: shrink 0.5s ease-in-out;
+}
+
+@keyframes grow {
+    from { transform: translate(-50%, -50%) scale(0); }
+    to { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes shrink {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    100% { transform: translate(-50%, -50%) scale(0); }
-}
-
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    top: -10px;
-    z-index: 999;
-    animation: fall 5s linear forwards;
-}
-
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
-.expand-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.expand-btn:hover {
-    background: #555;
-}
-
-.extra-info {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.hidden {
-    display: none;
-}
-
-footer {
-    text-align: center;
-    padding: 1em;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    color: #ccc;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+    from { transform: translate(-50%, -50%) scale(1); }
+    to { transform: translate(-50%, -50%) scale(0); }
 }
 
 .timeline-nav {
-    background-color: #f1f1f1;
-    padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .timeline-nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin: 0;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .timeline-nav li {
     margin: 0;
 }
 
-.timeline-nav a,
-.timeline-nav a:link,
-.timeline-nav a:visited {
+.timeline-nav a {
     text-decoration: none;
-    color: #333 !important;
-    font-weight: bold;
-    padding: 8px 12px;
-    display: block;
-    transition: color 0.3s;
+    color: #0066cc;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
 }
 
 .timeline-nav a:hover {
-    color: #555 !important;
+    background-color: #e0e0e0;
 }
 
-/* Mini-Game Styles */
-#start-game-btn {
-    padding: 10px 20px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-#start-game-btn:hover {
-    background: #555;
-}
-
-#game-container {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-#game-scenario {
-    margin-bottom: 15px;
-}
-
-#game-choices {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.choice-btn {
-    padding: 10px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: left;
-}
-
-.choice-btn:hover {
-    background: #555;
-}
-
-#game-metrics {
-    margin-top: 15px;
-    padding: 10px;
-    background: #e0f7fa;
-    border: 1px solid #b2ebf2;
-    border-radius: 5px;
-}
-
-#game-outcome {
-    margin-top: 20px;
-    padding: 15px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+footer {
     text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    color: #666;
 }
 
-#game-outcome button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+footer a {
+    color: #0066cc;
+    text-decoration: none;
 }
 
-#game-outcome button:hover {
-    background: #555;
+footer a:hover {
+    text-decoration: underline;
 }
