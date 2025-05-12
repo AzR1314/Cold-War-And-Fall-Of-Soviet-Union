@@ -362,6 +362,41 @@
             evt.currentTarget.className += " active";
         }
         document.getElementById("defaultOpen").click();
+
+        // Quiz handler for Rise of the New Right tab
+        document.getElementById('quiz-form-goldwater').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedAnswer = document.querySelector('#RiseOfTheNewRight input[name="answer"]:checked');
+            const hiddenSections = document.querySelectorAll('#RiseOfTheNewRight .timeline-event.hidden');
+            const applause = document.getElementById('applause');
+            const boo = document.getElementById('boo');
+            const correctText = document.getElementById('correct-text');
+            const explanationDiv = document.getElementById('answer-explanation-goldwater');
+
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerHTML = '';
+
+            if (selectedAnswer) {
+                if (selectedAnswer.value === 'B') {
+                    hiddenSections.forEach(section => section.classList.remove('hidden'));
+                    applause.currentTime = 0; applause.play();
+                    setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
+                    correctText.textContent = 'Correct!'; correctText.style.display = 'block';
+                    setTimeout(() => {
+                        correctText.classList.add('shrink');
+                        setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
+                    }, 3000);
+                    explanationDiv.innerHTML = '<p><strong>Correct!</strong> Limited government was a key theme of Goldwater’s campaign.</p>';
+                    explanationDiv.style.display = 'block';
+                } else {
+                    boo.currentTime = 0; boo.play();
+                    setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
+                    explanationDiv.innerHTML = '<p><strong>Incorrect.</strong> Try again!</p>';
+                    explanationDiv.style.display = 'block';
+                    alert('Try again!');
+                }
+            }
+        });
     </script>
 </body>
 </html>
