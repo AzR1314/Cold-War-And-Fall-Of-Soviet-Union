@@ -1,67 +1,170 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Quiz Form Submission for Event 1 (Cold War)
-    document.getElementById('quiz-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const selectedAnswer = document.querySelector('#ColdWar input[name="answer"]:checked');
-        const hiddenSections = document.querySelectorAll('#ColdWar .timeline-event.hidden');
-        const applause = document.getElementById('applause');
-        const boo = document.getElementById('boo');
-        const correctText = document.getElementById('correct-text');
-        const explanationDiv = document.getElementById('answer-explanation');
-
-        explanationDiv.style.display = 'none';
-        explanationDiv.innerHTML = '';
-
-        if (selectedAnswer) {
-            if (selectedAnswer.value === 'B') {
-                hiddenSections.forEach(section => section.classList.remove('hidden'));
-                applause.currentTime = 0; applause.play();
-                setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
-                correctText.textContent = 'Correct!'; correctText.style.display = 'block';
-                setTimeout(() => {
-                    correctText.classList.add('shrink');
-                    setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
-                }, 3000);
-                for (let i = 0; i < 1000; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    confetti.style.animationDelay = Math.random() * 2 + 's';
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 5000);
-                }
-                explanationDiv.innerHTML = `
-                    <p><strong>Correct!</strong> The Soviet Union's economic growth was driven by high productivity industries like oil, gas, and heavy manufacturing, though stagnation hit by the 1970s.</p>
-                    <p><strong>Evidence:</strong> Oil exports peaked at over 50% of earnings by 1975, per video at 22:25–23:25.</p>
-                `;
-                explanationDiv.style.display = 'block';
-            } else {
-                boo.currentTime = 0; boo.play();
-                setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
-                if (selectedAnswer.value === 'A') {
-                    explanationDiv.innerHTML = `
-                        <p><strong>Incorrect.</strong> Low productive industries like consumer goods were underfunded, not a growth source.</p>
-                        <p><strong>Evidence:</strong> Only 25% of GDP went to consumer goods vs. 40% for heavy industry in the 1970s.</p>
-                        <p><strong>Sources:</strong> <a href="https://www.pbs.org/wgbh/frontline/article/the-soviet-occupation-of-afghanistan/" target="_blank">PBS: Soviet Occupation</a></p>
-                    `;
-                } else if (selectedAnswer.value === 'C') {
-                    explanationDiv.innerHTML = `
-                        <p><strong>Incorrect.</strong> Military spending consumed up to 20% of GDP, draining rather than driving growth.</p>
-                        <p><strong>Evidence:</strong> Increased in the 1980s, per CIA estimates.</p>
-                        <p><strong>Sources:</strong> <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90T00155R000300030001-8.pdf" target="_blank">CIA: Soviet Military Spending</a></p>
-                    `;
-                }
-                explanationDiv.style.display = 'block';
-                alert('Try again!');
-            }
+    // Helper function for confetti animation
+    function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 5000);
         }
-    });
+    }
 
-    // Quiz Form Submission for Event 5 (Cold War)
-    document.getElementById('quiz-form-5').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const selectedAnswer = document.querySelector('#ColdWar input[name="answer"]:checked');
-        const applause = document.getElementById('applause');
-        const boo = document.getElementById('boo');
-        const correctText = document.getElementById('correct
+    // "Learn More" button handler
+    const expandButtons = document.querySelectorAll('.expand-btn');
+    if (expandButtons.length) {
+        expandButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const extraInfo = button.nextElementSibling;
+                const cheer = document.getElementById('cheer');
+                if (!extraInfo || !extraInfo.classList.contains('extra-info')) {
+                    console.error('Extra info not found for button:', button);
+                    return;
+                }
+                const isVisible = extraInfo.style.display === 'block';
+                extraInfo.style.display = isVisible ? 'none' : 'block';
+                button.textContent = isVisible ? 'Learn More' : 'Hide';
+                if (!isVisible && button.closest('.timeline-event')?.getAttribute('data-year') === '1989' &&
+                    button.parentElement.querySelector('p')?.textContent.includes('nationalist')) {
+                    if (cheer) {
+                        cheer.currentTime = 0;
+                        cheer.play().catch(e => console.error('Cheer audio failed:', e));
+                        setTimeout(() => {
+                            cheer.pause();
+                            cheer.currentTime = 0;
+                        }, 3000);
+                    } else {
+                        console.warn('Cheer audio element not found');
+                    }
+                }
+            });
+        });
+    } else {
+        console.warn('No .expand-btn elements found');
+    }
+
+    // Quiz Form Submission - Cold War Event 1
+    const quizForm = document.getElementById('quiz-form');
+    if (quizForm) {
+        quizForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page reload
+            const selectedAnswer = quizForm.querySelector('input[name="answer"]:checked');
+            const explanationDiv = document.getElementById('answer-explanation');
+            const applause = document.getElementById('applause');
+            const boo = document.getElementById('boo');
+            if (!selectedAnswer || !explanationDiv) {
+                console.error('Quiz form elements missing:', { selectedAnswer, explanationDiv });
+                return;
+            }
+
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerHTML = '';
+            const correctAnswer = 'C'; // Military
+            if (selectedAnswer.value === correctAnswer) {
+                explanationDiv.innerHTML = '<p>Correct! The Soviet Union’s economic growth was heavily driven by its military-industrial complex, which prioritized defense spending over consumer goods, contributing to its eventual economic strain.</p>';
+                if (applause) {
+                    applause.currentTime = 0;
+                    applause.play().catch(e => console.error('Applause audio failed:', e));
+                }
+                createConfetti();
+                document.querySelectorAll('#ColdWar .timeline-event.hidden').forEach(event => {
+                    event.classList.remove('hidden');
+                });
+            } else {
+                explanationDiv.innerHTML = '<p>Incorrect. The Soviet economy relied heavily on its military sector, not low or high productive industries, which led to imbalances and stagnation.</p>';
+                if (boo) {
+                    boo.currentTime = 0;
+                    boo.play().catch(e => console.error('Boo audio failed:', e));
+                }
+            }
+            explanationDiv.style.display = 'block';
+        });
+    } else {
+        console.warn('Quiz form #quiz-form not found');
+    }
+
+    // Quiz Form Submission - Cold War Event 5
+    const quizForm5 = document.getElementById('quiz-form-5');
+    if (quizForm5) {
+        quizForm5.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page reload
+            const selectedAnswer = quizForm5.querySelector('input[name="answer"]:checked');
+            const explanationDiv = document.getElementById('answer-explanation-5');
+            const applause = document.getElementById('applause');
+            const boo = document.getElementById('boo');
+            if (!selectedAnswer || !explanationDiv) {
+                console.error('Quiz form 5 elements missing:', { selectedAnswer, explanationDiv });
+                return;
+            }
+
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerHTML = '';
+            const correctAnswer = 'B'; // Loss of control over republics
+            if (selectedAnswer.value === correctAnswer) {
+                explanationDiv.innerHTML = '<p>Correct! The loss of control over republics, driven by nationalist movements and Gorbachev’s reforms, was a key factor in the Soviet Union’s collapse.</p>';
+                if (applause) {
+                    applause.currentTime = 0;
+                    applause.play().catch(e => console.error('Applause audio failed:', e));
+                }
+                createConfetti();
+            } else {
+                explanationDiv.innerHTML = '<p>Incorrect. While military spending and U.S. presence played roles, the primary factor was the loss of control over republics seeking independence.</p>';
+                if (boo) {
+                    boo.currentTime = 0;
+                    boo.play().catch(e => console.error('Boo audio failed:', e));
+                }
+            }
+            explanationDiv.style.display = 'block';
+        });
+    } else {
+        console.warn('Quiz form #quiz-form-5 not found');
+    }
+
+    // Quiz Form Submission - Communism From Within (HUAC)
+    const quizFormHuac = document.getElementById('quiz-form-huac');
+    if (quizFormHuac) {
+        quizFormHuac.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page reload
+            const selectedAnswer = quizFormHuac.querySelector('input[name="answer"]:checked');
+            const explanationDiv = document.getElementById('answer-explanation-huac');
+            const applause = document.getElementById('applause');
+            const boo = document.getElementById('boo');
+            if (!selectedAnswer || !explanationDiv) {
+                console.error('Quiz form HUAC elements missing:', { selectedAnswer, explanationDiv });
+                return;
+            }
+
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerHTML = '';
+            const correctAnswer = 'B'; // Hollywood film industry
+            if (selectedAnswer.value === correctAnswer) {
+                explanationDiv.innerHTML = '<p>Correct! HUAC targeted the Hollywood film industry in 1947, investigating alleged communist propaganda in films.</p>';
+                if (applause) {
+                    applause.currentTime = 0;
+                    applause.play().catch(e => console.error('Applause audio failed:', e));
+                }
+                createConfetti();
+                document.querySelectorAll('#CommunismFromWithin .timeline-event.hidden').forEach(event => {
+                    event.classList.remove('hidden');
+                });
+            } else {
+                explanationDiv.innerHTML = '<p>Incorrect. HUAC focused on Hollywood in 1947, not military officials or university professors.</p>';
+                if (boo) {
+                    boo.currentTime = 0;
+                    boo.play().catch(e => console.error('Boo audio failed:', e));
+                }
+            }
+            explanationDiv.style.display = 'block';
+        });
+    } else {
+        console.warn('Quiz form #quiz-form-huac not found');
+    }
+
+    // Quiz Form Submission - Rise of the New Right (Goldwater)
+    const quizFormGoldwater = document.getElementById('quiz-form-goldwater');
+    if (quizFormGoldwater) {
+        quizFormGoldwater.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page reload
+            const selectedAnswer = quizFormGoldwater.querySelector('input[name="answer"]:checked');
