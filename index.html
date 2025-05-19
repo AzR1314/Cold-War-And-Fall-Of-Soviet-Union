@@ -3,365 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cold War & Communism Timeline</title>
+    <title>World History Timeline</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-        }
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        .tab button.active {
-            background-color: #ccc;
-        }
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-    </style>
 </head>
 <body>
     <header>
-        <h1>Cold War & Communism Timeline</h1>
-        <p>Explore the Decline of the Soviet Union and Internal Communist Fears</p>
+        <h1>World History Timeline</h1>
+        <nav>
+            <button class="tab-button active" data-tab="cold-war">Cold War</button>
+            <button class="tab-button" data-tab="communism">Communism from Within</button>
+            <button class="tab-button" data-tab="new-right">Rise of the New Right</button>
+        </nav>
     </header>
-
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'ColdWar')" id="defaultOpen">Cold War</button>
-        <button class="tablinks" onclick="openTab(event, 'CommunismFromWithin')">Communism From Within</button>
-        <button class="tablinks" onclick="openTab(event, 'RiseOfTheNewRight')">Rise of the New Right</button>
-    </div>
-
-    <div id="ColdWar" class="tabcontent">
-        <section class="timeline">
-            <div class="timeline-event" data-year="1970">
-                <h2>1970–1980: Soviet Economy and Afghanistan</h2>
-                <div class="content">
-                    <p>The Soviet economy stagnated in the 1970s due to inefficiencies in central planning and an over-reliance on oil exports, which masked deeper structural problems. The Soviet-Afghan War (1979–1989) marked a turning point, costing billions and over 15,000 Soviet lives, draining resources, and lowering morale. This period highlighted the USSR’s inability to sustain its superpower status, setting the stage for its eventual collapse.</p>
-                    <iframe width="300" height="169" src="https://www.youtube.com/embed/KOZlobXa9iM?start=1345&end=1405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <ul class="event-sources">
-                        <li><a href="https://www.youtube.com/watch?v=KOZlobXa9iM" target="_blank">YouTube: Soviet-Afghan War Documentary</a></li>
-                    </ul>
-                    <div class="quiz">
-                        <p>What was the main source of economic growth of the Soviet Union?</p>
-                        <form id="quiz-form">
-                            <label><input type="radio" name="answer" value="A"> A: Low Productive Industries</label><br>
-                            <label><input type="radio" name="answer" value="B"> B: High Productive Industries</label><br>
-                            <label><input type="radio" name="answer" value="C"> C: Military</label><br>
-                            <button type="submit">Submit</button>
-                        </form>
-                        <div id="answer-explanation" class="answer-explanation"></div>
-                    </div>
-                </div>
+    <main>
+        <div id="cold-war" class="tab-content active">
+            <div class="timeline-item">
+                <span class="date">1947</span>
+                <h2>Truman Doctrine</h2>
+                <p class="summary">The Truman Doctrine was a U.S. policy to counter Soviet geopolitical expansion during the Cold War.</p>
+                <p class="extra-text">Announced by President Harry S. Truman, it provided economic and military aid to Greece and Turkey to prevent them from falling under Soviet influence, marking the start of the U.S. containment policy.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-
-            <div class="timeline-event hidden" data-year="1969">
-                <h2>1969–1980: U.S. Policy of Détente</h2>
-                <div class="content">
-                    <p>Détente reduced the risk of nuclear war but did not halt Soviet internal struggles, as economic dependence on the West grew.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The United States initiated a policy of détente with the Soviet Union beginning in 1969 to reduce Cold War tensions. This effort aimed to prevent nuclear conflict and foster diplomatic engagement. A significant achievement was the Strategic Arms Limitation Talks (SALT I) treaty, signed in 1972, which restricted the development of nuclear weapons. That same year, President Nixon’s visit to Moscow marked a historic milestone, being the first by a U.S. president during the Cold War. Economic cooperation also emerged, with the United States exporting grain to address Soviet agricultural shortages. This period of détente offered a temporary respite from hostilities. However, the Soviet invasion of Afghanistan in 1979 prompted a shift in U.S. policy under President Reagan, who adopted a more assertive stance in the 1980s, ending détente. This era revealed the Soviet Union’s increasing reliance on Western support amid its economic difficulties.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://history.state.gov/milestones/1969-1976/salt" target="_blank">U.S. State Dept: SALT I</a></li>
-                    </ul>
-                </div>
+            <div class="timeline-item">
+                <span class="date">1961</span>
+                <h2>Berlin Wall Erected</h2>
+                <p class="summary">The Berlin Wall was built by East Germany to divide East and West Berlin.</p>
+                <p class="extra-text">It symbolized the Iron Curtain, preventing defections from East to West and becoming a focal point of Cold War tensions until its fall in 1989.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-
-            <div class="timeline-event hidden" data-year="1985">
-                <h2>1985–1991: Gorbachev’s Reforms</h2>
-                <div class="content">
-                    <p>Mikhail Gorbachev implemented reforms to revitalize the Soviet Union. However, these efforts inadvertently accelerated its dissolution.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>Upon assuming leadership in 1985, Mikhail Gorbachev recognized the Soviet Union’s economic stagnation and systemic inefficiencies. He introduced <em>perestroika</em>, a policy aimed at restructuring the economy by incorporating limited market mechanisms and reducing state control. Additionally, he enacted <em>glasnost</em>, a policy of openness that permitted greater freedom of expression and criticism of the government. Initially, these reforms were intended to strengthen the Soviet system. By 1989, however, the economy had declined approximately 4% annually due to the disruption caused by these changes. The increased freedom of speech fueled public discontent and demands for autonomy in regions such as Ukraine and the Baltic states. Gorbachev aimed to preserve the unity of the Soviet Union, yet his policies ultimately contributed to its disintegration by 1991.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.britannica.com/place/Russia/The-Gorbachev-era-perestroika-and-glasnost" target="_blank">Britannica: Gorbachev Era</a></li>
-                    </ul>
-                </div>
+            <div class="timeline-item">
+                <span class="date">1962</span>
+                <h2>Cuban Missile Crisis</h2>
+                <p class="summary">A 13-day confrontation between the U.S. and Soviet Union over Soviet missiles in Cuba.</p>
+                <p class="extra-text">It was the closest the Cold War came to escalating into a full-scale nuclear war, resolved through diplomatic negotiations.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-
-            <div class="timeline-event hidden" data-year="1989">
-                <h2>1989–1991: Velvet Revolutions & Nationalism</h2>
-                <div class="content">
-                    <p>In 1969, Eastern European nations achieved independence from Soviet authority through peaceful means, inspiring widespread nationalist movements within the USSR.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The year 1989 marked a significant turning point in Eastern Europe, characterized by a series of nonviolent transitions known as the Velvet Revolutions. In Poland, negotiations between the communist government and the Solidarity trade union resulted in free elections, effectively ending Soviet-aligned governance. Hungary facilitated this shift by opening its borders to Western Europe, enabling thousands to emigrate from Soviet influence. Czechoslovakia experienced a rapid transition through organized protests, leading to the replacement of its communist leadership with minimal conflict. These developments were possible due to Gorbachev’s decision to refrain from military intervention, a departure from previous Soviet policy. Within the Soviet Union, these events encouraged regions such as Lithuania to pursue independence, with formal declarations beginning in 1990. By 1991, more than 15 republics had seceded, driven by the example of Eastern Europe’s success and growing nationalist sentiment, ultimately contributing to the Soviet Union’s collapse.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://miamioh.edu/cas/centers-institutes/havighurst-center/additional-resources/havighurst-special-programming/1989-revolutions/index.html" target="_blank">MiamiOH: 1989 Revolutions</a></li>
-                    </ul>
-                </div>
+        </div>
+        <div id="communism" class="tab-content">
+            <div class="timeline-item">
+                <span class="date">1950</span>
+                <h2>McCarthyism Begins</h2>
+                <p class="summary">Senator Joseph McCarthy led a campaign against alleged communists in the U.S.</p>
+                <p class="extra-text">His accusations sparked widespread fear, leading to investigations and blacklisting, often without solid evidence, impacting many lives.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-
-            <div class="timeline-event hidden" data-year="1989">
-                <h2>1989–1991: Berlin Wall & USSR Collapse</h2>
-                <div class="content">
-                    <p>The Berlin Wall’s collapse on November 9, 1989, signaled the conclusion of the Cold War. This event, propelled by East German protests and Gorbachev’s nonintervention, preceded the Soviet Union’s dissolution on December 26, 1991, following an unsuccessful coup, establishing the United States as the sole remaining superpower.</p>
-                    <iframe width="300" height="169" src="https://www.youtube.com/embed/A9fQPzZ1-hg?start=270&end=361" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The collapse of the Soviet Union in 1991 was the culmination of several interconnected events from the preceding decades. Economic stagnation and the costly Soviet-Afghan War during the 1970s and 1980s, as detailed in the first event, weakened the USSR’s financial stability and global standing. The policy of détente with the United States, initiated in 1969, exposed Soviet economic vulnerabilities through increased reliance on Western trade, as outlined in the second event. Gorbachev’s reforms of <em>perestroika</em> and <em>glasnost</em>, introduced in 1985, destabilized the Soviet system by encouraging dissent and regional autonomy, as described in the third event. The Velvet Revolutions of 1989 in Eastern Europe, followed by nationalist movements within the USSR, eroded Soviet authority as over 15 republics pursued independence, as noted in the fourth event. The final catalyst came with Gorbachev’s decision to allow elections with a multi-party system and create a presidency for the Soviet Union. This began a slow process of democratization that eventually destabilized Communist control and contributed to the collapse of the Soviet Union. Following the May 1990 elections, Gorbachev faced conflicting internal political pressures: Boris Yeltsin and the pluralist movement advocated democratization and rapid economic reforms, while the hard-line Communist elite sought to thwart Gorbachev’s reform agenda. These tensions culminated in the failed coup of August 1991, which precipitated the USSR’s dissolution by December of that year.</p>
-                    </div>
-                    <div class="quiz">
-                        <p>What was a key factor in the Soviet Union’s collapse according to the video (4:30–6:01)?</p>
-                        <form id="quiz-form-5">
-                            <label><input type="radio" name="answer" value="A"> A: Increased military spending</label><br>
-                            <label><input type="radio" name="answer" value="B"> B: Loss of control over republics</label><br>
-                            <label><input type="radio" name="answer" value="C"> C: Stronger U.S. military presence</label><br>
-                            <button type="submit">Submit</button>
-                        </form>
-                        <div id="answer-explanation-5" class="answer-explanation"></div>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://history.state.gov/milestones/1989-1992/collapse-soviet-union" target="_blank">U.S. State Dept: Collapse of Soviet Union</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=A9fQPzZ1-hg" target="_blank">YouTube: TED-Ed Berlin Wall & USSR Collapse</a></li>
-                    </ul>
-                </div>
+            <div class="timeline-item">
+                <span class="date">1953</span>
+                <h2>House Un-American Activities Committee (HUAC) Hearings</h2>
+                <p class="summary">HUAC investigated alleged communist activities in the U.S., focusing on Hollywood and government.</p>
+                <p class="extra-text">The hearings led to the blacklisting of many individuals in the entertainment industry, accused of communist sympathies.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-        </section>
-    </div>
-
-    <div id="CommunismFromWithin" class="tabcontent">
-        <section class="timeline">
-            <nav class="timeline-nav">
-                <ul>
-                    <li><a href="#event-1947" onclick="scrollToEvent('event-1947')">1947: HUAC Investigations</a></li>
-                    <li><a href="#event-1950-wheeling" onclick="scrollToEvent('event-1950-wheeling')">1950: McCarthy’s Speech</a></li>
-                    <li><a href="#event-1945-venona" onclick="scrollToEvent('event-1945-venona')">1945–1995: Venona Project</a></li>
-                    <li><a href="#event-1950-mccarthyism" onclick="scrollToEvent('event-1950-mccarthyism')">1950–1954: McCarthyism Peak</a></li>
-                    <li><a href="#event-1954-legacy" onclick="scrollToEvent('event-1954-legacy')">1954–Present: McCarthy’s Legacy</a></li>
-                </ul>
-            </nav>
-
-            <div class="timeline-event" data-year="1947" id="event-1947">
-                <h2>1947: HUAC Investigations Begin</h2>
-                <div class="content">
-                    <p>In 1947, the House Un-American Activities Committee (HUAC) began investigating alleged communist influence within Hollywood, driven by fears that subversive propaganda was being embedded in films during a time of heightened Cold War tension. Over nine days in October, HUAC subpoenaed 43 witnesses, including prominent screenwriters, directors, and producers, to testify about their political affiliations. Ten of these individuals, who became known as the “Hollywood Ten,” refused to cooperate, asserting their First Amendment rights to free speech and assembly. Their defiance led to contempt charges, prison sentences of up to a year, and their blacklisting from the industry. “Their defiance made them famous, but their inflexibility ruined their careers,” as studios, under pressure from public and political forces, refused to hire them or anyone suspected of communist ties (HISTORY, 2024). By 1950, the blacklist had grown to include over 300 artists, many of whom were barred from working in Hollywood for years, if not permanently. The hearings also set a troubling precedent for anti-communist tactics, where individuals were often coerced into naming associates to avoid social and economic consequences, a practice that eroded trust and fostered widespread fear across the entertainment industry and beyond.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The HUAC investigations of 1947 marked a significant moment in the early Cold War, reflecting the growing anxiety about communist infiltration in American society and culture. The committee, originally formed in 1938 to investigate subversive activities, had gained attention during World War II for examining Nazi sympathies but shifted its focus to communism as U.S.-Soviet relations deteriorated. In 1947, HUAC turned its attention to Hollywood, suspecting that communist sympathizers were using films to spread propaganda. The hearings began with testimonies from “friendly” witnesses, such as Walt Disney and Ronald Reagan, who was then president of the Screen Actors Guild. Reagan testified that communist influence was present, stating, “A small clique within the Screen Actors Guild has been suspected of more or less following the tactics that we associate with the Communist Party” (HISTORY, 2024). The tone of the hearings shifted dramatically when the Hollywood Ten, including notable figures like Dalton Trumbo and Ring Lardner Jr., were called to testify. They refused to answer questions about their political beliefs, arguing that HUAC’s inquiries violated their constitutional rights. This led to their being charged with contempt of Congress, a charge upheld by the Supreme Court in 1950, resulting in prison sentences ranging from six months to a year. The blacklist that followed had a devastating impact on their careers and the broader industry. “Some blacklistees wrote under pseudonyms, others left the country, and many never worked in Hollywood again,” illustrating the severe personal and professional toll of HUAC’s actions (HISTORY, 2024). The committee’s tactics, which often involved public shaming and pressuring witnesses to “name names” of alleged communists, created an atmosphere of fear and mistrust. HUAC’s approach not only targeted Hollywood but also set a model for later anti-communist efforts, raising serious questions about the balance between national security and individual freedoms in a democratic society.</p>
-                        <ul class="event-sources">
-                            <li><a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></li>
-                        </ul>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.history.com/articles/huac" target="_blank">HISTORY: HUAC Investigations</a></li>
-                    </ul>
-                    <div class="quiz">
-                        <p>What was the primary target of HUAC’s 1947 investigations?</p>
-                        <form id="quiz-form-huac">
-                            <label><input type="radio" name="answer" value="A"> A: Military officials</label><br>
-                            <label><input type="radio" name="answer" value="B"> B: Hollywood film industry</label><br>
-                            <label><input type="radio" name="answer" value="C"> C: University professors</label><br>
-                            <button type="submit">Submit</button>
-                        </form>
-                        <div id="answer-explanation-huac" class="answer-explanation"></div>
-                    </div>
-                </div>
+        </div>
+        <div id="new-right" class="tab-content">
+            <div class="timeline-item">
+                <span class="date">1980</span>
+                <h2>Reagan Election</h2>
+                <p class="summary">Ronald Reagan’s election marked the rise of conservative politics in the U.S.</p>
+                <p class="extra-text">His policies emphasized deregulation, tax cuts, and a strong anti-communist stance, shaping the modern conservative movement.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-
-            <div class="timeline-event hidden" data-year="1950" id="event-1950-wheeling">
-                <h2>1950: McCarthy’s Wheeling Speech</h2>
-                <div class="content">
-                    <p>On February 9, 1950, Senator Joseph McCarthy addressed a crowd in Wheeling, West Virginia, delivering a speech that would ignite widespread fear of communist infiltration in the United States government. He claimed to possess a list of 205 individuals in the State Department who were known communists, asserting, “I have here in my hand a list of 205… names that were made known to the Secretary of State as being members of the Communist Party and who nevertheless are still working and shaping policy in the State Department” (McCarthy, 1950). McCarthy later revised this number to 57, but he provided no substantiating evidence for his claims, relying instead on the growing public anxiety about Soviet espionage, which had been heightened by early findings from the Venona Project. He further stated, “The reason why we find ourselves in a position of impotency is not because our only powerful potential enemy has sent men to invade our shores… but because we have been infiltrated by the Communist menace within” (McCarthy, 1950). This speech, delivered to the Ohio County Women’s Republican Club, gained national attention after being reported by the Associated Press, amplifying public fear and mistrust. McCarthy’s accusations, though largely unsubstantiated, launched a years-long anti-communist campaign that targeted government employees, educators, and others, often without due process, deepening the sense of paranoia about communism within American society during the Cold War.</p>
-                    <ul class="event-sources">
-                        <li><a href="https://pages.uoregon.edu/eherman/teaching/texts/McCarthy_Wheeling_Speech.pdf" target="_blank">University of Oregon: McCarthy’s Wheeling Speech</a></li>
-                    </ul>
-                </div>
+            <div class="timeline-item">
+                <span class="date">1981</span>
+                <h2>Economic Recovery Tax Act</h2>
+                <p class="summary">Reagan’s tax cut legislation aimed to stimulate economic growth.</p>
+                <p class="extra-text">It reduced income tax rates significantly, promoting supply-side economics but increasing federal deficits.</p>
+                <button class="learn-more">Learn More</button>
             </div>
-
-            <div class="timeline-event hidden" data-year="1945" id="event-1945-venona">
-                <h2>1945–1995: Venona Project</h2>
-                <div class="content">
-                    <p>The Venona Project, a highly classified U.S. codebreaking operation that ran from 1945 to 1995, played a significant role in uncovering Soviet espionage activities within the United States during and after World War II. By intercepting and decrypting Soviet diplomatic communications, the project revealed extensive espionage networks, including the transfer of atomic secrets to the Soviet Union by agents such as Julius Rosenberg. By 1948, Venona decryptions had identified over 200 Soviet agents operating in the U.S., with codenames like “Liberal” for Julius Rosenberg and “Antenna” for another operative, confirming fears of infiltration within American institutions (NSA, 1995). The project’s findings showed that Soviet espionage extended to critical areas, as “the KGB sent a message to Moscow in 1945 reporting on the first nuclear test,” indicating the depth of intelligence being gathered (NSA, 1995). However, due to the project’s secrecy, its evidence could not be used publicly, leaving HUAC and McCarthy to rely on unverified accusations, which often fueled public hysteria rather than informed action. When Venona was declassified in 1995, it provided concrete evidence of Soviet spying, validating some concerns from the era, but it also underscored the excessive nature of anti-communist campaigns that had targeted many innocent individuals without solid proof during the height of the Red Scare.</p>
-                    <ul class="event-sources">
-                        <li><a href="https://www.nsa.gov/portals/75/documents/about/cryptologic-heritage/historical-figures-publications/publications/coldwar/venona_story.pdf" target="_blank">NSA: The Venona Story</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-event hidden" data-year="1950" id="event-1950-mccarthyism">
-                <h2>1950–1954: McCarthyism Peak</h2>
-                <div class="content">
-                    <p>Between 1950 and 1954, McCarthyism reached its most intense phase, characterized by Senator Joseph McCarthy’s Senate hearings and HUAC’s ongoing blacklisting efforts, which collectively targeted thousands of Americans suspected of communist sympathies. A notable event during this period was the trial of Julius and Ethel Rosenberg, who were convicted in 1951 for passing atomic secrets to the Soviet Union, a case that became emblematic of the era’s fears. The prosecution relied heavily on testimony from Ethel’s brother, David Greenglass, who confessed to handing over “a sketch of a cross-section of the atom bomb” to Julius Rosenberg, along with detailed notes on the bomb’s implosion mechanism (Famous Trials, 2025). Venona Project decryptions, though not admissible in court due to their classified nature, corroborated Greenglass’s testimony by identifying Julius as a Soviet agent codenamed “Liberal.” The Rosenbergs were sentenced to death, and their execution in 1953 intensified public fear of communist espionage, as prosecutor Irving Saypol declared, “These conspirators stole the most important scientific secrets ever known to mankind” (Famous Trials, 2025). McCarthy capitalized on such cases, claiming there existed “a conspiracy so immense” within the government, leading to the dismissal of over 2,000 government employees and the blacklisting of more than 300 artists, often without credible evidence (Famous Trials, 2025). This period saw widespread violations of civil liberties, as fear-driven tactics prioritized suspicion over due process, but by 1954, public support for McCarthy began to erode as his methods were increasingly seen as reckless and unjust, leading to a growing backlash against his approach.</p>
-                    <ul class="event-sources">
-                        <li><a href="https://famous-trials.com/rosenberg/2228-home" target="_blank">Famous Trials: Rosenberg Trial</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-event hidden" data-year="1954" id="event-1954-legacy">
-                <h2>1954–Present: McCarthy’s Legacy</h2>
-                <div class="content">
-                    <p>McCarthy’s influence came to an abrupt end in 1954 following his censure by the Senate, a consequence of the Army-McCarthy hearings that exposed his unfounded accusations against the U.S. Army, including claims that the military was harboring communists. The hearings, broadcast on television, revealed McCarthy’s aggressive tactics to the public, with Army counsel Joseph Welch famously challenging him, “Have you no sense of decency, sir, at long last?” (Britannica, 2025). HUAC’s earlier 1947 investigations and the Venona Project’s identification of over 200 Soviet agents had confirmed some level of espionage threat, but the widespread blacklisting of over 300 artists and the dismissal of more than 2,000 government employees often occurred without substantial evidence, infringing on free speech and due process rights. “McCarthy’s tactics left a permanent scar on American politics,” as his approach fostered a climate of fear that undermined democratic principles (Britannica, 2025). The legacy of McCarthyism continues to influence debates about how to balance national security with individual liberties, particularly in times of perceived crisis, serving as a cautionary tale about the dangers of fear-driven governance and the erosion of civil rights in the name of ideological purity.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>HUAC’s 1947 hearings initiated the blacklisting of the Hollywood Ten, establishing a pattern of fear-based anti-communist actions that would define the era. McCarthy’s 1950 Wheeling speech, alleging widespread communist infiltration in the government, intensified public paranoia, a fear partly validated by the Venona Project’s secret evidence of over 200 Soviet agents operating in the U.S. At the height of McCarthyism, more than 2,000 government employees were dismissed and over 300 artists were blacklisted, often without proof of wrongdoing, highlighting the excessive nature of these campaigns. McCarthy’s 1954 censure by the Senate, following his baseless attacks on the U.S. Army, marked a turning point, and HUAC’s eventual dissolution in 1975 signaled a rejection of such tactics. However, the 1995 declassification of Venona documents confirmed some espionage activities, underscoring the real threats that existed but also the ethical costs of McCarthy’s and HUAC’s methods, which often disregarded fairness and due process in a democratic society.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.britannica.com/biography/Joseph-McCarthy" target="_blank">Britannica: Joseph McCarthy</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Mini-Game Section -->
-            <div class="timeline-event" data-year="1952" id="mini-game">
-                <h2>1952: Presidential Decisions – Navigating McCarthyism</h2>
-                <div class="content">
-                    <p>Step into the role of the U.S. President in 1952, during the height of McCarthyism. Make critical decisions to balance national security, public trust, and civil liberties. Your choices will shape the nation’s future and teach you about the challenges of McCarthyism in a fun, interactive way!</p>
-                    <button id="start-game-btn" onclick="startGame()">Start Game</button>
-                    <div id="game-container" style="display: none;">
-                        <div id="game-scenario"></div>
-                        <div id="game-choices"></div>
-                        <div id="game-metrics">
-                            <p>Public Trust: <span id="public-trust">50</span></p>
-                            <p>National Security: <span id="national-security">50</span></p>
-                            <p>Civil Liberties: <span id="civil-liberties">50</span></p>
-                        </div>
-                        <div id="game-outcome" style="display: none;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="RiseOfTheNewRight" class="tabcontent">
-        <section class="timeline">
-            <nav class="timeline-nav">
-                <ul>
-                    <li><a href="#event-1964" onclick="scrollToEvent('event-1964')">1964: Goldwater’s Campaign</a></li>
-                    <li><a href="#event-1970s" onclick="scrollToEvent('event-1970s')">1970s: Evangelical Mobilization</a></li>
-                    <li><a href="#event-1980" onclick="scrollToEvent('event-1980')">1980: Reagan’s Election</a></li>
-                    <li><a href="#event-1980s" onclick="scrollToEvent('event-1980s')">1980s: Economic and Social Policies</a></li>
-                    <li><a href="#event-1990s" onclick="scrollToEvent('event-1990s')">1990s: Lasting Impact</a></li>
-                </ul>
-            </nav>
-
-            <div class="timeline-event" data-year="1964" id="event-1964">
-                <h2>1964: Goldwater’s Campaign</h2>
-                <div class="content">
-                    <p>In 1964, Barry Goldwater’s presidential campaign marked the early rise of the New Right, advocating limited government, free-market economics, and a strong anti-communist stance. His book *The Conscience of a Conservative* (1960) outlined these principles, resonating with voters frustrated by the New Deal’s expansion. Goldwater won 38.5% of the popular vote and carried six states, signaling a growing conservative base despite losing to Lyndon Johnson. His campaign laid the ideological foundation for the New Right, emphasizing individual liberty and skepticism of federal overreach.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>Goldwater’s 1964 campaign emerged amid social unrest from the civil rights movement and economic concerns over inflation and taxes. His rejection of the Civil Rights Act of 1964 as a federal overreach alienated some moderates but galvanized Southern conservatives and libertarians. His slogan, “In your heart, you know he’s right,” captured a sentiment against liberal policies. Though defeated, Goldwater’s influence grew as young conservatives, including future leaders like Ronald Reagan, adopted his ideas. The campaign also saw the formation of groups like Young Americans for Freedom, which mobilized college students, boosting the New Right’s grassroots support.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.britannica.com/biography/Barry-Goldwater" target="_blank">Britannica: Barry Goldwater</a></li>
-                    </ul>
-                    <div class="quiz">
-                        <p>What was a key theme of Goldwater’s 1964 campaign?</p>
-                        <form id="quiz-form-goldwater">
-                            <label><input type="radio" name="answer" value="A"> A: Expanded government welfare</label><br>
-                            <label><input type="radio" name="answer" value="B"> B: Limited government</label><br>
-                            <label><input type="radio" name="answer" value="C"> C: Increased military draft</label><br>
-                            <button type="submit">Submit</button>
-                        </form>
-                        <div id="answer-explanation-goldwater" class="answer-explanation"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-event hidden" data-year="1970s" id="event-1970s">
-                <h2>1970s: Evangelical Mobilization</h2>
-                <div class="content">
-                    <p>In the 1970s, evangelical Christians became a political force within the New Right, reacting to cultural shifts like the sexual revolution and Roe v. Wade (1973). Leaders like Jerry Falwell founded the Moral Majority in 1979, mobilizing voters to support conservative causes, including opposition to abortion and secular education. This religious activism added a moral dimension to the movement, aligning it with social conservatism.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The 1970s saw evangelicals shift from apolitical stances to activism due to perceived moral decline. The IRS’s attempt to desegregate Christian schools and the Equal Rights Amendment further fueled their engagement. Falwell’s Moral Majority registered millions of voters, emphasizing family values and anti-communism. This coalition with political conservatives broadened the New Right’s appeal, bridging economic and social agendas, and setting the stage for its electoral success in the 1980s.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.history.com/topics/1980s/moral-majority" target="_blank">HISTORY: Moral Majority</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-event hidden" data-year="1980" id="event-1980">
-                <h2>1980: Reagan’s Election</h2>
-                <div class="content">
-                    <p>Ronald Reagan’s 1980 election victory solidified the New Right’s influence, winning 50.7% of the vote against Jimmy Carter. Reagan’s platform combined tax cuts, deregulation, and a strong anti-communist foreign policy with evangelical support. His landslide win, including 489 electoral votes, reflected the movement’s growing power and reshaped the Republican Party.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>Reagan’s appeal stemmed from economic struggles (stagflation) and cultural backlash against the 1960s. His “Reagan Democrats”—working-class voters—shifted due to his promise of tax relief and law-and-order policies. Evangelical support, bolstered by the Moral Majority, was crucial, delivering turnout in the South. Reagan’s victory ended détente, escalating Cold War tensions, and began a conservative era in American politics lasting through the 1980s.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.britannica.com/biography/Ronald-Reagan" target="_blank">Britannica: Ronald Reagan</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-event hidden" data-year="1980s" id="event-1980s">
-                <h2>1980s: Economic and Social Policies</h2>
-                <div class="content">
-                    <p>During the 1980s, Reagan’s policies—tax cuts (Economic Recovery Tax Act of 1981), deregulation, and military buildup—drove economic growth but widened inequality. Socially, the New Right pushed for school prayer and anti-abortion laws, influencing legislation and court appointments, including the appointment of conservative justices like Antonin Scalia.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The 1981 tax cuts reduced the top rate from 70% to 28%, boosting investment but increasing the national debt by $1.8 trillion. Deregulation favored businesses, while military spending rose to counter the Soviet Union. Socially, the New Right’s influence led to the 1986 Hyde Amendment restricting abortion funding. These policies shifted the U.S. toward conservatism, impacting welfare and labor rights for decades.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.reaganfoundation.org/ronald-reagan/reagan-legacy/" target="_blank">Reagan Foundation: Reagan Legacy</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-event hidden" data-year="1990s" id="event-1990s">
-                <h2>1990s: Lasting Impact</h2>
-                <div class="content">
-                    <p>In the 1990s, the New Right’s legacy persisted, shaping the Contract with America (1994) and influencing the Republican takeover of Congress. Its focus on tax cuts, deregulation, and social conservatism continued under leaders like Newt Gingrich, while the Christian Coalition maintained evangelical influence, cementing a conservative political realignment.</p>
-                    <button class="expand-btn">Learn More</button>
-                    <div class="extra-info">
-                        <p>The 1994 Contract with America, led by Gingrich, promised tax reductions and welfare reform, reflecting New Right priorities. The Christian Coalition, succeeding the Moral Majority, kept social issues like abortion and education central. This era solidified a conservative base, influencing policies into the 21st century and polarizing American politics along ideological lines.</p>
-                    </div>
-                    <ul class="event-sources">
-                        <li><a href="https://www.history.com/topics/us-politics/contract-with-america" target="_blank">HISTORY: Contract with America</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>Hosted on <a href="https://github.com/AzR1314/cold-war-timeline">GitHub</a> | Created by Guillermo Cerda</p>
-    </footer>
-
-    <audio id="applause" src="assets/applause.mp3"></audio>
-    <audio id="boo" src="assets/boo.mp3"></audio>
-    <audio id="cheer" src="assets/cheer.mp3"></audio>
-    <div id="correct-text" class="correct-text"></div>
-
+        </div>
+    </main>
     <script src="script.js"></script>
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        document.getElementById("defaultOpen").click();
-    </script>
 </body>
 </html>
