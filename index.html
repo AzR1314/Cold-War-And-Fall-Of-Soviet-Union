@@ -14,7 +14,7 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             font-size: 2em;
-            color: #4CAF50;
+            color: #0066cc;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
@@ -398,11 +398,10 @@
         </section>
     </div>
 
-    <audio id="applause" src="assets/applause.mp3"></audio>
-    <audio id="boo" src="assets/boo.mp3"></audio>
-    <audio id="cheer" src="assets/cheer.mp3"></audio>
-
     <script>
+        var choiceCount = 0; // Global to track choices across games
+        var currentGame = null; // Track active game ('mccarthyism' or 'newRight')
+
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -422,51 +421,167 @@
         }
 
         function startGame() {
+            choiceCount = 0;
+            currentGame = 'mccarthyism';
             var gameContainer = document.getElementById('game-container');
             var startButton = document.getElementById('start-game-btn');
             gameContainer.style.display = 'block';
             startButton.style.display = 'none';
-            // Placeholder for McCarthyism game logic
-            document.getElementById('game-scenario').innerHTML = '<p>You are the U.S. President in 1952. A senator accuses your administration of harboring communists. How do you respond?</p>';
-            document.getElementById('game-choices').innerHTML = `
-                <button onclick="updateGame(10, -5, -10)">Publicly denounce the senator</button>
-                <button onclick="updateGame(-5, 10, -5)">Launch an investigation</button>
-                <button onclick="updateGame(-10, -5, 10)">Ignore the accusations</button>
-            `;
+            document.getElementById('public-trust').textContent = 50;
+            document.getElementById('national-security').textContent = 50;
+            document.getElementById('civil-liberties').textContent = 50;
+            document.getElementById('game-outcome').style.display = 'none';
+            showMcCarthyismScenario();
+        }
+
+        function showMcCarthyismScenario() {
+            const scenarios = [
+                {
+                    text: '<p>You are the U.S. President in 1952. A senator accuses your administration of harboring communists. How do you respond?</p>',
+                    choices: [
+                        { text: 'Publicly denounce the senator', trust: 10, security: -5, liberties: -10 },
+                        { text: 'Launch an investigation', trust: -5, security: 10, liberties: -5 },
+                        { text: 'Ignore the accusations', trust: -10, security: -5, liberties: 10 }
+                    ]
+                },
+                {
+                    text: '<p>A Hollywood studio is accused of producing communist propaganda. What action do you take?</p>',
+                    choices: [
+                        { text: 'Support HUAC investigations', trust: -5, security: 10, liberties: -15 },
+                        { text: 'Defend free speech', trust: 5, security: -10, liberties: 10 },
+                        { text: 'Stay neutral', trust: 0, security: 0, liberties: 0 }
+                    ]
+                },
+                {
+                    text: '<p>Government employees are suspected of disloyalty. How do you proceed?</p>',
+                    choices: [
+                        { text: 'Implement loyalty oaths', trust: -10, security: 15, liberties: -10 },
+                        { text: 'Conduct fair hearings', trust: 5, security: -5, liberties: 5 },
+                        { text: 'Dismiss suspects without evidence', trust: -15, security: 10, liberties: -20 }
+                    ]
+                }
+            ];
+
+            if (choiceCount < 3) {
+                const scenario = scenarios[choiceCount];
+                document.getElementById('game-scenario').innerHTML = scenario.text;
+                document.getElementById('game-choices').innerHTML = scenario.choices.map(choice => 
+                    `<button onclick="updateGame(${choice.trust}, ${choice.security}, ${choice.liberties})">${choice.text}</button>`
+                ).join('');
+            }
         }
 
         function updateGame(trust, security, liberties) {
             var publicTrust = parseInt(document.getElementById('public-trust').textContent) + trust;
             var nationalSecurity = parseInt(document.getElementById('national-security').textContent) + security;
             var civilLiberties = parseInt(document.getElementById('civil-liberties').textContent) + liberties;
-            document.getElementById('public-trust').textContent = Math.max(0, Math.min(100, publicTrust));
-            document.getElementById('national-security').textContent = Math.max(0, Math.min(100, nationalSecurity));
-            document.getElementById('civil-liberties').textContent = Math.max(0, Math.min(100, civilLiberties));
-            // Placeholder for game outcome
+            publicTrust = Math.max(0, Math.min(100, publicTrust));
+            nationalSecurity = Math.max(0, Math.min(100, nationalSecurity));
+            civilLiberties = Math.max(0, Math.min(100, civilLiberties));
+            document.getElementById('public-trust').textContent = publicTrust;
+            document.getElementById('national-security').textContent = nationalSecurity;
+            document.getElementById('civil-liberties').textContent = civilLiberties;
+
+            choiceCount++;
+            if (choiceCount < 3) {
+                showMcCarthyismScenario();
+            } else {
+                const averageScore = (publicTrust + nationalSecurity + civilLiberties) / 3;
+                let outcome;
+                if (averageScore > 70) {
+                    outcome = '<p>Success! Your balanced approach maintained public trust, strengthened national security, and protected civil liberties, calming fears of communism while upholding democratic values.</p>';
+                } else if (averageScore > 40) {
+                    outcome = '<p>Mixed results. You addressed some concerns about communism, but public trust or civil liberties suffered, leading to ongoing tensions.</p>';
+                } else {
+                    outcome = '<p>Failure. Your decisions eroded public trust, weakened security, or violated civil liberties, fueling paranoia and division.</p>';
+                }
+                document.getElementById('game-scenario').innerHTML = '';
+                document.getElementById('game-choices').innerHTML = '';
+                document.getElementById('game-outcome').innerHTML = outcome;
+                document.getElementById('game-outcome').style.display = 'block';
+            }
         }
 
         function startGameNewRight() {
+            choiceCount = 0;
+            currentGame = 'newRight';
             var gameContainer = document.getElementById('game-container-new-right');
             var startButton = document.getElementById('start-game-btn-new-right');
             gameContainer.style.display = 'block';
             startButton.style.display = 'none';
-            // Placeholder for New Right game logic
-            document.getElementById('game-scenario-new-right').innerHTML = '<p>You are a New Right strategist in 1994. The “Contract with America” needs voter support. Do you prioritize tax cuts or social issues?</p>';
-            document.getElementById('game-choices-new-right').innerHTML = `
-                <button onclick="updateGameNewRight(10, -5, -10)">Focus on tax cuts</button>
-                <button onclick="updateGameNewRight(-5, 10, -5)">Push social issues</button>
-                <button onclick="updateGameNewRight(-10, -5, 10)">Balance both</button>
-            `;
+            document.getElementById('voter-support').textContent = 50;
+            document.getElementById('economic-reform').textContent = 50;
+            document.getElementById('social-values').textContent = 50;
+            document.getElementById('game-outcome-new-right').style.display = 'none';
+            showNewRightScenario();
+        }
+
+        function showNewRightScenario() {
+            const scenarios = [
+                {
+                    text: '<p>You are a New Right strategist in 1994. The “Contract with America” needs voter support. Do you prioritize tax cuts or social issues?</p>',
+                    choices: [
+                        { text: 'Focus on tax cuts', voter: 10, economic: 10, social: -10 },
+                        { text: 'Push social issues', voter: -5, economic: -5, social: 15 },
+                        { text: 'Balance both', voter: 0, economic: 0, social: 0 }
+                    ]
+                },
+                {
+                    text: '<p>Evangelical voters demand action on abortion. How do you respond?</p>',
+                    choices: [
+                        { text: 'Propose anti-abortion laws', voter: 5, economic: -5, social: 15 },
+                        { text: 'Focus on economic reforms', voter: 5, economic: 10, social: -10 },
+                        { text: 'Avoid the issue', voter: -10, economic: 0, social: -5 }
+                    ]
+                },
+                {
+                    text: '<p>Congress debates welfare reform. What’s your strategy?</p>',
+                    choices: [
+                        { text: 'Push for strict reforms', voter: 10, economic: 15, social: -5 },
+                        { text: 'Support moderate changes', voter: 5, economic: 5, social: 0 },
+                        { text: 'Oppose reforms', voter: -15, economic: -10, social: 5 }
+                    ]
+                }
+            ];
+
+            if (choiceCount < 3) {
+                const scenario = scenarios[choiceCount];
+                document.getElementById('game-scenario-new-right').innerHTML = scenario.text;
+                document.getElementById('game-choices-new-right').innerHTML = scenario.choices.map(choice => 
+                    `<button onclick="updateGameNewRight(${choice.voter}, ${choice.economic}, ${choice.social})">${choice.text}</button>`
+                ).join('');
+            }
         }
 
         function updateGameNewRight(voter, economic, social) {
             var voterSupport = parseInt(document.getElementById('voter-support').textContent) + voter;
             var economicReform = parseInt(document.getElementById('economic-reform').textContent) + economic;
             var socialValues = parseInt(document.getElementById('social-values').textContent) + social;
-            document.getElementById('voter-support').textContent = Math.max(0, Math.min(100, voterSupport));
-            document.getElementById('economic-reform').textContent = Math.max(0, Math.min(100, economicReform));
-            document.getElementById('social-values').textContent = Math.max(0, Math.min(100, socialValues));
-            // Placeholder for game outcome
+            voterSupport = Math.max(0, Math.min(100, voterSupport));
+            economicReform = Math.max(0, Math.min(100, economicReform));
+            socialValues = Math.max(0, Math.min(100, socialValues));
+            document.getElementById('voter-support').textContent = voterSupport;
+            document.getElementById('economic-reform').textContent = economicReform;
+            document.getElementById('social-values').textContent = socialValues;
+
+            choiceCount++;
+            if (choiceCount < 3) {
+                showNewRightScenario();
+            } else {
+                const averageScore = (voterSupport + economicReform + socialValues) / 3;
+                let outcome;
+                if (averageScore > 70) {
+                    outcome = '<p>Victory! Your strategy secured strong voter support, advanced economic reforms, and upheld social values, leading to a Republican sweep in 1994.</p>';
+                } else if (averageScore > 40) {
+                    outcome = '<p>Partial success. You gained some voter support, but economic or social priorities faltered, limiting the “Contract with America” impact.</p>';
+                } else {
+                    outcome = '<p>Defeat. Your strategy alienated voters, stalled reforms, or neglected social values, weakening the New Right’s momentum.</p>';
+                }
+                document.getElementById('game-scenario-new-right').innerHTML = '';
+                document.getElementById('game-choices-new-right').innerHTML = '';
+                document.getElementById('game-outcome-new-right').innerHTML = outcome;
+                document.getElementById('game-outcome-new-right').style.display = 'block';
+            }
         }
 
         document.getElementById("defaultOpen").click();
