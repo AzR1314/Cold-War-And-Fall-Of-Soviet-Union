@@ -14,8 +14,8 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             font-size: 2em;
-            color: #0066cc;
-            background-color: rgba(255, 255, 255, 0.8);
+            color: #4CAF50;
+            background-color: rgba(224, 224, 224, 0.8);
             padding: 20px;
             border-radius: 10px;
             z-index: 1000;
@@ -53,8 +53,15 @@
 
     <div id="ColdWar" class="tabcontent">
         <section class="timeline">
+            <div class="event-tabs">
+                <button class="event-tablinks active" onclick="openEventTab('ColdWar', 'event-1970')">1970: Soviet Economy</button>
+                <button class="event-tablinks" onclick="openEventTab('ColdWar', 'event-1969')">1969: Détente</button>
+                <button class="event-tablinks" onclick="openEventTab('ColdWar', 'event-1985')">1985: Gorbachev’s Reforms</button>
+                <button class="event-tablinks" onclick="openEventTab('ColdWar', 'event-1989-velvet')">1989: Velvet Revolutions</button>
+                <button class="event-tablinks" onclick="openEventTab('ColdWar', 'event-1989-berlin')">1989: Berlin Wall</button>
+            </div>
             <div class="timeline-wrapper">
-                <div class="timeline-event" data-year="1970">
+                <div class="timeline-event active" data-year="1970" id="event-1970">
                     <div class="timeline-marker"></div>
                     <h2>1970 to 1980: Soviet Economy and Afghanistan</h2>
                     <div class="content">
@@ -76,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1969">
+                <div class="timeline-event" data-year="1969" id="event-1969">
                     <div class="timeline-marker"></div>
                     <h2>1969 to 1980: U.S. Policy of Détente</h2>
                     <div class="content">
@@ -91,7 +98,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1985">
+                <div class="timeline-event" data-year="1985" id="event-1985">
                     <div class="timeline-marker"></div>
                     <h2>1985 to 1991: Gorbachev’s Reforms</h2>
                     <div class="content">
@@ -106,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1989">
+                <div class="timeline-event" data-year="1989" id="event-1989-velvet">
                     <div class="timeline-marker"></div>
                     <h2>1989 to 1991: Velvet Revolutions & Nationalism</h2>
                     <div class="content">
@@ -121,7 +128,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1989">
+                <div class="timeline-event" data-year="1989" id="event-1989-berlin">
                     <div class="timeline-marker"></div>
                     <h2>1989 to 1991: Berlin Wall & USSR Collapse</h2>
                     <div class="content">
@@ -153,18 +160,16 @@
 
     <div id="CommunismFromWithin" class="tabcontent">
         <section class="timeline">
-            <nav class="timeline-nav">
-                <ul>
-                    <li><a href="#event-1947" onclick="scrollToEvent('event-1947')">1947: HUAC Investigations</a></li>
-                    <li><a href="#event-1950-wheeling" onclick="scrollToEvent('event-1950-wheeling')">1950: McCarthy’s Speech</a></li>
-                    <li><a href="#event-1945-venona" onclick="scrollToEvent('event-1945-venona')">1945 to 1995: Venona Project</a></li>
-                    <li><a href="#event-1950-mccarthyism" onclick="scrollToEvent('event-1950-mccarthyism')">1950 to 1954: McCarthyism Peak</a></li>
-                    <li><a href="#event-1954-legacy" onclick="scrollToEvent('event-1954-legacy')">1954 to Present: McCarthy’s Legacy</a></li>
-                </ul>
-            </nav>
-
+            <div class="event-tabs">
+                <button class="event-tablinks active" onclick="openEventTab('CommunismFromWithin', 'event-1947')">1947: HUAC Investigations</button>
+                <button class="event-tablinks" onclick="openEventTab('CommunismFromWithin', 'event-1950-wheeling')">1950: McCarthy’s Speech</button>
+                <button class="event-tablinks" onclick="openEventTab('CommunismFromWithin', 'event-1945-venona')">1945: Venona Project</button>
+                <button class="event-tablinks" onclick="openEventTab('CommunismFromWithin', 'event-1950-mccarthyism')">1950: McCarthyism Peak</button>
+                <button class="event-tablinks" onclick="openEventTab('CommunismFromWithin', 'event-1954-legacy')">1954: McCarthy’s Legacy</button>
+                <button class="event-tablinks" onclick="openEventTab('CommunismFromWithin', 'event-1952')">1952: McCarthyism Game</button>
+            </div>
             <div class="timeline-wrapper">
-                <div class="timeline-event" data-year="1947" id="event-1947">
+                <div class="timeline-event active" data-year="1947" id="event-1947">
                     <div class="timeline-marker"></div>
                     <h2>1947: HUAC Investigations Begin</h2>
                     <div class="content">
@@ -192,7 +197,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1950" id="event-1950-wheeling">
+                <div class="timeline-event" data-year="1950" id="event-1950-wheeling">
                     <div class="timeline-marker"></div>
                     <h2>1950: McCarthy’s Wheeling Speech</h2>
                     <div class="content">
@@ -203,7 +208,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1945" id="event-1945-venona">
+                <div class="timeline-event" data-year="1945" id="event-1945-venona">
                     <div class="timeline-marker"></div>
                     <h2>1945 to 1995: Venona Project</h2>
                     <div class="content">
@@ -214,7 +219,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1950" id="event-1950-mccarthyism">
+                <div class="timeline-event" data-year="1950" id="event-1950-mccarthyism">
                     <div class="timeline-marker"></div>
                     <h2>1950 to 1954: McCarthyism Peak</h2>
                     <div class="content">
@@ -225,7 +230,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1954" id="event-1954-legacy">
+                <div class="timeline-event" data-year="1954" id="event-1954-legacy">
                     <div class="timeline-marker"></div>
                     <h2>1954 to Present: McCarthy’s Legacy</h2>
                     <div class="content">
@@ -240,7 +245,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event" data-year="1952" id="mini-game">
+                <div class="timeline-event" data-year="1952" id="event-1952">
                     <div class="timeline-marker"></div>
                     <h2>1952: Presidential Decisions Navigating McCarthyism</h2>
                     <div class="content">
@@ -264,19 +269,16 @@
 
     <div id="RiseOfTheNewRight" class="tabcontent">
         <section class="timeline">
-            <nav class="timeline-nav">
-                <ul>
-                    <li><a href="#event-1964" onclick="scrollToEvent('event-1964')">1964: Goldwater’s Campaign</a></li>
-                    <li><a href="#event-1970s" onclick="scrollToEvent('event-1970s')">1970s: Evangelical Mobilization</a></li>
-                    <li><a href="#event-1980" onclick="scrollToEvent('event-1980')">1980: Reagan’s Election</a></li>
-                    <li><a href="#event-1980s" onclick="scrollToEvent('event-1980s')">1980s: Economic and Social Policies</a></li>
-                    <li><a href="#event-1990s" onclick="scrollToEvent('event-1990s')">1990s: Lasting Impact</a></li>
-                    <li><a href="#event-1994" onclick="scrollToEvent('event-1994')">1994: Role-Play Game</a></li>
-                </ul>
-            </nav>
-
+            <div class="event-tabs">
+                <button class="event-tablinks active" onclick="openEventTab('RiseOfTheNewRight', 'event-1964')">1964: Goldwater’s Campaign</button>
+                <button class="event-tablinks" onclick="openEventTab('RiseOfTheNewRight', 'event-1970s')">1970s: Evangelical Mobilization</button>
+                <button class="event-tablinks" onclick="openEventTab('RiseOfTheNewRight', 'event-1980')">1980: Reagan’s Election</button>
+                <button class="event-tablinks" onclick="openEventTab('RiseOfTheNewRight', 'event-1980s')">1980s: Economic Policies</button>
+                <button class="event-tablinks" onclick="openEventTab('RiseOfTheNewRight', 'event-1990s')">1990s: Lasting Impact</button>
+                <button class="event-tablinks" onclick="openEventTab('RiseOfTheNewRight', 'event-1994')">1994: Strategy Game</button>
+            </div>
             <div class="timeline-wrapper">
-                <div class="timeline-event" data-year="1964" id="event-1964">
+                <div class="timeline-event active" data-year="1964" id="event-1964">
                     <div class="timeline-marker"></div>
                     <h2>1964: Goldwater’s Campaign</h2>
                     <div class="content">
@@ -304,7 +306,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1970s" id="event-1970s">
+                <div class="timeline-event" data-year="1970s" id="event-1970s">
                     <div class="timeline-marker"></div>
                     <h2>1970s: Evangelical Mobilization</h2>
                     <div class="content">
@@ -322,7 +324,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1980" id="event-1980">
+                <div class="timeline-event" data-year="1980" id="event-1980">
                     <div class="timeline-marker"></div>
                     <h2>1980: Reagan’s Election</h2>
                     <div class="content">
@@ -340,7 +342,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1980s" id="event-1980s">
+                <div class="timeline-event" data-year="1980s" id="event-1980s">
                     <div class="timeline-marker"></div>
                     <h2>1980s: Economic and Social Policies</h2>
                     <div class="content">
@@ -358,20 +360,20 @@
                     </div>
                 </div>
 
-                <div class="timeline-event hidden" data-year="1990s" id="event-1990s">
+                <div class="timeline-event" data-year="1990s" id="event-1990s">
                     <div class="timeline-marker"></div>
                     <h2>1990s: Lasting Impact</h2>
                     <div class="content">
-                        <p>The New Right’s influence continued into the 1990s, shaping the Republican Party and American politics. The 1994 “Contract with America,” led by Newt Gingrich, pushed for tax cuts, welfare reform, and smaller government, echoing Goldwater and Reagan’s ideals. These policies contributed to economic growth but also deepened political divides, with ongoing debates over social issues like abortion and gun rights. The New Right’s focus on limited government and cultural conservatism remains a key force in U.S. politics today.</p>
+                        <p>The New Right’s influence peaked in the 1990s under Newt Gingrich’s leadership, who led the 1994 “Contract with America,” a platform that “helped the Republicans gain control of Congress for the first time in 40 years.” This conservative agenda pushed tax cuts, welfare reform, and smaller government, cementing the New Right’s role in shaping modern Republican politics.</p>
                         <button class="expand-btn">Learn More</button>
                         <div class="extra-info">
-                            <p>The 1990s were a pivotal decade for the New Right’s lasting impact, and this PBS article really helped me understand how their ideas kept shaping America! By the 1990s, the groundwork laid by Barry Goldwater’s 1964 campaign and Ronald Reagan’s 1980s policies had transformed the Republican Party into a powerhouse of conservative ideas. The article points out, “The New Right’s emphasis on limited government and traditional values became the dominant force in the GOP,” and that was super clear in 1994 when Newt Gingrich, a Republican congressman, led the “Contract with America.” This was a bold plan promising things like tax cuts, reducing the size of government, and reforming welfare to get people back to work. It was a huge hit with voters, helping Republicans win control of Congress for the first time in 40 years, with 54 House seats and 8 Senate seats flipping to their side. The Welfare Reform Act of 1996, which came out of this, cut federal spending and required work for benefits, affecting millions but also sparking debate about whether it hurt the poorest Americans, as poverty rates dropped from 13.7% in 1994 to 11.3% by 2000, but some argued it left gaps in support. The New Right also kept pushing social issues, like opposing abortion and defending gun rights, which fired up their base but made politics way more divided, with 62% of Americans saying political polarization was a major problem by the late 1990s, according to polls. Plus, evangelical groups stayed active, influencing things like the 1998 push for a school prayer amendment, which didn’t pass but showed their clout. The New Right’s ideas didn’t just stop in the ‘90s, they’re still a big deal in today’s debates over taxes, government size, and cultural issues, which is wild to think about!</p>
+                            <p>In the 1990s, Newt Gingrich emerged as a pivotal figure in the New Right, transforming the Republican Party through his leadership and the 1994 “Contract with America.” As noted in a Britannica biography, “In 1994 Gingrich led the GOP’s ‘Contract with America,’ a conservative platform that helped the Republicans gain control of Congress for the first time in 40 years.” This platform promised tax reductions, welfare reform, and a balanced budget, appealing to voters frustrated with government overreach. The 1994 midterm elections were a triumph, with Republicans gaining 54 House seats and 8 Senate seats, making Gingrich Speaker of the House in 1995. His tenure saw significant legislative achievements, including the 1996 Welfare Reform Act, which required work for benefits and reduced federal spending. However, Gingrich was a polarizing figure, described as “both loved and hated; supporters lauded his intellect and ability to generate ideas, while detractors criticized his combativeness.” His aggressive tactics, including orchestrating government shutdowns in 1995-1996 over budget disputes, alienated some voters. Ethics violations, resulting in a $300,000 fine in 1997, further tarnished his reputation. By 1998, after Republican losses in the midterms, Gingrich resigned, citing internal party strife. Despite his exit, the New Right’s focus on limited government and cultural conservatism, rooted in Gingrich’s strategies, continued to influence U.S. politics, shaping debates on taxes, welfare, and social issues into the 21st century.</p>
                             <ul class="event-sources">
-                                <li><a href="https://www.pbs.org/wgbh/americanexperience/features/reagan-new-right/" target="_blank">PBS: The New Right</a></li>
+                                <li><a href="https://www.britannica.com/biography/Newt-Gingrich" target="_blank">Britannica: Newt Gingrich</a></li>
                             </ul>
                         </div>
                         <ul class="event-sources">
-                            <li><a href="https://www.pbs.org/wgbh/americanexperience/features/reagan-new-right/" target="_blank">PBS: The New Right</a></li>
+                            <li><a href="https://www.britannica.com/biography/Newt-Gingrich" target="_blank">Britannica: Newt Gingrich</a></li>
                         </ul>
                     </div>
                 </div>
@@ -414,6 +416,33 @@
             }
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+
+            // Show the first event in the tab by default
+            openEventTab(tabName, document.querySelector(`#${tabName} .timeline-event.active`).id);
+        }
+
+        function openEventTab(tabName, eventId) {
+            var i, events, tablinks;
+            // Hide all events in the tab
+            events = document.querySelectorAll(`#${tabName} .timeline-event`);
+            for (i = 0; i < events.length; i++) {
+                events[i].className = events[i].className.replace(" active", "");
+                events[i].style.display = "none";
+            }
+            // Remove active class from all event tablinks
+            tablinks = document.querySelectorAll(`#${tabName} .event-tablinks`);
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            // Show the selected event and mark it active
+            var selectedEvent = document.getElementById(eventId);
+            selectedEvent.style.display = "block";
+            selectedEvent.className += " active";
+            // Mark the clicked tablink as active
+            var clickedTablink = document.querySelector(`#${tabName} .event-tablinks[onclick*="'${eventId}'"]`);
+            if (clickedTablink) {
+                clickedTablink.className += " active";
+            }
         }
 
         function scrollToEvent(eventId) {
