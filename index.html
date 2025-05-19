@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,83 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cold War & Communism Timeline</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-        }
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        .tab button.active {
-            background-color: #ccc;
-        }
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-        .extra-info {
-            display: none;
-        }
-        .extra-info p {
-            font-size: 1.5em;
-        }
-        #game-container-new-right, #game-container {
-            border: 2px solid #333;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        #game-container-new-right button, #game-choices button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        #game-container-new-right button:hover, #game-choices button:hover {
-            background-color: #45a049;
-        }
-        #game-metrics-new-right, #game-metrics {
-            margin-top: 10px;
-            font-size: 1.1em;
-            color: #333;
-        }
-        #game-outcome-new-right, #game-outcome {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #e8e8e8;
-            border-radius: 5px;
-        }
-        #game-outcome-new-right button, #game-outcome button {
-            background-color: #008CBA;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        #game-outcome-new-right button:hover, #game-outcome button:hover {
-            background-color: #007bb5;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -155,7 +77,7 @@
                     <div class="timeline-marker"></div>
                     <h2>1989 to 1991: Velvet Revolutions & Nationalism</h2>
                     <div class="content">
-                        <p>In 1969, Eastern European nations achieved independence from Soviet authority through peaceful means, inspiring widespread nationalist movements within the USSR.</p>
+                        <p>In 1989, Eastern European nations achieved independence from Soviet authority through peaceful means, inspiring widespread nationalist movements within the USSR.</p>
                         <button class="expand-btn">Learn More</button>
                         <div class="extra-info">
                             <p>The year 1989 marked a significant turning point in Eastern Europe, characterized by a series of nonviolent transitions known as the Velvet Revolutions. In Poland, negotiations between the communist government and the Solidarity trade union resulted in free elections, effectively ending Soviet-aligned governance. Hungary facilitated this shift by opening its borders to Western Europe, enabling thousands to emigrate from Soviet influence. Czechoslovakia experienced a rapid transition through organized protests, leading to the replacement of its communist leadership with minimal conflict. These developments were possible due to Gorbachev’s decision to refrain from military intervention, a departure from previous Soviet policy. Within the Soviet Union, these events encouraged regions such as Lithuania to pursue independence, with formal declarations beginning in 1990. By 1991, more than 15 republics had seceded, driven by the example of Eastern Europe’s success and growing nationalist sentiment, ultimately contributing to the Soviet Union’s collapse.</p>
@@ -469,58 +391,6 @@
             evt.currentTarget.className += " active";
         }
         document.getElementById("defaultOpen").click();
-
-        // "Learn More" button toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const expandButtons = document.querySelectorAll('.expand-btn');
-            expandButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const extraInfo = this.nextElementSibling;
-                    if (extraInfo.style.display === 'block') {
-                        extraInfo.style.display = 'none';
-                        this.textContent = 'Learn More';
-                    } else {
-                        extraInfo.style.display = 'block';
-                        this.textContent = 'Show Less';
-                    }
-                });
-            });
-        });
-
-        // Quiz handler for Rise of the New Right tab
-        document.getElementById('quiz-form-goldwater').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const selectedAnswer = document.querySelector('#RiseOfTheNewRight input[name="answer"]:checked');
-            const hiddenSections = document.querySelectorAll('#RiseOfTheNewRight .timeline-event.hidden');
-            const applause = document.getElementById('applause');
-            const boo = document.getElementById('boo');
-            const correctText = document.getElementById('correct-text');
-            const explanationDiv = document.getElementById('answer-explanation-goldwater');
-
-            explanationDiv.style.display = 'none';
-            explanationDiv.innerHTML = '';
-
-            if (selectedAnswer) {
-                if (selectedAnswer.value === 'B') {
-                    hiddenSections.forEach(section => section.classList.remove('hidden'));
-                    applause.currentTime = 0; applause.play();
-                    setTimeout(() => { applause.pause(); applause.currentTime = 0; }, 5000);
-                    correctText.textContent = 'Correct!'; correctText.style.display = 'block';
-                    setTimeout(() => {
-                        correctText.classList.add('shrink');
-                        setTimeout(() => { correctText.style.display = 'none'; correctText.classList.remove('shrink'); }, 1000);
-                    }, 3000);
-                    explanationDiv.innerHTML = '<p><strong>Correct!</strong> Limited government was a key theme of Goldwater’s campaign.</p>';
-                    explanationDiv.style.display = 'block';
-                } else {
-                    boo.currentTime = 0; boo.play();
-                    setTimeout(() => { boo.pause(); boo.currentTime = 0; }, 3000);
-                    explanationDiv.innerHTML = '<p><strong>Incorrect.</strong> Try again!</p>';
-                    explanationDiv.style.display = 'block';
-                    alert('Try again!');
-                }
-            }
-        });
 
         // Role-Play Game for Communism From Within (Tab 2)
         function startGame() {
