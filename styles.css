@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    color: #333;
 }
 
 header {
@@ -34,88 +35,4 @@ header {
 
 .tabcontent {
     display: none;
-    padding: 20px;
-}
-
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.timeline-wrapper {
-    padding: 20px 0;
-}
-
-.timeline-event {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-left: 4px solid #4CAF50;
-}
-
-.timeline-event.hidden {
-    display: none;
-}
-
-.timeline-marker {
-    width: 20px;
-    height: 20px;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    position: absolute;
-    left: -12px;
-}
-
-.content {
-    margin-left: 30px;
-}
-
-.expand-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.expand-btn:hover {
-    background-color: #45a049;
-}
-
-.extra-info {
-    display: none;
-    margin-top: 10px;
-}
-
-.quiz {
-    margin-top: 20px;
-}
-
-form {
-    margin: 10px 0;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.answer-explanation {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-left: 4px solid #4CAF50;
-}
+    padding:
