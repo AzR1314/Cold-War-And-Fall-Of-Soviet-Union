@@ -1,63 +1,56 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    padding: 20px;
 }
 
 header {
-    background-color: #333;
-    color: white;
     text-align: center;
-    padding: 1em;
+    margin-bottom: 20px;
 }
 
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
 }
 
-.tab button {
-    background-color: inherit;
+.tablinks {
+    background-color: #f1f1f1;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    transition: 0.3s;
+    font-size: 16px;
 }
 
-.tab button:hover {
+.tablinks:hover {
     background-color: #ddd;
 }
 
-.tab button.active {
+.tablinks.active {
     background-color: #ccc;
 }
 
 .tabcontent {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
+    padding: 20px;
 }
 
-.tabcontent.active {
-    display: block;
-}
-
-.timeline-wrapper {
+.timeline {
+    position: relative;
     max-width: 800px;
     margin: 0 auto;
 }
 
+.timeline-wrapper {
+    padding: 20px 0;
+}
+
 .timeline-event {
-    background: white;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-left: 4px solid #4CAF50;
 }
 
 .timeline-event.hidden {
@@ -65,193 +58,64 @@ header {
 }
 
 .timeline-marker {
-    width: 10px;
-    height: 10px;
-    background-color: #007bff;
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50;
     border-radius: 50%;
-    margin-bottom: 10px;
+    position: absolute;
+    left: -12px;
 }
 
-.content p {
-    margin-bottom: 10px;
-}
-
-.extra-info {
-    display: none;
-}
-
-.extra-info p {
-    font-size: 1.5em;
-    color: #555;
+.content {
+    margin-left: 30px;
 }
 
 .expand-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s;
-}
-
-.expand-btn:hover {
-    background-color: #0056b3;
-}
-
-.event-sources {
-    margin-top: 10px;
-}
-
-.event-sources li {
-    list-style-type: none;
-    margin-bottom: 5px;
-}
-
-.quiz {
-    margin-top: 15px;
-}
-
-.quiz form {
-    margin-bottom: 10px;
-}
-
-.quiz form label {
-    margin-right: 10px;
-}
-
-.quiz form button {
     background-color: #4CAF50;
     color: white;
     padding: 8px 16px;
     border: none;
-    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.expand-btn:hover {
+    background-color: #45a049;
+}
+
+.extra-info {
+    display: none;
+    margin-top: 10px;
+}
+
+.quiz {
+    margin-top: 20px;
+}
+
+form {
+    margin: 10px 0;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
     cursor: pointer;
 }
 
-.quiz form button:hover {
+button[type="submit"]:hover {
     background-color: #45a049;
 }
 
 .answer-explanation {
     display: none;
+    margin-top: 10px;
     padding: 10px;
-    background-color: #e8e8e8;
-    border-radius: 5px;
-}
-
-#game-container-new-right, #game-container {
-    border: 2px solid #333;
-    padding: 15px;
     background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-#game-container-new-right button, #game-choices button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-#game-container-new-right button:hover, #game-choices button:hover {
-    background-color: #45a049;
-}
-
-#game-metrics-new-right, #game-metrics {
-    margin-top: 10px;
-    font-size: 1.1em;
-    color: #333;
-}
-
-#game-outcome-new-right, #game-outcome {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #e8e8e8;
-    border-radius: 5px;
-}
-
-#game-outcome-new-right button, #game-outcome button {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-#game-outcome-new-right button:hover, #game-outcome button:hover {
-    background-color: #007bb5;
-}
-
-.timeline-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.timeline-nav li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.timeline-nav a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.timeline-nav a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    padding: 1em;
-    background-color: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-.correct-text {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2em;
-    color: #4CAF50;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 1000;
-}
-
-.correct-text.shrink {
-    animation: shrink 1s forwards;
-}
-
-@keyframes shrink {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-}
-
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    opacity: 0.8;
-    animation: fall 5s linear;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-100vh) rotate(0deg); }
-    100% { transform: translateY(100vh) rotate(720deg); }
+    border-left: 4px solid #4CAF50;
 }
