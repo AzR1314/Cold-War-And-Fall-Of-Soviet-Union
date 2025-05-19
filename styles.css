@@ -1,38 +1,243 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    color: #333;
+    padding: 0;
+    background-color: #2d2d2d; /* Dark gray background */
+    color: #e0e0e0; /* Light gray text for readability */
 }
 
 header {
-    text-align: center;
-    margin-bottom: 20px;
+    background-color: #1a1a1a; /* Darker header for contrast */
+    color: #e0e0e0;
+    padding: 20px;
+    text-align: center; /* Centered header text */
 }
 
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
+
+/* Tab Navigation */
 .tab {
     overflow: hidden;
-    border-bottom: 1px solid #ccc;
+    background-color: #1a1a1a;
+    text-align: center;
 }
 
 .tablinks {
-    background-color: #f1f1f1;
-    float: left;
+    background-color: #e0e0e0; /* Light gray for tabs */
+    color: #333;
+    float: none;
+    display: inline-block;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    font-size: 16px;
+    font-size: 17px;
+    transition: 0.3s;
 }
 
 .tablinks:hover {
-    background-color: #ddd;
+    background-color: #4CAF50; /* Green on hover */
+    color: #fff;
 }
 
 .tablinks.active {
-    background-color: #ccc;
+    background-color: #4CAF50; /* Green for active tab */
+    color: #fff;
 }
 
 .tabcontent {
     display: none;
-    padding:
+    padding: 20px;
+    background-color: #2d2d2d; /* Match body background */
+}
+
+/* Event Tabs */
+.event-tabs {
+    overflow: hidden;
+    background-color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-tablinks {
+    background-color: #e0e0e0; /* Light gray for event tabs */
+    color: #333;
+    display: inline-block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.event-tablinks:hover {
+    background-color: #4CAF50; /* Green on hover */
+    color: #fff;
+}
+
+.event-tablinks.active {
+    background-color: #4CAF50; /* Green for active event tab */
+    color: #fff;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline-wrapper {
+    padding: 20px 0;
+}
+
+.timeline-event {
+    background-color: #e0e0e0; /* Light gray for event boxes */
+    color: #333;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    position: relative;
+    display: none; /* Hidden by default, shown via JS */
+}
+
+.timeline-event.active {
+    display: block; /* Show active event */
+}
+
+.timeline-event h2 {
+    margin-top: 0;
+    text-align: center; /* Centered event titles */
+}
+
+.content p {
+    text-align: center; /* Centered paragraph text */
+}
+
+.timeline-marker {
+    width: 15px;
+    height: 15px;
+    background-color: #4CAF50; /* Green marker */
+    border-radius: 50%;
+    position: absolute;
+    left: -30px;
+    top: 20px;
+}
+
+.timeline-event iframe {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Buttons */
+.expand-btn, button[type="submit"], #start-game-btn, #start-game-btn-new-right, #game-choices button, #game-choices-new-right button {
+    background-color: #4CAF50; /* Green buttons */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    transition: background-color 0.3s;
+}
+
+.expand-btn:hover, button[type="submit"]:hover, #start-game-btn:hover, #start-game-btn-new-right:hover, #game-choices button:hover, #game-choices-new-right button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Extra Info */
+.extra-info {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #d3d3d3; /* Slightly darker light gray for contrast */
+    border-radius: 5px;
+}
+
+/* Quiz Styles */
+.quiz {
+    margin-top: 20px;
+    text-align: center; /* Centered quiz text */
+}
+
+.quiz form {
+    display: inline-block;
+    text-align: left;
+}
+
+.quiz label {
+    display: block;
+    margin: 10px 0;
+}
+
+.answer-explanation {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e0e0e0; /* Light gray for explanation */
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Game Styles */
+#game-container, #game-container-new-right {
+    margin-top: 20px;
+}
+
+#game-metrics, #game-metrics-new-right {
+    margin-top: 10px;
+}
+
+#game-outcome, #game-outcome-new-right {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e0e0e0; /* Light gray for outcome */
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Source Links */
+.event-sources {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.event-sources li {
+    margin: 5px 0;
+}
+
+.event-sources a {
+    color: #4CAF50; /* Green links */
+    text-decoration: none;
+}
+
+.event-sources a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .tablinks, .event-tablinks {
+        width: 100%;
+        display: block;
+    }
+
+    .timeline-event {
+        padding: 15px;
+    }
+
+    .timeline-marker {
+        left: -20px;
+    }
+}
