@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,112 +12,225 @@ header {
     padding: 1em;
 }
 
-header h1 {
-    margin: 0;
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }
 
-header p {
-    margin: 0.5em 0 0;
-    font-style: italic;
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
 }
 
-.timeline {
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.timeline-wrapper {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 0 auto;
 }
 
 .timeline-event {
     background: white;
-    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-event.hidden {
+    display: none;
+}
+
+.timeline-marker {
+    width: 10px;
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+.extra-info {
+    display: none;
+}
+
+.extra-info p {
+    font-size: 1.5em;
+    color: #555;
+}
+
+.expand-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
     border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 15px;
-    position: relative;
+    font-size: 1em;
+    transition: background-color 0.3s;
 }
 
-.timeline-event h2 {
-    margin-top: 0;
-    color: #333;
-}
-
-.timeline-event .content {
-    display: flex;
-    flex-direction: column;
+.expand-btn:hover {
+    background-color: #0056b3;
 }
 
 .event-sources {
-    list-style-type: none;
-    padding: 0;
+    margin-top: 10px;
 }
 
 .event-sources li {
-    margin: 5px 0;
-}
-
-.event-sources a {
-    color: #333;
-    text-decoration: none;
-}
-
-.event-sources a:hover {
-    text-decoration: underline;
+    list-style-type: none;
+    margin-bottom: 5px;
 }
 
 .quiz {
     margin-top: 15px;
-    padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.quiz p {
-    margin: 0 0 10px;
-    font-weight: bold;
 }
 
 .quiz form {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 10px;
 }
 
-.quiz label {
-    margin: 5px 0;
+.quiz form label {
+    margin-right: 10px;
 }
 
-.quiz button {
-    align-self: flex-start;
-    padding: 5px 10px;
-    background: #333;
+.quiz form button {
+    background-color: #4CAF50;
     color: white;
+    padding: 8px 16px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.quiz button:hover {
-    background: #555;
+.quiz form button:hover {
+    background-color: #45a049;
 }
 
 .answer-explanation {
     display: none;
-    margin-top: 10px;
     padding: 10px;
-    background: #e0f7fa;
-    border: 1px solid #b2ebf2;
+    background-color: #e8e8e8;
     border-radius: 5px;
 }
 
+#game-container-new-right, #game-container {
+    border: 2px solid #333;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#game-container-new-right button, #game-choices button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#game-container-new-right button:hover, #game-choices button:hover {
+    background-color: #45a049;
+}
+
+#game-metrics-new-right, #game-metrics {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+#game-outcome-new-right, #game-outcome {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e8e8e8;
+    border-radius: 5px;
+}
+
+#game-outcome-new-right button, #game-outcome button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#game-outcome-new-right button:hover, #game-outcome button:hover {
+    background-color: #007bb5;
+}
+
+.timeline-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.timeline-nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.timeline-nav a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.timeline-nav a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 .correct-text {
-    displayatia: none;
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 48px;
-    color: green;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2em;
+    color: #4CAF50;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
     z-index: 1000;
 }
 
@@ -127,179 +239,19 @@ header p {
 }
 
 @keyframes shrink {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    100% { transform: translate(-50%, -50%) scale(0); }
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
 }
 
 .confetti {
     position: fixed;
     width: 10px;
     height: 10px;
-    top: -10px;
-    z-index: 999;
-    animation: fall 5s linear forwards;
+    opacity: 0.8;
+    animation: fall 5s linear;
 }
 
 @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
-.expand-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.expand-btn:hover {
-    background: #555;
-}
-
-.extra-info {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.hidden {
-    display: none;
-}
-
-footer {
-    text-align: center;
-    padding: 1em;
-    background: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    color: #ccc;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-.timeline-nav {
-    background-color: #f1f1f1;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.timeline-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.timeline-nav li {
-    margin: 0;
-}
-
-.timeline-nav a,
-.timeline-nav a:link,
-.timeline-nav a:visited {
-    text-decoration: none;
-    color: #333 !important;
-    font-weight: bold;
-    padding: 8px 12px;
-    display: block;
-    transition: color 0.3s;
-}
-
-.timeline-nav a:hover {
-    color: #555 !important;
-}
-
-/* Mini-Game Styles */
-#start-game-btn {
-    padding: 10px 20px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-#start-game-btn:hover {
-    background: #555;
-}
-
-#game-container {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-#game-scenario {
-    margin-bottom: 15px;
-}
-
-#game-choices {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.choice-btn {
-    padding: 10px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: left;
-}
-
-.choice-btn:hover {
-    background: #555;
-}
-
-#game-metrics {
-    margin-top: 15px;
-    padding: 10px;
-    background: #e0f7fa;
-    border: 1px solid #b2ebf2;
-    border-radius: 5px;
-}
-
-#game-outcome {
-    margin-top: 20px;
-    padding: 15px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-}
-
-#game-outcome button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#game-outcome button:hover {
-    background: #555;
+    0% { transform: translateY(-100vh) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(720deg); }
 }
